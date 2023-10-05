@@ -15,8 +15,8 @@ public class Cliente extends Usuario {
     }
 
     // Constructor con parámetros
-    public Cliente(String nombre, String apellido, String email, int edad, String tipo, int totalP, int totalPE, int totalPC, String[] metPag, int calif) {
-        super(nombre, apellido, email, edad);
+    public Cliente(int id, String nombre, String apellido, String email, int edad, String tipo, int totalP, int totalPE, int totalPC, String[] metPag, int calif) {
+        super(id, nombre, apellido, email, edad);
         this.tipo = tipo;
         this.metPag = metPag;
         this.totalP = 0;

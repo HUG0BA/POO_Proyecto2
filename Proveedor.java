@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Proveedor extends Usuario{
     // Atributos
     private String rest;
@@ -8,11 +10,12 @@ public class Proveedor extends Usuario{
     }
 
     // Constructor con parámetros
-    public Proveedor(String nombre, String apellido, String email, int edad, String reset, int nivAccess){
-      super(nombre, apellido, email, edad);  
-      this.rest = rest;
-      this.nivAccess = nivAccess;
+    public Proveedor(int id, String nombre, String apellido, String email, int edad, String rest, int nivAccess){
+    super(id, nombre, apellido, email, edad);  
+    this.rest = rest;
+    this.nivAccess = nivAccess;
     }
+
 
     // Getters
     public String getRest() {
