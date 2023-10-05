@@ -33,4 +33,31 @@ public class Proveedor extends Usuario{
     }
 
     // Métodos
+    @Override
+    public String toString() {
+        return "Proveedor{" +
+                "id=" + getId() +
+                ", nombre='" + getNombre() + '\'' +
+                ", apellido='" + getApellido() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", edad=" + getEdad() +
+                ", rest='" + rest + '\'' +
+                ", nivAccess=" + nivAccess +
+                '}';
+    }
+
+    // Método para comprar dos objetos Proveedor
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o))return false;
+        Proveedor proveedor = (Proveedor) o;  
+        return getNivAccess() == proveedor.getNivAccess() && getRest().equals(proveedor.getRest());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getRest(), getNivAccess());
+    }
 }
