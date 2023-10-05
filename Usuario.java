@@ -19,7 +19,7 @@ public class Usuario {
         this.email = email;
         this.edad = edad;
     }
-}
+
 
 // Getters
 public int getId() {
