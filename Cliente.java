@@ -76,6 +76,37 @@ public class Cliente extends Usuario {
     }
 
     // Métodos
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id=" + getId() +
+                ", nombre='" + getNombre() + '\'' +
+                ", apellido='" + getApellido() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", edad=" + getEdad() +
+                ", tipo='" + tipo + '\'' +
+                ", totalP=" + totalP +
+                ", totalPE=" + totalPE +
+                ", totalPC=" + totalPC +
+                ", metPag=" + Arrays.toString(metPag) +
+                ", calif=" + calif +
+                '}';
+    }
 
+    // Método para comprar dos objetos Cliente
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o))return false;
+        Cliente cliente = (Cliente) o;
+        return getTotalP() == cliente.getTotalP() && getTotalPE() == cliente.getTotalPE() && getTotalPC() == cliente.getTotalPC() && getCalif() == cliente.getCalif() && getTipo().equals(cliente.getTipo()) && Arrays.equals(getMetPag(), cliente.getMetPag());
+    }
 
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(super.hashCode(), getTipo(), getTotalP(), getTotalPE(), getTotalPC(), getCalif());
+        result = 31 * result + Arrays.hashCode(getMetPag());
+        return result;
+    }
 }
