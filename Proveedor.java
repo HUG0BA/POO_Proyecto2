@@ -15,4 +15,22 @@ public class Proveedor extends Usuario{
     }
 
     // Getters
+    public String getRest() {
+        return rest;
+    }
+
+    public int getNivAccess() {
+        return nivAccess;
+    }
+
+    // Setters
+    public void setRest(String rest) {
+        this.rest = rest;
+    }
+
+    public void setNivAccess(int nivAccess) {
+        this.nivAccess = nivAccess;
+    }
+
+    // Métodos
 }
