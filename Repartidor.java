@@ -53,5 +53,30 @@ public class Repartidor extends Usuario{
     public void setTotalPC(int totalPC) {
         this.totalPC = totalPC;
     }
+
+    public int getTotalTC() {
+        return totalTC;
+    }
+
+    public void setTotalTC(int totalTC) {
+        this.totalTC = totalTC;
+    }
+
+    public int getTotalH() {
+        return totalH;
+    }
+
+    public void setTotalH(int totalH) {
+        this.totalH = totalH;
+    }
+
+    public int getCalif() {
+        return calif;
+    }
+
+    public void setCalif(int calif) {
+        this.calif = calif;
+    }
+
     
 }
