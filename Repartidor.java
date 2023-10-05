@@ -78,5 +78,25 @@ public class Repartidor extends Usuario{
         this.calif = calif;
     }
 
-    
+    // Método toString
+    @Override
+    public String toString() {
+        return super.toString() +
+            "\nTotal de pedidos entregados: " + totalP +
+            "\nTotal de pedidos turnos finalizados: " + totalT +
+            "\nTotal de pedidos cancelados: " + totalPC +
+            "\nTotal de turnos cancelados: " + totalTC +
+            "\nTotal de horas trabajadas: " + totalH +
+            "\nCalificación: " + calif;      
+    }
+
+    // Método equals
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Repartidor)) return false;
+        if (!super.equals(obj)) return false;
+        Repartidor that = (Repartidor) obj;
+        return getId() == that.getId();
+    }
 }
