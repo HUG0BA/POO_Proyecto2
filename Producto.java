@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Producto {
     private int idProducto;
     private String titulo;
@@ -59,5 +61,31 @@ public class Producto {
 
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
+    }
+
+    //toString
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "idProducto=" + idProducto +
+                ", titulo= '" + titulo + '\'' +
+                ", detalles='" + detalles + '\'' +
+                ", costo=" + costo +
+                ", disponible=" + disponible +
+                '}';
+    }
+
+    //equals
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Producto producto = (Producto) o;
+        return idProducto == producto.idProducto;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idProducto);
     }
 }
