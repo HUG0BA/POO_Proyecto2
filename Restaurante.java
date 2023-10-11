@@ -20,4 +20,79 @@ public class Restaurante{
         this.disp = disp;
         this.productos = new ArrayList<Producto>();
     }
+
+    public int getIdRest(){
+        return idRest;
+    }
+
+    public void setIdRest(int idRest){
+        this.idRest = idRest;
+
+    }
+
+    public String getNombre(){
+        return nombre;
+    }
+
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+
+    public String getDes(){
+        return des;
+    }
+
+    public void setDes(String des){
+        this.des = des;
+    }
+
+    public String getHorario(){
+        return horario;
+    }
+
+    public void setHorario(String horario){
+        this.horario = horario;
+    }
+
+    public boolean getDisp(){
+        return disp;
+    }
+
+    public void setDisp(boolean disp){
+        this.disp = disp;
+    }
+
+    public ArrayList<Producto> getProductos(){
+        return productos;
+    }
+
+    public void setProductos(ArrayList<Producto> productosP){
+        if (!productos.isEmpty()){
+            this.productos.clear();
+            for(Producto copia : productosP ){
+                Producto producto = new Producto(copia.getIdProducto(), copia.getTitulo(), copia.getDetalles(), copia.getCosto(), copia.getDisponible());
+                productos.add(producto);
+            }
+        }
+    }
+
+    @Override
+    public String toString(){
+        return "Restaurante{" + 
+                "idrest=" + idRest +
+                ", nombre= '" + nombre + '\'' +
+                ", des='" + des + '\'' +
+                ", horario='" + horario + '\'' +
+                ", disp=" + disp +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Restaurante restaurante = (Restaurante) o;
+        return idRest == restaurante.idRest;
+    }
+
 }

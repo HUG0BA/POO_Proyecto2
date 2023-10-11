@@ -38,7 +38,7 @@ public class Producto {
         return costo;
     }
 
-    public boolean isDisponible() {
+    public boolean getDisponible() {
         return disponible;
     }
 
