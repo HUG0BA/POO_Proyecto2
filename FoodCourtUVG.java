@@ -144,4 +144,113 @@ public class FoodCourtUVG{
     public void setindexRestA(int indexRestA){
         this.indexRestA = indexRestA;
     }
+
+    public void agregarCliente(int id, String nombre, String apellido, String email, int edad, String tipo){
+        Cliente nuevo = new Cliente(id, nombre, apellido, email, edad, tipo);
+        clientes.add(nuevo);
+    }
+
+    public void iniciarCliente(int id){
+        if(!clientes.isEmpty()){
+            for (Cliente cliente : clientes){
+                if (cliente.getId() == id){
+                    setClienteA(cliente);
+                    indexCA = clientes.indexOf(cliente);
+                }
+            }
+        }
+        
+    }
+
+    public String mostrarClientes(){
+        String text = "";
+        int i = 0;
+        if(!clientes.isEmpty()){
+            for (Cliente cliente : clientes){
+                text = text + i + ". " + cliente.toString() + "\n";
+            }
+        }
+        else {
+            text = "Aún no se han registrado clientes";
+        }
+
+        return text;
+    }
+
+    public void agregarRepartidor(int id, String nombre, String apellido, String email, int edad){
+        Repartidor nuevo = new Repartidor(id, nombre, apellido, email, edad);
+        repartidores.add(nuevo);
+    }
+
+    public void iniciarRepartidor(int id){
+        if(!repartidores.isEmpty()){
+            for (Repartidor repartidor : repartidores){
+                if (repartidor.getId() == id){
+                    setRepartidorA(repartidor);
+                    indexRA = repartidores.indexOf(repartidor);
+                }
+            }
+        }
+        
+    }
+
+    public String mostrarRepartidores(){
+        String text = "";
+        int i = 0;
+        if(!repartidores.isEmpty()){
+            for (Repartidor repartidor : repartidores){
+                text = text + i + ". " + repartidor.toString() + "\n";
+            }
+        }
+        else {
+            text = "Aún no se han registrado repartidores";
+        }
+
+        return text;
+    }
+
+    public void agregarRest(int idRest, String nombre, String des, String horario, boolean disp){
+        Restaurante nuevo = new Restaurante(idRest, nombre, des, horario, disp);
+        restaurantes.add(nuevo);
+    } 
+
+    public void iniciarRest(int idRest){
+        if(!restaurantes.isEmpty()){
+            for (Restaurante rest : restaurantes){
+                if (rest.getIdRest() == idRest){
+                    setRestA(rest);
+                    indexRestA = restaurantes.indexOf(rest);
+                }
+            }
+        }
+        
+    }
+
+    public String mostrarRestaurantes(){
+        String text = "";
+        int i = 0;
+        if(!restaurantes.isEmpty()){
+            for (Restaurante rest : restaurantes){
+                text = text + i + ". " + rest.toString() + "\n";
+            }
+        }
+        else {
+            text = "Aún no se han registrado restaurantes";
+        }
+
+        return text;
+    }
+
+    public void agregarProducto(int idProducto, String titulo, String detalles, double costo, boolean disponible){
+        Producto nuevo = new Producto(idProducto, titulo, detalles, costo, disponible);
+        restA.agregarProducto(nuevo);
+    }
+
+    public void eliminarProducto(int idProducto){
+        restA.eliminarProducto(restA.getProductoById( idProducto));
+    }
+
+    public String mostrarProductos(){
+        return restA.mostrarProductos();
+    }
 }

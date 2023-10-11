@@ -95,6 +95,27 @@ public class Restaurante{
         return idRest == restaurante.idRest;
     }
 
+    public void agregarProducto(Producto producto){
+        productos.add(producto);
+    }
+
+    public void eliminarProducto(Producto producto){
+        productos.remove(producto);
+    }
+
+    public Producto getProductoById(int idProducto){
+        if(!productos.isEmpty()){
+            for (Producto producto : productos){
+                if(producto.getIdProducto() == idProducto){
+                    return producto;
+                }
+            }
+            return null;
+        }
+        
+        return null;
+    }
+
     public String mostrarProductos(){
         String text = "";
         int contador = 0;

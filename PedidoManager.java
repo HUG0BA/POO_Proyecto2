@@ -81,6 +81,8 @@ public class PedidoManager{
         pedidos.remove(pedidos.get(index));
     }
 
+    
+
     public void asignarRepartidor(int index, Repartidor repartidor){
         pedidos.get(index).setRepartidor(repartidor);
         pedidos.get(index).setAsignada(true);
