@@ -21,14 +21,14 @@ public class Repartidor extends Usuario{
     }
 
     // Constructor con parámetros
-    public Repartidor(int id, String nombre, String apellido, String email, int edad, int totalP, int totalT, int totalPC, int totalTC, int totalH, int calif) {
+    public Repartidor(int id, String nombre, String apellido, String email, int edad) {
         super(id, nombre, apellido, email, edad);
-        this.totalP = totalP;
-        this.totalT = totalT;
-        this.totalPC = totalPC;
-        this.totalTC = totalTC;
-        this.totalH = totalH;
-        this.calif = calif;
+        this.totalP = 0;
+        this.totalT = 0;
+        this.totalPC = 0;
+        this.totalTC = 0;
+        this.totalH = 0;
+        this.calif = 0;
     }
 
     // Getters y setters
