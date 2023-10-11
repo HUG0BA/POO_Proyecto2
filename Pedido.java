@@ -8,16 +8,16 @@ public class Pedido{
     private ArrayList<Producto> productos;
     private String local;
     private boolean asignada;
-    private boolean completado;
+    //private boolean completado;
 
     public Pedido(int idPedido, Cliente clienteP, Restaurante restauranteP, String local, ArrayList<Producto> productosP){
         this.idPedido = idPedido;
-        cliente = new Cliente(clienteP.getId(), clienteP.getNombre(), clienteP.getApellido(), clienteP.getEmail(), clienteP.getEdad(), clienteP.getTipo(), clienteP.getTotalP(), clienteP.getTotalPE(), clienteP.getTotalPC(), clienteP.getMetPag(), clienteP.getCalif());
+        cliente = new Cliente(clienteP.getId(), clienteP.getNombre(), clienteP.getApellido(), clienteP.getEmail(), clienteP.getEdad(), clienteP.getTipo());
         restaurante = new Restaurante(restauranteP.getIdRest(),restauranteP.getNombre(), restauranteP.getDes(), restauranteP.getHorario(), restauranteP.getDisp());
         restaurante.setProductos(restauranteP.getProductos());
         this.local = local;
         this.asignada = false;
-        this.completado = false;
+        //this.completado = false;
 
         productos = new ArrayList<Producto>();
         if (!productosP.isEmpty()){
@@ -114,13 +114,15 @@ public class Pedido{
         this.asignada = asignada;
     }
 
+    /*
     public boolean getCompletado(){
         return completado;
-    }
+    }*/
 
+    /*
     public void setCompletado(boolean completado){
         this.completado = completado;
-    }
+    }*/
 
 
 }
