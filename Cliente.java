@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.ArrayList;
 
 public class Cliente extends Usuario {
    // Atributos
@@ -7,7 +8,7 @@ public class Cliente extends Usuario {
    private int totalP;
    private int totalPE;
    private int totalPC;
-   private String[] metPag;
+   private ArrayList<String> metPag;
    private int calif;
 
    // Constructor predeterminado
@@ -15,10 +16,10 @@ public class Cliente extends Usuario {
     }
 
     // Constructor con parámetros
-    public Cliente(int id, String nombre, String apellido, String email, int edad, String tipo, int totalP, int totalPE, int totalPC, String[] metPag, int calif) {
+    public Cliente(int id, String nombre, String apellido, String email, int edad, String tipo) {
         super(id, nombre, apellido, email, edad);
         this.tipo = tipo;
-        this.metPag = metPag;
+        this.metPag = new ArrayList<String>();
         this.totalP = 0;
         this.totalPE = 0;
         this.totalPC = 0;
@@ -42,7 +43,7 @@ public class Cliente extends Usuario {
         return totalPC;
     }
 
-    public String[] getMetPag() {
+    public ArrayList<String> getMetPag() {
         return metPag;
     }
 
@@ -67,8 +68,13 @@ public class Cliente extends Usuario {
         this.totalPC = totalPC;
     }
 
-    public void setMetPag(String[] metPag) {
-        this.metPag = metPag;
+    public void setMetPag(ArrayList<String> metPagP) {
+        if(!metPagP.isEmpty()){
+            metPag.clear();
+            for (String str : metPagP){
+                metPag.add(str);
+            }
+        }
     }
 
     public void setCalif(int calif) {
@@ -88,7 +94,7 @@ public class Cliente extends Usuario {
                 ", totalP=" + totalP +
                 ", totalPE=" + totalPE +
                 ", totalPC=" + totalPC +
-                ", metPag=" + Arrays.toString(metPag) +
+                
                 ", calif=" + calif +
                 '}';
     }
@@ -100,13 +106,13 @@ public class Cliente extends Usuario {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o))return false;
         Cliente cliente = (Cliente) o;
-        return getTotalP() == cliente.getTotalP() && getTotalPE() == cliente.getTotalPE() && getTotalPC() == cliente.getTotalPC() && getCalif() == cliente.getCalif() && getTipo().equals(cliente.getTipo()) && Arrays.equals(getMetPag(), cliente.getMetPag());
+        return getTotalP() == cliente.getTotalP() && getTotalPE() == cliente.getTotalPE() && getTotalPC() == cliente.getTotalPC() && getCalif() == cliente.getCalif() && getTipo().equals(cliente.getTipo());
     }
 
-    @Override
+    /*@Override
     public int hashCode() {
         int result = Objects.hash(super.hashCode(), getTipo(), getTotalP(), getTotalPE(), getTotalPC(), getCalif());
         result = 31 * result + Arrays.hashCode(getMetPag());
         return result;
-    }
+    }*/
 }
