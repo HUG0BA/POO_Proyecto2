@@ -4,7 +4,7 @@ public class Menu{
     private String detalles;
     private double costo;
     private boolean disponible;
-    private 
+    
 
     public Menu(){
 
