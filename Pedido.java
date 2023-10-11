@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Pedido{
     private int idPedido;
     private Cliente cliente;
@@ -9,7 +11,7 @@ public class Pedido{
     private boolean completado;
 
     private Pedido(Cliente clienteP, Restaurante restaurante, String local){
-        cliente = new Cliente(clienteP.getId(), clienteP.getNombre(), clienteP.getApellido(), clienteP.getEmail(), clienteP.getEdad(), clienteP.getTipo(), clienteP.getTotalP(), clienteP.getTotalPE(), clienteP.getTotalPC, clienteP.getMetPag(), clienteP.getCalif());
+        cliente = new Cliente(clienteP.getId(), clienteP.getNombre(), clienteP.getApellido(), clienteP.getEmail(), clienteP.getEdad(), clienteP.getTipo(), clienteP.getTotalP(), clienteP.getTotalPE(), clienteP.getTotalPC(), clienteP.getMetPag(), clienteP.getCalif());
         
     }
 }
