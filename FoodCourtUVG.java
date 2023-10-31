@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class FoodCourtUVG{
+    /*
     private ArrayList<Cliente> clientes;
     private ArrayList<Restaurante> restaurantes;
     private ArrayList<Repartidor> repartidores;
@@ -13,8 +14,21 @@ public class FoodCourtUVG{
     private Restaurante restA;
     private int indexRestA;
     private int indexPA;
+    */
+
+    private ArrayList<Usuario> usuarios;
+    private Usuario usuarioA;
+    private int indexA;
+    private ArrayList<Restaurante> restaurantes;
+    private Restaurante restauranteA;
+    private int indexR;
+    private PedidoManager pedidoManager;
 
     public FoodCourtUVG(){
+        usuarios = new ArrayList<Usuario>();
+        restaurantes = new ArrayList<Restaurante>();
+        pedidoManager = new PedidoManager();
+        /*
         clientes = new ArrayList<Cliente>();
         restaurantes = new ArrayList<Restaurante>();
         repartidores = new ArrayList<Repartidor>();
@@ -23,8 +37,29 @@ public class FoodCourtUVG{
         indexCA = -1;
         indexRA = -1;
         indexRestA = -1;
+        */
     }
 
+    public void setUsuarioA(Usuario usuario){
+        if(usuarioA != null){
+            usuarios.set(indexA, usuario);
+        }
+
+        usuarioA = null;
+
+        if(usuario instanceof Cliente){
+            usuarioA = new Cliente(usuario.getId(),usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getEdad(), ((Cliente)usuario).getTipo());
+        }
+        else if(usuario instanceof Repartidor){
+            usuarioA = new Repartidor(usuario.getId(),usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getEdad());
+        }
+        else if(usuario instanceof Proveedor){
+            usuarioA = new Proveedor(usuario.getId(),usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getEdad(), ((Proveedor)usuario).getRest(), ((Proveedor)usuario).getNivAccess());
+        }
+
+        indexA = usuarios.indexOf(usuario);
+    }
+    /* 
     public ArrayList<Cliente> getClientes(){
         return clientes;
     }
@@ -38,6 +73,7 @@ public class FoodCourtUVG{
             }
         }
     }
+    */
 
     public ArrayList<Restaurante> getRestaurantes(){
         return restaurantes;
@@ -53,6 +89,7 @@ public class FoodCourtUVG{
         }
     }
 
+    /*
     public ArrayList<Repartidor> getRepartidores(){
         return repartidores;
     }
@@ -66,6 +103,7 @@ public class FoodCourtUVG{
             }
         }
     }
+    */
 
     public PedidoManager getPedidoManager(){
         return pedidoManager;
@@ -75,11 +113,16 @@ public class FoodCourtUVG{
         pedidoManager.setPedidos(pedidoManagerP.getPedidos());
     }
 
+    /*
     public Cliente getClienteA(){
         return clienteA;
     }
 
     public void setClienteA(Cliente clienteP){
+
+        if()
+
+        
         clienteA.setId(clienteP.getId());
         clienteA.setNombre(clienteP.getNombre());
         clienteA.setApellido(clienteP.getApellido());
@@ -91,8 +134,11 @@ public class FoodCourtUVG{
         clienteA.setTotalPC(clienteP.getTotalP());    
         clienteA.setMetPag(clienteP.getMetPag());
         clienteA.setCalif(clienteP.getCalif());
+        
     }
+    */
 
+    /*
     public int getIndexCA(){
         return indexCA;
     }
@@ -127,32 +173,39 @@ public class FoodCourtUVG{
         this.indexRA = indexRA;
     }
 
+    */
     public Restaurante getRestA(){
-        return restA;
+        return restauranteA;
     }
 
     public void setRestA(Restaurante restauranteP){
+
+        /*
         restA.setIdRest(restauranteP.getIdRest());
         restA.setNombre(restauranteP.getNombre());
         restA.setDes(restauranteP.getDes());
         restA.setHorario(restauranteP.getHorario());
         restA.setDisp(restauranteP.getDisp());
         restA.setProductos(restauranteP.getProductos());
+        */
     }
 
     public int getIndexRestA(){
-        return indexRA;
+        return indexR;
     }
 
+    /*
     public void setindexRestA(int indexRestA){
         this.indexRestA = indexRestA;
     }
+    */
 
     public void agregarCliente(int id, String nombre, String apellido, String email, int edad, String tipo){
         Cliente nuevo = new Cliente(id, nombre, apellido, email, edad, tipo);
-        clientes.add(nuevo);
+        usuarios.add(nuevo);
     }
 
+    /*
     public void iniciarCliente(int id){
         if(!clientes.isEmpty()){
             for (Cliente cliente : clientes){
@@ -164,14 +217,22 @@ public class FoodCourtUVG{
         }
         
     }
+    */
 
     public String mostrarClientes(){
         String text = "";
         int i = 0;
-        if(!clientes.isEmpty()){
+        if(!usuarios.isEmpty()){
+            for(Usuario usuario : usuarios){
+                if(usuario instanceof Cliente){
+                    text = text + i + ". " + ((Cliente)usuario).toString() + "\n"; 
+                }
+            }
+            /*
             for (Cliente cliente : clientes){
                 text = text + i + ". " + cliente.toString() + "\n";
             }
+            */
         }
         else {
             text = "Aún no se han registrado clientes";
@@ -182,9 +243,10 @@ public class FoodCourtUVG{
 
     public void agregarRepartidor(int id, String nombre, String apellido, String email, int edad){
         Repartidor nuevo = new Repartidor(id, nombre, apellido, email, edad);
-        repartidores.add(nuevo);
+        usuarios.add(nuevo);
     }
 
+    /*
     public void iniciarRepartidor(int id){
         if(!repartidores.isEmpty()){
             for (Repartidor repartidor : repartidores){
@@ -196,15 +258,26 @@ public class FoodCourtUVG{
         }
         
     }
+    */
 
     public String mostrarRepartidores(){
         String text = "";
         int i = 0;
+
+        if(!usuarios.isEmpty()){
+            for(Usuario usuario : usuarios){
+                if(usuario instanceof Repartidor){
+                    text = text + i + ". " + ((Repartidor)usuario).toString() + "\n"; 
+                }
+            }
+        }
+        /*
         if(!repartidores.isEmpty()){
             for (Repartidor repartidor : repartidores){
                 text = text + i + ". " + repartidor.toString() + "\n";
             }
         }
+        */
         else {
             text = "Aún no se han registrado repartidores";
         }
@@ -214,9 +287,10 @@ public class FoodCourtUVG{
 
     public void agregarProveedor(int id, String nombre, String apellido, String email, int edad, String rest, int nivAccess){
         Proveedor nuevo = new Proveedor(id, nombre, apellido, email, edad, rest, nivAccess);
-        proveedores.add(nuevo);
+        usuarios.add(nuevo);
     }
 
+    /*
     public void iniciarProveedor(int id){
         if(!proveedores.isEmpty()){
             for (Proveedor proveedor : proveedores){
@@ -228,20 +302,66 @@ public class FoodCourtUVG{
         }
         
     }
+    */
 
     public String mostrarProveedores(){
         String text = "";
         int i = 0;
-        if(!proveedores.isEmpty()){
+        if(!usuarios.isEmpty()){
+            for(Usuario usuario : usuarios){
+                if(usuario instanceof Proveedor){
+                    text = text + i + ". " + ((Proveedor)usuario).toString() + "\n"; 
+                }
+            }
+            /*
             for (Proveedor proveedor : proveedores){
                 text = text + i + ". " + proveedor.toString() + "\n";
             }
+            */
         }
         else {
             text = "Aún no se han registrado repartidores";
         }
 
         return text;
+    }
+
+    public void iniciarUsuario(int id, int tipoU){
+        if(!usuarios.isEmpty()){
+            for(Usuario usuario : usuarios){
+                
+                switch (tipoU) {
+                    case 1:
+                        if((usuario instanceof Cliente) && usuario.getId() == id){
+                            setUsuarioA(usuario);
+                        }
+                        break;
+                
+                    case 2: 
+                        if((usuario instanceof Repartidor) && usuario.getId() == id){
+                            setUsuarioA(usuario);
+                        }
+                        break;
+
+                    case 3:
+                        if((usuario instanceof Proveedor) && usuario.getId() == id){
+                            setUsuarioA(usuario);
+                        }
+                        break;
+                }
+            }
+        }
+
+        /*
+        if(!proveedores.isEmpty()){
+            for (Proveedor proveedor : proveedores){
+                if (proveedor.getId() == id){
+                    //setRepartidorA(proveedor);
+                    indexPA = proveedores.indexOf(proveedor);
+                }
+            }
+        }
+        */
     }
 
     public void agregarRest(int idRest, String nombre, String des, String horario, boolean disp){
@@ -254,7 +374,7 @@ public class FoodCourtUVG{
             for (Restaurante rest : restaurantes){
                 if (rest.getIdRest() == idRest){
                     setRestA(rest);
-                    indexRestA = restaurantes.indexOf(rest);
+                    indexR = restaurantes.indexOf(rest);
                 }
             }
         }
@@ -278,15 +398,15 @@ public class FoodCourtUVG{
 
     public void agregarProducto(int idProducto, String titulo, String detalles, double costo, boolean disponible){
         Producto nuevo = new Producto(idProducto, titulo, detalles, costo, disponible);
-        restA.agregarProducto(nuevo);
+        restauranteA.agregarProducto(nuevo);
     }
 
     public void eliminarProducto(int idProducto){
-        restA.eliminarProducto(restA.getProductoById( idProducto));
+        restauranteA.eliminarProducto(restauranteA.getProductoById( idProducto));
     }
 
     public String mostrarProductos(){
-        return restA.mostrarProductos();
+        return restauranteA.mostrarProductos();
     }
 
     public void agregarPedido(Pedido pedido){
