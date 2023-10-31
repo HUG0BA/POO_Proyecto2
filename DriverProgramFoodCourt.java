@@ -23,7 +23,9 @@ public class DriverProgramFoodCourt{
                 scanner.nextLine();
             }
 
+            int tipoU = -1;
             switch (opcion) {
+                
                 case 1:
                     int id = 0;
                     String nombre = "";
@@ -52,7 +54,7 @@ public class DriverProgramFoodCourt{
                     }
 
 
-                    int tipoU = -1;
+                    tipoU = -1;
                     try {
                         System.out.println("Ingrese el tipo de usario para registrar datos específicos.");
                         System.out.println("1. Cliente \n 2. Repartidor \n 3. Proveedor");
@@ -123,6 +125,12 @@ public class DriverProgramFoodCourt{
                                 scanner.nextLine();
                                 break;
                             }
+
+                            try {
+                                food.agregarProveedor(id, nombre, apellido, email, edad, rest, nivAccess);
+                            } catch (Exception e) {
+                                System.out.println("Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString());
+                            }
                             break;
                     }
                     
@@ -130,12 +138,41 @@ public class DriverProgramFoodCourt{
                     break;
             
                 case 2:
+                    tipoU = -1;
+                    try {
+                        System.out.println("Ingrese el tipo de usario para registrar datos específicos.");
+                        System.out.println("1. Cliente \n 2. Repartidor \n 3. Proveedor");
+                        tipoU = scanner.nextInt();
+                        scanner.nextLine();
 
+                        if(tipoU < 1 || tipoU > 3){
+                            System.out.println("Ingrese únicamente un valor numérico dentro del rango");
+                            break;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Asegúrese de ingresar un valor numérico. Error: " + e.toString());
+                        scanner.nextLine();
+                        break;
+                    }
+
+                    int idLogin = -1;
+                    try {
+                        System.out.println("Ingrese su id");
+                        idLogin = scanner.nextInt();
+                        scanner.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Asegúrese de ingresar un valor numérico. Error: " + e.toString());
+                        scanner.nextLine();
+                        break;
+                    }
+
+                    try {
+                        System.out.println(food.iniciarUsuario(idLogin, tipoU));
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString());
+                    }
                     break;
 
-                case 3:
-
-                    break;  
             }
 
 

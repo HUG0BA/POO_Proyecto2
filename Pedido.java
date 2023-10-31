@@ -124,5 +124,4 @@ public class Pedido{
         this.completado = completado;
     }*/
 
-
 }

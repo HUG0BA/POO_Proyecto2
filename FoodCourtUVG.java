@@ -326,7 +326,8 @@ public class FoodCourtUVG{
         return text;
     }
 
-    public void iniciarUsuario(int id, int tipoU){
+    public String iniciarUsuario(int id, int tipoU){
+        String text = "";
         if(!usuarios.isEmpty()){
             for(Usuario usuario : usuarios){
                 
@@ -334,24 +335,34 @@ public class FoodCourtUVG{
                     case 1:
                         if((usuario instanceof Cliente) && usuario.getId() == id){
                             setUsuarioA(usuario);
+                            text = "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido();
+                        }else{
+                            text = "No se ha encontrado ningún cliente con el id " + id;
                         }
                         break;
                 
                     case 2: 
                         if((usuario instanceof Repartidor) && usuario.getId() == id){
                             setUsuarioA(usuario);
+                            text = "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido();
+                        }else{
+                            text = "No se ha encontrado ningún cliente con el id " + id;
                         }
                         break;
 
                     case 3:
                         if((usuario instanceof Proveedor) && usuario.getId() == id){
                             setUsuarioA(usuario);
+                            text = "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido();
+                        }else{
+                            text = "No se ha encontrado ningún cliente con el id " + id;
                         }
                         break;
                 }
             }
+ 
         }
-
+        return text;
         /*
         if(!proveedores.isEmpty()){
             for (Proveedor proveedor : proveedores){

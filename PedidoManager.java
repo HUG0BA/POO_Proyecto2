@@ -80,7 +80,6 @@ public class PedidoManager{
     public void eliminarPedido(int index){
         pedidos.remove(pedidos.get(index));
     }
-
     
 
     public void asignarRepartidor(int index, Repartidor repartidor){
