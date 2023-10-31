@@ -4,6 +4,7 @@ public class FoodCourtUVG{
     private ArrayList<Cliente> clientes;
     private ArrayList<Restaurante> restaurantes;
     private ArrayList<Repartidor> repartidores;
+    private ArrayList<Proveedor> proveedores;
     private PedidoManager pedidoManager;
     private Cliente clienteA;
     private int indexCA;
@@ -11,11 +12,13 @@ public class FoodCourtUVG{
     private int indexRA;
     private Restaurante restA;
     private int indexRestA;
+    private int indexPA;
 
     public FoodCourtUVG(){
         clientes = new ArrayList<Cliente>();
         restaurantes = new ArrayList<Restaurante>();
         repartidores = new ArrayList<Repartidor>();
+        proveedores = new ArrayList<Proveedor>();
         pedidoManager = new PedidoManager();
         indexCA = -1;
         indexRA = -1;
@@ -209,6 +212,38 @@ public class FoodCourtUVG{
         return text;
     }
 
+    public void agregarProveedor(int id, String nombre, String apellido, String email, int edad, String rest, int nivAccess){
+        Proveedor nuevo = new Proveedor(id, nombre, apellido, email, edad, rest, nivAccess);
+        proveedores.add(nuevo);
+    }
+
+    public void iniciarProveedor(int id){
+        if(!proveedores.isEmpty()){
+            for (Proveedor proveedor : proveedores){
+                if (proveedor.getId() == id){
+                    //setRepartidorA(proveedor);
+                    indexPA = proveedores.indexOf(proveedor);
+                }
+            }
+        }
+        
+    }
+
+    public String mostrarProveedores(){
+        String text = "";
+        int i = 0;
+        if(!proveedores.isEmpty()){
+            for (Proveedor proveedor : proveedores){
+                text = text + i + ". " + proveedor.toString() + "\n";
+            }
+        }
+        else {
+            text = "Aún no se han registrado repartidores";
+        }
+
+        return text;
+    }
+
     public void agregarRest(int idRest, String nombre, String des, String horario, boolean disp){
         Restaurante nuevo = new Restaurante(idRest, nombre, des, horario, disp);
         restaurantes.add(nuevo);
@@ -252,5 +287,21 @@ public class FoodCourtUVG{
 
     public String mostrarProductos(){
         return restA.mostrarProductos();
+    }
+
+    public void agregarPedido(Pedido pedido){
+        pedidoManager.agregarPedido(pedido);
+    }
+
+    public void eliminarPedido(int index){
+        pedidoManager.eliminarPedido(index);
+    }
+
+    public void asignarRepartidor(int index, Repartidor repartidor){
+        pedidoManager.asignarRepartidor(index, repartidor);
+    }
+
+    public String mostrarPedidos(){
+        return pedidoManager.mostrarPedidos();
     }
 }
