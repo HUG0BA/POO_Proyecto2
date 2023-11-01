@@ -178,5 +178,14 @@ public class DriverProgramFoodCourt{
 
         }
     }
+
+    public void menuProveedor() {
+        boolean seguirEnMenu = true;
+
+        while (seguirEnMenu) {
+            System.out.println("\n--- Menú del proveedor ---");
+    
+        }
+    }
     
 }
