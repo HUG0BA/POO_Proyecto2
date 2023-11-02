@@ -4,8 +4,9 @@ public class DriverProgramFoodCourt{
     static Scanner scanner = new Scanner(System.in);
     static FoodCourtUVG food = new FoodCourtUVG();
     public static void main(String[] args){
-     
-        menuUsuario();
+        DriverProgramFoodCourt program = new DriverProgramFoodCourt();
+       
+        program.menuProveedor();
     }
 
     public static void menuUsuario(){
@@ -338,40 +339,6 @@ public class DriverProgramFoodCourt{
         }
     }
 
-    private void confirmarEntregaSubMenu() {
-        boolean seguirEnSubMenu = true;
-        while (seguirEnSubMenu) {
-            System.out.println("\nConfirmar Entrega del Pedido");
-            System.out.println("1. Confirmar pedido");
-            System.out.println("2. Calificar atencion del repartidor");
-            System.out.println("3. Volver al menu principal");
-
-            System.out.print("Seleccione una opcion: ");
-            int opcionSubMenu = Integer.parseInt(scanner.nextLine());
-
-            switch (opcionSubMenu) {
-                case 1: 
-                    //Metodo
-                    break;
-
-                case 2:
-                    //Metodo
-                    break;
-
-                case 3:
-                    //Metodo
-                    break;
-
-                case 4: 
-                    seguirEnSubMenu = false;
-                    break;
-                default:
-                    System.out.println("Ingrese una opcion valida");
-                    break;
-            }
-        }
-    }
-
     public void menuProveedor() {
         boolean seguirEnMenu = true;
 
@@ -391,6 +358,21 @@ public class DriverProgramFoodCourt{
 
             switch (opcion) {
                 case 1:
+                    System.out.println("Ingrese los datos del restaurante.");
+                    System.out.print("ID del restaurante: ");
+                    int idRest = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Nombre: ");
+                    String nombre = scanner.nextLine();
+                    System.out.print("Descripción: ");
+                    String descripcion = scanner.nextLine();
+                    System.out.print("Horario: ");
+                    String horario = scanner.nextLine();
+                    System.out.print("Disponible (true/false): ");
+                    boolean disponible = scanner.nextBoolean();
+
+                    food.agregarRest(idRest, nombre, descripcion, horario, disponible);
+                    System.out.println("Restaurante agregado exitosamente.");
                     //Método para agregar/eliminar establecimientos
                     break;
                 case 2:
