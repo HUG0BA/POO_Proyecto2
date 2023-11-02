@@ -1,18 +1,18 @@
 import java.util.Scanner;
 
 public class DriverProgramFoodCourt{
-    Scanner scanner = new Scanner(System.in);
-    FoodCourtUVG food = new FoodCourtUVG();
+    static Scanner scanner = new Scanner(System.in);
+    static FoodCourtUVG food = new FoodCourtUVG();
     public static void main(String[] args){
-        
+        menuUsuario();
     }
 
-    public void menuUsuario(){
+    public static void menuUsuario(){
         boolean menuUsuario = true;
-
+        
         while(menuUsuario){
             System.out.println("¡Bienvenido al menu de cliente! Ingrese la opción que desea ejecutar.");
-            System.out.println("1. Agregar Usuario (Cliente, Proveedor, Repartidor) \n 2. Iniciar sesión (Cliente, Proveedor, Repartidor)");
+            System.out.println(" 1. Agregar Usuario (Cliente, Proveedor, Repartidor) \n 2. Iniciar sesión (Cliente, Proveedor, Repartidor) \n 3. Mostrar clientes \n 4. Mostrar repartidores \n 5. Mostrar proveedores");
             int opcion = -1;
 
             try{
@@ -57,7 +57,7 @@ public class DriverProgramFoodCourt{
                     tipoU = -1;
                     try {
                         System.out.println("Ingrese el tipo de usario para registrar datos específicos.");
-                        System.out.println("1. Cliente \n 2. Repartidor \n 3. Proveedor");
+                        System.out.println(" 1. Cliente \n 2. Repartidor \n 3. Proveedor");
                         tipoU = scanner.nextInt();
                         scanner.nextLine();
                     } catch (Exception e) {
@@ -173,6 +173,29 @@ public class DriverProgramFoodCourt{
                     }
                     break;
 
+                case 3:
+                    try {
+                        System.out.println(food.mostrarClientes());
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString());
+                    }
+                    break;
+
+                case 4:
+                    try {
+                        System.out.println(food.mostrarRepartidores());
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString());
+                    }
+                    break;
+
+                case 5:
+                    try {
+                        System.out.println(food.mostrarProveedores());
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString());
+                    }
+                    break;
             }
 
 
