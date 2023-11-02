@@ -324,7 +324,16 @@ public class DriverProgramFoodCourt{
                     break;
 
                 case 3:
-                    //Metodo
+                    System.out.println("Ingrese el ID del pedido que desea cancelar: ");
+                    String pedidoId = scanner.nextLine();
+
+                    boolean exito = SistemaPedidos.cancelarPedido(pedidoId);
+
+                    if(exito){
+                        System.out.println("Su pedido con el ID " + pedidoId + " ha sido cancelado." );
+                    }else{
+                        System.out.println("No se ha podido cancelar su pedido. Intente de nuevo.");
+                    }
                     break;
 
                 case 4: 
