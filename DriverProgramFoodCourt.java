@@ -350,7 +350,11 @@ public class DriverProgramFoodCourt{
                     break;
 
                 case 5: 
-                    //Metodo
+                    System.out.println("Ingrese el ID del pedido cuyo estado desea mopnitorear: ");
+                    String pedidoId = scanner.nextLine();
+
+                    String estado = SistemaPedidos.monitorearPedido(pedidoId);
+                    System.out.println("El estado de su pedido " + pedidoID + " es: " + estado);
                     break;
 
                 case 6: 
