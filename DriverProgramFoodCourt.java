@@ -4,8 +4,9 @@ public class DriverProgramFoodCourt{
     static Scanner scanner = new Scanner(System.in);
     static FoodCourtUVG food = new FoodCourtUVG();
     public static void main(String[] args){
-     
-        menuUsuario();
+        DriverProgramFoodCourt program = new DriverProgramFoodCourt();
+       
+        program.menuProveedor();
     }
 
     public static void menuUsuario(){
@@ -314,6 +315,21 @@ public class DriverProgramFoodCourt{
 
             switch (opcion) {
                 case 1:
+                    System.out.println("Ingrese los datos del restaurante.");
+                    System.out.print("ID del restaurante: ");
+                    int idRest = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Nombre: ");
+                    String nombre = scanner.nextLine();
+                    System.out.print("Descripción: ");
+                    String descripcion = scanner.nextLine();
+                    System.out.print("Horario: ");
+                    String horario = scanner.nextLine();
+                    System.out.print("Disponible (true/false): ");
+                    boolean disponible = scanner.nextBoolean();
+
+                    food.agregarRest(idRest, nombre, descripcion, horario, disponible);
+                    System.out.println("Restaurante agregado exitosamente.");
                     //Método para agregar/eliminar establecimientos
                     break;
                 case 2:
