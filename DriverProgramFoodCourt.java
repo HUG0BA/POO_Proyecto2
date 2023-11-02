@@ -374,4 +374,61 @@ public class DriverProgramFoodCourt{
             }
         }
     }
+
+    public void menuRepartidores(){
+        boolean menu = true;
+
+        while(menu){
+            System.out.println("-- Menú del repartidor --");
+            System.out.println(" 1. Ingresar horario de turno \n 2. Modificar horario \n 3. Cancelar turno \n 4. Finalizar turno actual \n 5. Buscar pedidos disponibles  \n 5. Cancelar pedido actual \n 6. Resumen de trabajo \n 7. Personalizar pantalla de inicio");
+            int opcion = -1;
+
+            try {
+                opcion = scanner.nextInt();
+                scanner.nextLine();
+            } catch (Exception e) {
+                System.out.println("Asegúrese de ingresar un valor numérico. Error: " + e.toString());
+            }
+
+            switch (opcion) {
+                case 1:
+                    
+                    break;
+            
+                case 2:
+
+                    break;
+
+                case 3:
+
+                    break;
+
+                case 4:
+
+                    break;
+
+                case 5:
+                    try {
+                        System.out.println(food.mostrarPedidos());
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido una error trantando de realizar la operación. Error: " + e.toString());
+                    }
+                    
+                    break;
+
+                case 6: 
+
+                    break;
+
+                case 7: 
+
+                    break;
+
+                default:
+                    System.out.println("Ingrese una opción válida");
+                    break;
+            }
+
+        }
+    }
 }
