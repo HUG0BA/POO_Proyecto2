@@ -337,7 +337,16 @@ public class DriverProgramFoodCourt{
                     break;
 
                 case 4: 
-                    //Metodo
+                    System.out.println("Ingrese el ID del pedido que desea modificar: ");
+                    String pedidoId = scanner.nextLine();
+
+                    boolean exito = SistemaPedidos.modificarPedido(pedidoId);
+
+                    if(exito){
+                        System.out.println("Su pedido con el ID " + pedidoId + " ha sido modificado." );
+                    }else{
+                        System.out.println("No se ha podido modificar su pedido. Intente de nuevo.");
+                    }
                     break;
 
                 case 5: 
