@@ -1,3 +1,5 @@
+/*
+
 import java.util.Scanner;
 
 public class DriverProgramFoodCourt{
@@ -295,6 +297,40 @@ public class DriverProgramFoodCourt{
         }
     }
 
+    private void confirmarEntregaSubMenu() {
+        boolean seguirEnSubMenu = true;
+        while (seguirEnSubMenu) {
+            System.out.println("\nConfirmar Entrega del Pedido");
+            System.out.println("1. Confirmar pedido");
+            System.out.println("2. Calificar atencion del repartidor");
+            System.out.println("3. Volver al menu principal");
+
+            System.out.print("Seleccione una opcion: ");
+            int opcionSubMenu = Integer.parseInt(scanner.nextLine());
+
+            switch (opcionSubMenu) {
+                case 1: 
+                    //Metodo
+                    break;
+
+                case 2:
+                    //Metodo
+                    break;
+
+                case 3:
+                    //Metodo
+                    break;
+
+                case 4: 
+                    seguirEnSubMenu = false;
+                    break;
+                default:
+                    System.out.println("Ingrese una opcion valida");
+                    break;
+            }
+        }
+    }
+
     public void menuProveedor() {
         boolean seguirEnMenu = true;
 
@@ -399,3 +435,4 @@ public class DriverProgramFoodCourt{
         }
     }
 }
+*/
