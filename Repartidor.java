@@ -83,13 +83,20 @@ public class Repartidor extends Usuario{
     // Método toString
     @Override
     public String toString() {
-        return super.toString() +
-            " Total de pedidos entregados: " + totalP +
-            " Total de pedidos turnos finalizados: " + totalT +
-            " Total de pedidos cancelados: " + totalPC +
-            " Total de turnos cancelados: " + totalTC +
-            " Total de horas trabajadas: " + totalH +
-            " Calificación: " + calif;      
+        return "Repartidor{" +
+            "id=" + getId() +
+            ", nombre='" + getNombre() + '\'' +
+            ", apellido='" + getApellido() + '\'' +
+            ", email='" + getEmail() + '\'' +
+            ", edad=" + getEdad() +
+            ", totalP=" + totalP +
+            ", totalPC=" + totalPC +
+            ", totalT=" + totalT +
+            ", totalPC=" + totalPC +
+            ", totalTC=" + totalTC +
+            ", totalH=" + totalH +
+            ", calif=" + calif +
+            '}'; 
     }
 
     // Método equals

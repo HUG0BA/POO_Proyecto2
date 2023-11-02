@@ -336,6 +336,7 @@ public class FoodCourtUVG{
                         if((usuario instanceof Cliente) && usuario.getId() == id){
                             setUsuarioA(usuario);
                             text = "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido();
+                            break;
                         }else{
                             text = "No se ha encontrado ningún cliente con el id " + id;
                         }
@@ -345,6 +346,7 @@ public class FoodCourtUVG{
                         if((usuario instanceof Repartidor) && usuario.getId() == id){
                             setUsuarioA(usuario);
                             text = "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido();
+                            break;
                         }else{
                             text = "No se ha encontrado ningún cliente con el id " + id;
                         }
@@ -354,6 +356,7 @@ public class FoodCourtUVG{
                         if((usuario instanceof Proveedor) && usuario.getId() == id){
                             setUsuarioA(usuario);
                             text = "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido();
+                            break;
                         }else{
                             text = "No se ha encontrado ningún cliente con el id " + id;
                         }
