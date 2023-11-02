@@ -428,13 +428,13 @@ public class FoodCourtUVG{
         return ((Proveedor)usuarioA).getIdRest();
     }
 
-    public void arioAgregarProducto(int idProducto, String titulo, String detalles, double costo, boolean disponible){
+    public void agregarProducto(int idProducto, String titulo, String detalles, double costo, boolean disponible){
         Producto nuevo = new Producto(idProducto, titulo, detalles, costo, disponible);
         restauranteA.agregarProducto(nuevo);
     }
 
-    public void eliminarProducto(int idProducto){
-        restauranteA.eliminarProducto(restauranteA.getProductoById( idProducto));
+    public void eliminarProducto(int idProductoe){
+        restauranteA.eliminarProducto(restauranteA.getProductoById( idProductoe));
     }
 
     public String mostrarProductos(){

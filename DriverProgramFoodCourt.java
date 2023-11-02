@@ -405,6 +405,10 @@ public class DriverProgramFoodCourt{
                     break;
                 case 2:
                     //eliminar menús
+                    System.out.println("Ingrese el ID del producto a eliminar: ");
+                    int idProductoe = scanner.nextInt();
+                    food.eliminarProducto(idProductoe);
+                    System.out.println("Producto eliminado exitosamente");
                     break;
                 case 3:
                     //mostrar menús
