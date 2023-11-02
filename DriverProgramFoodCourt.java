@@ -344,12 +344,14 @@ public class DriverProgramFoodCourt{
 
         while (seguirEnMenu) {
             System.out.println("\n--- Menú del proveedor ---");
-            System.out.println("1. Agregar/eliminar opciones del menú");
-            System.out.println("2. Modificar menús existentes");
-            System.out.println("3. Personalizar pantalla principal de un negocio");
-            System.out.println("4. Modificar datos de la pantalla principal");
-            System.out.println("5. Modificar disponiblidad de pedidos");
-            System.out.println("6. Salir");
+            System.out.println("1. Agregar producto");
+            System.out.println("2. Eliminar opciones del menu");
+            System.out.println("3. Mostrar menús");
+            System.out.println("4. Modificar menús existentes");
+            System.out.println("5. Personalizar pantalla principal de un negocio");
+            System.out.println("6. Modificar datos de la pantalla principal");
+            System.out.println("7. Modificar disponiblidad de pedidos");
+            System.out.println("8. Salir");
             System.out.print("Seleccione una opción: ");
 
             int opcion = scanner.nextInt();
@@ -357,21 +359,42 @@ public class DriverProgramFoodCourt{
 
             switch (opcion) {
                 case 1:
-                    //Método para agregar/eliminar opciones del menú
+                    System.out.println("Ingrese los detalles del nuevo producto: ");
+                    System.out.print("ID del producto: ");
+                    int idProducto = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Nombre: "); 
+                    String titulo = scanner.nextLine();
+                    System.out.print("Detalles: ");
+                    String detalles = scanner.nextLine();
+                    System.out.print("Costo: ");
+                    double costo = scanner.nextDouble();
+                    System.out.print("Disponible (true/false): ");
+                    boolean disponible = scanner.nextBoolean();
+                    scanner.nextLine();
+
+                    food.agregarProducto(idProducto, titulo, detalles, costo, disponible);
+                    System.out.println("Se ha agregado el producto exitosamente.");
                     break;
                 case 2:
-                    //Método para modificar menús existentes
+                    //eliminar menús
                     break;
                 case 3:
-                    //Método para personalizar pantalla principal de un negocio
+                    //mostrar menús
                     break;
                 case 4:
-                    //Método para modificar datos de la pantalla principal
+                    //Método para modificar menús existentes
                     break;
                 case 5:
-                    //Método para modificar disponiblididad de pedidos
+                    //Método para personalizar pantalla principal de un negocio
                     break;
                 case 6:
+                    //Método para modificar datos de la pantalla principal
+                    break;
+                case 7:
+                    //Método para modificar disponiblididad de pedidos
+                    break;
+                case 8:
                     seguirEnMenu = false;
                     break;
                 default:
