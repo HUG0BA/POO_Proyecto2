@@ -409,7 +409,18 @@ public class DriverProgramFoodCourt{
 
             switch (opcionSubMenu) {
                 case 1: 
-                    //Metodo
+                    String[] menus = {"Pizza", "Sushi", "Hamburguesa", "Ensalada", "Pasta"};
+                    System.out.println("Elija el menu de su preferencia:");
+                    for (int i = 0; i < menus.length; i++) {
+                        System.out.println((i+1) + ". " + menus[i]);
+                    }
+                    System.out.print("Ingrese el numero del menu que desea: ");
+                    int eleccion = Integer.parseInt(scanner.nextLine());
+                    if (eleccion > 0 && eleccion <= menus.length) {
+                        System.out.println("Usted ha elegido el menu: " + menus[eleccion-1]);
+                    } else {
+                        System.out.println("Ingrese una opcion valida");
+                    }
                     break;
 
                 case 2:
