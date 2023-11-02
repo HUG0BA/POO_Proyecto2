@@ -84,12 +84,12 @@ public class Repartidor extends Usuario{
     @Override
     public String toString() {
         return super.toString() +
-            "\nTotal de pedidos entregados: " + totalP +
-            "\nTotal de pedidos turnos finalizados: " + totalT +
-            "\nTotal de pedidos cancelados: " + totalPC +
-            "\nTotal de turnos cancelados: " + totalTC +
-            "\nTotal de horas trabajadas: " + totalH +
-            "\nCalificación: " + calif;      
+            " Total de pedidos entregados: " + totalP +
+            " Total de pedidos turnos finalizados: " + totalT +
+            " Total de pedidos cancelados: " + totalPC +
+            " Total de turnos cancelados: " + totalTC +
+            " Total de horas trabajadas: " + totalH +
+            " Calificación: " + calif;      
     }
 
     // Método equals
