@@ -3,6 +3,7 @@ import java.util.Objects;
 public class Proveedor extends Usuario{
     // Atributos
     private String rest;
+    private int idRest;
     private int nivAccess;
 
     // Constructor predeterminado
@@ -10,9 +11,10 @@ public class Proveedor extends Usuario{
     }
 
     // Constructor con parámetros
-    public Proveedor(int id, String nombre, String apellido, String email, int edad, String rest, int nivAccess){
+    public Proveedor(int id, String nombre, String apellido, String email, int edad, String rest, int idRest, int nivAccess){
     super(id, nombre, apellido, email, edad);  
     this.rest = rest;
+    this.idRest = idRest;
     this.nivAccess = nivAccess;
     }
 
@@ -20,6 +22,10 @@ public class Proveedor extends Usuario{
     // Getters
     public String getRest() {
         return rest;
+    }
+
+    public int getIdRest() {
+        return idRest;
     }
 
     public int getNivAccess() {
@@ -31,6 +37,10 @@ public class Proveedor extends Usuario{
         this.rest = rest;
     }
 
+    public void setIdRest(int idRest) {
+        this.idRest = idRest;
+    }
+    
     public void setNivAccess(int nivAccess) {
         this.nivAccess = nivAccess;
     }

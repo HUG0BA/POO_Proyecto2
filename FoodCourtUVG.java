@@ -54,7 +54,7 @@ public class FoodCourtUVG{
             usuarioA = new Repartidor(usuario.getId(),usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getEdad());
         }
         else if(usuario instanceof Proveedor){
-            usuarioA = new Proveedor(usuario.getId(),usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getEdad(), ((Proveedor)usuario).getRest(), ((Proveedor)usuario).getNivAccess());
+            usuarioA = new Proveedor(usuario.getId(),usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getEdad(), ((Proveedor)usuario).getRest(), ((Proveedor)usuario).getIdRest(),((Proveedor)usuario).getNivAccess());
         }
 
         indexA = usuarios.indexOf(usuario);
@@ -285,8 +285,8 @@ public class FoodCourtUVG{
         return text;
     }
 
-    public void agregarProveedor(int id, String nombre, String apellido, String email, int edad, String rest, int nivAccess){
-        Proveedor nuevo = new Proveedor(id, nombre, apellido, email, edad, rest, nivAccess);
+    public void agregarProveedor(int id, String nombre, String apellido, String email, int edad, String rest, int idRest, int nivAccess){
+        Proveedor nuevo = new Proveedor(id, nombre, apellido, email, edad, rest, idRest, nivAccess);
         usuarios.add(nuevo);
     }
 
@@ -397,10 +397,10 @@ public class FoodCourtUVG{
 
     public String mostrarRestaurantes(){
         String text = "";
-        int i = 0;
+        
         if(!restaurantes.isEmpty()){
             for (Restaurante rest : restaurantes){
-                text = text + i + ". " + rest.toString() + "\n";
+                text = text + ". " + rest.toString() + "\n";
             }
         }
         else {
@@ -410,7 +410,25 @@ public class FoodCourtUVG{
         return text;
     }
 
-    public void agregarProducto(int idProducto, String titulo, String detalles, double costo, boolean disponible){
+    public boolean existeRestaurantes(){
+        return !restaurantes.isEmpty();
+    }
+
+    public String nombreRestaurante(int index){
+        if(restaurantes.get(index) != null){
+            return restaurantes.get(index).getNombre();
+        }
+        return null;
+    }
+
+    public int getIdRestProveedor(){
+        if(!(usuarioA instanceof Proveedor)){
+            return -1;
+        }
+        return ((Proveedor)usuarioA).getIdRest();
+    }
+
+    public void arioAgregarProducto(int idProducto, String titulo, String detalles, double costo, boolean disponible){
         Producto nuevo = new Producto(idProducto, titulo, detalles, costo, disponible);
         restauranteA.agregarProducto(nuevo);
     }

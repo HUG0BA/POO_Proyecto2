@@ -1,12 +1,15 @@
-/*
+/* 
 import java.util.Scanner;
 
 public class DriverProgramFoodCourt{
     static Scanner scanner = new Scanner(System.in);
     static FoodCourtUVG food = new FoodCourtUVG();
     public static void main(String[] args){
-     
+        /*DriverProgramFoodCourt program = new DriverProgramFoodCourt();
+       
+        program.menuProveedor();
         menuUsuario();
+
     }
 
     public static void menuUsuario(){
@@ -112,37 +115,47 @@ public class DriverProgramFoodCourt{
                             break;
 
                         case 3:
+                            if(!food.existeRestaurantes()){
+                                System.out.println("Debe crear almenos un restaurante antes de agregar proveedores");
+                                break;
+                            }
                             String rest = "";
+                            int restIndex = -1;
                             int nivAccess = -1;    
 
                             try {
-                                System.out.println("Restaurante donde labora: ");
-                                rest = scanner.nextLine();
+                                System.out.println(food.mostrarRestaurantes());
+                                System.out.println("Id del restaurante donde labora: ");
+                                restIndex = scanner.nextInt();
+                                scanner.nextLine();
+                                rest = food.nombreRestaurante(restIndex);
+                                if(rest == null){
+                                    System.out.println("Ingrese un índice de restaurante válido");
+                                    break;
+                                }
                                 System.out.println("Nivel de acesso: ");
                                 nivAccess = scanner.nextInt();
                                 scanner.nextLine();
 
                             } catch (Exception e) {
-                                System.out.println("Asegúrese de ingresar un valor numérico. Error: " + e.toString());
+                                System.out.println("Asegúrese de ingresar un valor numérico válido. Error: " + e.toString());
                                 scanner.nextLine();
                                 break;
                             }
 
                             try {
-                                food.agregarProveedor(id, nombre, apellido, email, edad, rest, nivAccess);
+                                food.agregarProveedor(id, nombre, apellido, email, edad, rest, restIndex, nivAccess);
                             } catch (Exception e) {
                                 System.out.println("Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString());
                             }
                             break;
                     }
-                    
-
                     break;
             
                 case 2:
                     tipoU = -1;
                     try {
-                        System.out.println("Ingrese el tipo de usario para registrar datos específicos.");
+                        System.out.println("Ingrese el tipo de usario para inicio de sesión.");
                         System.out.println("1. Cliente \n 2. Repartidor \n 3. Proveedor");
                         tipoU = scanner.nextInt();
                         scanner.nextLine();
@@ -170,6 +183,14 @@ public class DriverProgramFoodCourt{
 
                     try {
                         System.out.println(food.iniciarUsuario(idLogin, tipoU));
+                        if(tipoU == 3){ 
+                            if(food.getIdRestProveedor() == -1){
+                                System.out.println("Ha ocurrido un error tratando de seleccionar el id del restaurante del proveedor actual");
+                                break;
+                            }
+                            food.iniciarRest(food.getIdRestProveedor());
+                        }
+
                     } catch (Exception e) {
                         System.out.println("Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString());
                     }
@@ -241,6 +262,13 @@ public class DriverProgramFoodCourt{
                         System.out.println("Ha ocurrido un error tratando de realizar la operación.Error: " + e.toString());
                     }
                     break;
+
+                case 7: 
+                    try {
+                        System.out.println(food.mostrarRestaurantes());
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error tratando de realizar la operación");
+                    }
             }
 
 
@@ -339,40 +367,6 @@ public class DriverProgramFoodCourt{
         }
     }
 
-    private void confirmarEntregaSubMenu() {
-        boolean seguirEnSubMenu = true;
-        while (seguirEnSubMenu) {
-            System.out.println("\nConfirmar Entrega del Pedido");
-            System.out.println("1. Confirmar pedido");
-            System.out.println("2. Calificar atencion del repartidor");
-            System.out.println("3. Volver al menu principal");
-
-            System.out.print("Seleccione una opcion: ");
-            int opcionSubMenu = Integer.parseInt(scanner.nextLine());
-
-            switch (opcionSubMenu) {
-                case 1: 
-                    //Metodo
-                    break;
-
-                case 2:
-                    //Metodo
-                    break;
-
-                case 3:
-                    //Metodo
-                    break;
-
-                case 4: 
-                    seguirEnSubMenu = false;
-                    break;
-                default:
-                    System.out.println("Ingrese una opcion valida");
-                    break;
-            }
-        }
-    }
-
     public void menuProveedor() {
         boolean seguirEnMenu = true;
 
@@ -392,6 +386,21 @@ public class DriverProgramFoodCourt{
 
             switch (opcion) {
                 case 1:
+                    System.out.println("Ingrese los datos del restaurante.");
+                    System.out.print("ID del restaurante: ");
+                    int idRest = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Nombre: ");
+                    String nombre = scanner.nextLine();
+                    System.out.print("Descripción: ");
+                    String descripcion = scanner.nextLine();
+                    System.out.print("Horario: ");
+                    String horario = scanner.nextLine();
+                    System.out.print("Disponible (true/false): ");
+                    boolean disponible = scanner.nextBoolean();
+
+                    food.agregarRest(idRest, nombre, descripcion, horario, disponible);
+                    System.out.println("Restaurante agregado exitosamente.");
                     //Método para agregar/eliminar establecimientos
                     break;
                 case 2:
