@@ -358,7 +358,16 @@ public class DriverProgramFoodCourt{
                     break;
 
                 case 6: 
-                    //Metodo
+                    System.out.println("Ingrese el ID del pedido que desea confirmar su entrega:");
+                    String pedidoId = scanner.nextLine();
+
+                    boolean exito = SistemaPedidos.confirmarEntrega(pedidoId);
+
+                    if(exito){
+                        System.out.println("Su pedido con el ID " + pedidoId + " ha sido confirmado." );
+                    }else{
+                        System.out.println("No se ha podido confirmar su pedido. Intente de nuevo.");
+                    }
                     break; 
                 
                 case 7: 
