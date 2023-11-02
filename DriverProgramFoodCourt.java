@@ -14,7 +14,7 @@ public class DriverProgramFoodCourt{
 
         while(menuUsuario){
             System.out.println("¡Bienvenido al menu de cliente! Ingrese la opción que desea ejecutar.");
-            System.out.println(" 1. Agregar Usuario (Cliente, Proveedor, Repartidor) \n 2. Iniciar sesión (Cliente, Proveedor, Repartidor) \n 3. Mostrar clientes \n 4. Mostrar repartidores \n 5. Mostrar proveedores");
+            System.out.println(" 1. Agregar Usuario (Cliente, Proveedor, Repartidor) \n 2. Iniciar sesión (Cliente, Proveedor, Repartidor) \n 3. Mostrar clientes \n 4. Mostrar repartidores \n 5. Mostrar proveedores \n 6. Agregar restaurante \n 7. Mostrar restaurantes");
             int opcion = -1;
 
             try{
@@ -198,6 +198,49 @@ public class DriverProgramFoodCourt{
                         System.out.println("Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString());
                     }
                     break;
+
+                case 6:
+                    int idRest = -1;
+                    String nombreR = "";
+                    String des = "";
+                    String horario = "";
+                    boolean disp = false;
+
+                    try {
+                        System.out.println("Ingreso de información solicitada para la creación de un nuevo restaurante");
+                        System.out.println("Id: ");
+                        idRest = scanner.nextInt();
+                        scanner.nextLine();
+                        System.out.println("Nombre: ");
+                        nombreR = scanner.nextLine();
+                        System.out.println("Descripción: ");
+                        des = scanner.nextLine();
+                        System.out.println("Horario: ");
+                        horario = scanner.nextLine();
+                        System.out.println("Disponibilidad para antender: \n 1. Disponible \n 2. No disponible");
+                        int dispInt = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if(dispInt == 1){
+                            disp = true;
+                        }else if(dispInt == 2){
+                            disp = false;
+                        }else{
+                            System.out.println("Ingrese únicamente un valor válido");
+                            break;
+                        }
+                        } catch (Exception e) {
+                        System.out.println("Asegúrese de ingresar un valor válido. Error: " + e.toString());
+                        scanner.nextLine();
+                        break;
+                    }
+                    try {
+                        food.agregarRest(idRest, nombreR, des, horario, disp);
+                        System.out.println("Restaurante " + nombreR + " agregado exitosamente");
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error tratando de realizar la operación.Error: " + e.toString());
+                    }
+                    break;
             }
 
 
@@ -377,7 +420,7 @@ public class DriverProgramFoodCourt{
                         System.out.println("Ha ocurrido una error trantando de realizar la operación. Error: " + e.toString());
                     }
 
-
+                    
                     
                     break;
 
@@ -393,6 +436,11 @@ public class DriverProgramFoodCourt{
                     System.out.println("Ingrese una opción válida");
                     break;
             }
+
         }
+    }
+
+    public void menuRestaurante(){
+
     }
 }
