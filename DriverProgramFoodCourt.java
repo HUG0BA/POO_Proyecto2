@@ -424,7 +424,18 @@ public class DriverProgramFoodCourt{
                     break;
 
                 case 2:
-                    //Metodo
+                    String[] metodosPago = {"Tarjeta de credito", "Tarjeta de debito", "Efectivo"};
+                    System.out.println("Elija el metodo de pago de su preferencia:");
+                    for (int i = 0; i < metodosPago.length; i++) {
+                        System.out.println((i+1) + ". " + metodosPago[i]);
+                    }
+                    System.out.print("Ingrese el numero del metodo de pago que desea: ");
+                    int eleccion = Integer.parseInt(scanner.nextLine());
+                    if (eleccion > 0 && eleccion <= metodosPago.length) {
+                        System.out.println("Usted ha elegido el metodo de pago: " + metodosPago[eleccion-1]);
+                    } else {
+                        System.out.println("Ingrese una opcion valida");
+                    }
                     break;
 
                 case 3:
