@@ -464,6 +464,48 @@ public class DriverProgramFoodCourt{
         }
     }
 
+    private void confirmarEntregaSubMenu() {
+        boolean seguirEnSubMenu = true;
+        while (seguirEnSubMenu){
+            System.out.println("\nConfirmar Entrega del Pedido:");
+            System.out.println("1. Confirmar pedido");
+            System.out.println("2. Calificar Atencion del repartidor");
+            System.out.println("3. Volver al menu principal");
+
+            System.out.print("Seleccione una opcion: ");
+            int opcionSubMenu = Integer.parseInt(scanner.nextLine());
+
+            switch (opcionSubMenu) {
+                case 1: 
+                    if (pedidoActual != null && !pedidoActual.isEntregado()){
+                        pedidoActual.setEntregado(true);
+                        System.out.println("Su pedido ha sido entregado");
+                    } else {
+                        System.out.println("No tiene ningun pedido pendiente");
+                    }
+                    seguirEnSubMenu = false;
+                    break;
+
+                case 2:
+                    System.out.println("Califique la atencion del repartidor (1-5):");
+                    int calificacion = Integer.parseInt(scanner.nextLine());
+                    if (calificacion >= 1 && calificacion <= 5) {
+                        System.out.println("Su calificacion ha sido registrada");
+                    } else {
+                        System.out.println("Ingrese una calificacion valida");
+                    }
+                    break;
+
+                case 3: 
+                    seguirEnSubMenu = false;
+                    break;
+                default:
+                    System.out.println("Ingrese una opcion valida");
+                    break;
+            }
+        }
+    }
+
     public void menuProveedor() {
         boolean seguirEnMenu = true;
 
