@@ -439,7 +439,19 @@ public class DriverProgramFoodCourt{
                     break;
 
                 case 3:
-                    //Metodo
+                    System.out.println("Su pedido es el siguiente:");
+                    System.out.println(pedidoActual.resumenPedido());
+                    System.out.println("Desea confirmar su pedido? (si/no)");
+                    String confirmacion = scanner.nextLine();
+                    if (confirmacion.equals("si")) {
+                        System.out.println("Su pedido ha sido confirmado");
+                        seguirEnSubMenu = false;
+                    } else if (confirmacion.equals("no")) {
+                        System.out.println("Su pedido ha sido cancelado");
+                        seguirEnSubMenu = false;
+                    } else {
+                        System.out.println("Ingrese una opcion valida");
+                    }
                     break;
 
                 case 4: 
