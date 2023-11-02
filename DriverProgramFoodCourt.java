@@ -412,6 +412,8 @@ public class DriverProgramFoodCourt{
                     break;
                 case 3:
                     //mostrar menús
+                    String productos = food.mostrarProductos();
+                    System.out.println(productos);
                     break;
                 case 4:
                     //Método para modificar menús existentes
