@@ -309,7 +309,18 @@ public class DriverProgramFoodCourt{
                     break;
 
                 case 2:
-                    //Metodo
+                    System.out.println("Elija la fecha y hora para su pedido (formato DD/MM/YYYY HH:MM)");
+                    String fechaHora = scanner.nextLine();
+
+                    Pedido pedido = new Pedido();
+                    pedido.setFechaHora(fechaHora); 
+                    boolean exito = SistemaPedidos.solicitarPedido(pedido);
+
+                    if(exito){
+                        System.out.println("Su pedido para la fecha " + fechaHora + " ha sido solicitado." );
+                    }else{
+                        System.out.println("No se ha podido solicitar su pedido. Intente de nuevo.");
+                    }
                     break;
 
                 case 3:
