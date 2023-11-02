@@ -292,7 +292,20 @@ public class DriverProgramFoodCourt{
 
             switch (opcion) {
                 case 1: 
-                    //Metodo
+                    System.out.println("Elija el restaurante para su pedido:");
+                    String restaurante = scanner.nextLine();
+                    System.out.println("Elija el menu: ");
+                    String menu = scanner.nextLine();
+
+                    //Crear un nuevo pedido
+                    Pedido pedido = new Pedido(restaurante, menu);
+                    boolean exito = SistemaPedidos.solicitarPedido(pedido);
+
+                    if(exito){
+                        System.out.println("Su pedido del restaurante " + restaurante + " con el menu " + menu + " ha sido solicitado." );
+                    }else{
+                        System.out.println("No se ha podido solicitar su pedido. Intente de nuevo.");
+                    }
                     break;
 
                 case 2:
