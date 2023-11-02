@@ -193,7 +193,55 @@ public class DriverProgramFoodCourt{
             System.out.println("8. Salir");
 
             System.out.print("Seleccione una opcion: ");
-            
+            int opcion = Intefer.paraseInt(scanner.nextLine());
+
+            switch (opcion) {
+                case 1: 
+                    //Metodo
+                    break;
+
+                case 2:
+                    //Metodo
+                    break;
+
+                case 3:
+                    //Metodo
+                    break;
+
+                case 4: 
+                    //Metodo
+                    break;
+
+                case 5: 
+                    //Metodo
+                    break;
+
+                case 6: 
+                    //Metodo
+                    break; 
+                
+                case 7: 
+                    //Metodo
+                    break;
+
+                case 8: 
+                    seguirEnMenu = false;
+                    break;
+                default:
+                    System.out.println("Ingrese una opcion valida");
+                    break;
+
+
+            }
+        }
+    }
+
+    private void solicitarPedidoSubMenu() {
+        boolean seguirEnSubMenu = true;
+        while (seguirEnSubMenu) = true;
+        while (seguirEnSubMenu) {
+            System.out.println("\nSolicitar Pedido:");
+            System.out.println()
         }
     }
     
