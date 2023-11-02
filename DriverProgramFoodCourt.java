@@ -371,13 +371,14 @@ public class DriverProgramFoodCourt{
 
         while (seguirEnMenu) {
             System.out.println("\n--- Menú del proveedor ---");
-            System.out.println("1. Agregar/eliminar establecimientos");
-            System.out.println("2. Agregar/eliminar opciones del menú");
-            System.out.println("3. Modificar menús existentes");
-            System.out.println("4. Personalizar pantalla principal de un negocio");
-            System.out.println("5. Modificar datos de la pantalla principal");
-            System.out.println("6. Modificar disponiblidad de pedidos");
-            System.out.println("7. Salir");
+            System.out.println("1. Agregar producto");
+            System.out.println("2. Eliminar opciones del menu");
+            System.out.println("3. Mostrar menús");
+            System.out.println("4. Modificar menús existentes");
+            System.out.println("5. Personalizar pantalla principal de un negocio");
+            System.out.println("6. Modificar datos de la pantalla principal");
+            System.out.println("7. Modificar disponiblidad de pedidos");
+            System.out.println("8. Salir");
             System.out.print("Seleccione una opción: ");
 
             int opcion = scanner.nextInt();
@@ -385,39 +386,42 @@ public class DriverProgramFoodCourt{
 
             switch (opcion) {
                 case 1:
-                    System.out.println("Ingrese los datos del restaurante.");
-                    System.out.print("ID del restaurante: ");
-                    int idRest = scanner.nextInt();
+                    System.out.println("Ingrese los detalles del nuevo producto: ");
+                    System.out.print("ID del producto: ");
+                    int idProducto = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.print("Nombre: ");
-                    String nombre = scanner.nextLine();
-                    System.out.print("Descripción: ");
-                    String descripcion = scanner.nextLine();
-                    System.out.print("Horario: ");
-                    String horario = scanner.nextLine();
+                    System.out.print("Nombre: "); 
+                    String titulo = scanner.nextLine();
+                    System.out.print("Detalles: ");
+                    String detalles = scanner.nextLine();
+                    System.out.print("Costo: ");
+                    double costo = scanner.nextDouble();
                     System.out.print("Disponible (true/false): ");
                     boolean disponible = scanner.nextBoolean();
+                    scanner.nextLine();
 
-                    food.agregarRest(idRest, nombre, descripcion, horario, disponible);
-                    System.out.println("Restaurante agregado exitosamente.");
-                    //Método para agregar/eliminar establecimientos
+                    food.agregarProducto(idProducto, titulo, detalles, costo, disponible);
+                    System.out.println("Se ha agregado el producto exitosamente.");
                     break;
                 case 2:
-                    //Método para agregar/eliminar opciones del menú
+                    //eliminar menús
                     break;
                 case 3:
-                    //Método para modificar menús existentes
+                    //mostrar menús
                     break;
                 case 4:
-                    //Método para personalizar pantalla principal de un negocio
+                    //Método para modificar menús existentes
                     break;
                 case 5:
-                    //Método para modificar datos de la pantalla principal
+                    //Método para personalizar pantalla principal de un negocio
                     break;
                 case 6:
-                    //Método para modificar disponiblididad de pedidos
+                    //Método para modificar datos de la pantalla principal
                     break;
                 case 7:
+                    //Método para modificar disponiblididad de pedidos
+                    break;
+                case 8:
                     seguirEnMenu = false;
                     break;
                 default:
