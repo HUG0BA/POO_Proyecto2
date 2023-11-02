@@ -184,7 +184,18 @@ public class DriverProgramFoodCourt{
 
         while (seguirEnMenu) {
             System.out.println("\n--- Menú del proveedor ---");
-    
+            System.out.println("1. Agregar/eliminar establecimientos");
+            System.out.println("2. Agregar/eliminar opciones del menú");
+            System.out.println("3. Modificar menús existentes");
+            System.out.println("4. Personalizar pantalla principal de un negocio");
+            System.out.println("5. Modificar datos de la pantalla principal");
+            System.out.println("6. Modificar disponiblidad de pedidos");
+            System.out.println("7. Salir");
+            System.out.print("Seleccione una opción: ");
+
+            int opcion = scanner.nextInt();
+            scanner.nextLine();
+
         }
     }
     
