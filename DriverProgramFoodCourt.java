@@ -371,7 +371,16 @@ public class DriverProgramFoodCourt{
                     break; 
                 
                 case 7: 
-                    //Metodo
+                    System.out.println("Ingrese los nuevos datos de su perfil:");
+
+                    Perfil perfil = new Perfil();
+                    boolean exito = SistemaPedidos.modificarPerfil(perfil);
+
+                    if(exito){
+                        System.out.println("Su perfil ha sido modificado exitosamente.");
+                    }else{
+                        System.out.println("No se ha podido modificar su perfil. Intente de nuevo.");
+                    }
                     break;
 
                 case 8: 
