@@ -238,10 +238,36 @@ public class DriverProgramFoodCourt{
 
     private void solicitarPedidoSubMenu() {
         boolean seguirEnSubMenu = true;
-        
         while (seguirEnSubMenu) {
             System.out.println("\nSolicitar Pedido:");
-            System.out.println();
+            System.out.println("1. Elegir Menu");
+            System.out.println("2. Elegir metodo de pago");
+            System.out.println("3. Confirmar orden");
+            System.out.println("4. Volver al menu principal");
+
+            System.out.print("Seleccione una opcion: ");
+            int opcionSubMenu = Integer.parseInt(scanner.nextLine());
+
+            switch (opcionSubMenu) {
+                case 1: 
+                    //Metodo
+                    break;
+
+                case 2:
+                    //Metodo
+                    break;
+
+                case 3:
+                    //Metodo
+                    break;
+
+                case 4: 
+                    seguirEnSubMenu = false;
+                    break;
+                default:
+                    System.out.println("Ingrese una opcion valida");
+                    break;
+            }
         }
     }
 
