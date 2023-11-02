@@ -180,7 +180,7 @@ public class DriverProgramFoodCourt{
     }
 
     public void mostrarMenuCliente() {
-        boolean seguirEnMeny = true;
+        boolean seguirEnMenu = true;
         while (seguirEnMenu) {
             System.out.println("\nMenu de Cliente:");
             System.out.println("1. Solicitar pedido inmediato");
@@ -193,7 +193,7 @@ public class DriverProgramFoodCourt{
             System.out.println("8. Salir");
 
             System.out.print("Seleccione una opcion: ");
-            int opcion = Intefer.paraseInt(scanner.nextLine());
+            int opcion = Integer.parseInt(scanner.nextLine());
 
             switch (opcion) {
                 case 1: 
@@ -238,10 +238,10 @@ public class DriverProgramFoodCourt{
 
     private void solicitarPedidoSubMenu() {
         boolean seguirEnSubMenu = true;
-        while (seguirEnSubMenu) = true;
+        
         while (seguirEnSubMenu) {
             System.out.println("\nSolicitar Pedido:");
-            System.out.println()
+            System.out.println();
         }
     }
 
