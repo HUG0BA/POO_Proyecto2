@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class DriverProgramFoodCourt{
     static Scanner scanner = new Scanner(System.in);
@@ -188,6 +189,7 @@ public class DriverProgramFoodCourt{
                                 break;
                             }
                             food.iniciarRest(food.getIdRestProveedor());
+                            menuProveedor();
                         }
 
                     } catch (Exception e) {
@@ -292,10 +294,51 @@ public class DriverProgramFoodCourt{
 
             switch (opcion) {
                 case 1: 
+                    int idPedido = -1;
+                    System.out.println("Ingrese el id de su pedido");
+                    try {
+                        idPedido = scanner.nextInt();
+                        scanner.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Asegúrse de ingresar un valor numérico. Error: " + e.toString());
+                        scanner.nextLine();
+                        break;
+                    }
+
                     System.out.println("Elija el restaurante para su pedido:");
-                    String restaurante = scanner.nextLine();
-                    System.out.println("Elija el menu: ");
-                    String menu = scanner.nextLine();
+                    System.out.println(food.mostrarRestaurantes());
+                    System.out.println("Ingrese el id del restaurante seleccionado");
+                    int idRestaurante = -1;
+
+                    try {
+                        idRestaurante = scanner.nextInt();
+                        scanner.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Asegúrse de ingresar un valor numérico. Error: " + e.toString());
+                        scanner.nextLine();
+                        break;
+                    }
+                    
+
+                    try {
+                        food.iniciarRest(idRestaurante);
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error tratando de realizar la operación, asegúrse de ingresar un id válido. Error: " + e.toString());
+                    }
+
+                    int productoId = -1;
+                    ArrayList<Integer> idProductos = new ArrayList<Integer>();
+                    try {
+                        System.out.println("Elija el menu: ");
+                        System.out.println(food.mostrarProductos());
+                        System.out.println("Ingrese el id del producto a comprar");
+                        productoId = scanner.nextInt();
+                        scanner.nextLine();
+                        idProductos.add(productoId);
+                    } catch (Exception e) {
+                        System.out.println("Asegúrse de ingresar un id válido. Error: " + e.toString());
+                    }
+                    
 
                     //Crear un nuevo pedido
                     Pedido pedido = new Pedido(restaurante, menu);
@@ -506,18 +549,18 @@ public class DriverProgramFoodCourt{
         }
     }
 
-    public void menuProveedor() {
+    public static void menuProveedor() {
         boolean seguirEnMenu = true;
 
         while (seguirEnMenu) {
             System.out.println("\n--- Menú del proveedor ---");
             System.out.println("1. Agregar producto");
-            System.out.println("2. Eliminar opciones del menu");
-            System.out.println("3. Mostrar menús");
-            System.out.println("4. Modificar menús existentes");
+            System.out.println("2. Eliminar producto");
+            System.out.println("3. Mostrar producto");
+           /*System.out.println("4. Modificar menús existentes");
             System.out.println("5. Personalizar pantalla principal de un negocio");
-            System.out.println("6. Modificar datos de la pantalla principal");
-            System.out.println("7. Modificar disponiblidad de pedidos");
+            System.out.println("6. Modificar datos de la pantalla principal");*/
+            System.out.println("7. Modificar disponiblidad del restaurante");
             System.out.println("8. Salir");
             System.out.print("Seleccione una opción: ");
 
@@ -565,7 +608,29 @@ public class DriverProgramFoodCourt{
                     //Método para modificar datos de la pantalla principal
                     break;
                 case 7:
-                    //Método para modificar disponiblididad de pedidos
+                    System.out.println("Ingrese el estado de disponibilidad actual para recibir pedidos");
+                    System.out.println(" 1. Disponible \n 2. No disponible");
+                    int dispIndex = -1;
+
+                    try {
+                        dispIndex = scanner.nextInt();
+                        scanner.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Ingrese un valor numérico válido. Error: " + e.toString());
+                        scanner.nextLine();
+                    }
+
+                    try {
+                        if(dispIndex == 1){
+                            food.cambiarDisponibilidadRest(true);
+                        }else if(dispIndex == 2){
+                            food.cambiarDisponibilidadRest(false);
+                        }else{
+                            System.out.println("Ingrese una opción válida");
+                        }
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                    }
                     break;
                 case 8:
                     seguirEnMenu = false;
@@ -636,7 +701,4 @@ public class DriverProgramFoodCourt{
         }
     }
 
-    public void menuRestaurante(){
-
-    }
 }

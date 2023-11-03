@@ -121,7 +121,7 @@ public class Restaurante{
         int contador = 0;
         if(!productos.isEmpty()){
             for(Producto producto : productos){
-                text = text + contador + ". " + producto.toString() + "\n";
+                text = text + ". " + producto.toString() + "\n";
             }
         }else{
             text = "Aún no se han registrado productos";

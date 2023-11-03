@@ -15,7 +15,7 @@ public class PedidoManager{
         if (!pedidosP.isEmpty()){
             this.pedidos.clear();
             for(Pedido copia : pedidosP ){
-                Pedido pedido = new Pedido(copia.getIdPedido(), copia.getCliente(), copia.getRestaurante(), copia.getLocal(), copia.getProductos());
+                Pedido pedido = new Pedido(copia.getIdPedido(), copia.getCliente(), copia.getIdRestaurante(), copia.getLocal(), copia.getProductos());
                 pedidos.add(pedido);
             }
         }

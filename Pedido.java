@@ -2,28 +2,31 @@ import java.util.ArrayList;
 
 public class Pedido{
     private int idPedido;
-    private Cliente cliente;
+    private int idCliente;
     private Repartidor repartidor;
-    private Restaurante restaurante;
-    private ArrayList<Producto> productos;
+    private int idRestaurante;
+    private ArrayList<Integer> idProductos;
     private String local;
     private boolean asignada;
     //private boolean completado;
 
-    public Pedido(int idPedido, Cliente clienteP, Restaurante restauranteP, String local, ArrayList<Producto> productosP){
+    public Pedido(int idPedido, int idCliente, int idRestaurante, String local, ArrayList<Integer> idProductos){
         this.idPedido = idPedido;
-        cliente = new Cliente(clienteP.getId(), clienteP.getNombre(), clienteP.getApellido(), clienteP.getEmail(), clienteP.getEdad(), clienteP.getTipo());
-        restaurante = new Restaurante(restauranteP.getIdRest(),restauranteP.getNombre(), restauranteP.getDes(), restauranteP.getHorario(), restauranteP.getDisp());
-        restaurante.setProductos(restauranteP.getProductos());
+        this.idCliente = idCliente;
+        //cliente = new Cliente(clienteP.getId(), clienteP.getNombre(), clienteP.getApellido(), clienteP.getEmail(), clienteP.getEdad(), clienteP.getTipo());
+        this.idRestaurante = idRestaurante;
+        //restaurante = new Restaurante(restauranteP.getIdRest(),restauranteP.getNombre(), restauranteP.getDes(), restauranteP.getHorario(), restauranteP.getDisp());
+        //restaurante.setProductos(restauranteP.getProductos());
         this.local = local;
         this.asignada = false;
         //this.completado = false;
 
-        productos = new ArrayList<Producto>();
-        if (!productosP.isEmpty()){
-            for(Producto copia : productosP ){
-                Producto producto = new Producto(copia.getIdProducto(), copia.getTitulo(), copia.getDetalles(), copia.getCosto(), copia.getDisponible());
-                productos.add(producto);
+        this.idProductos = new ArrayList<Integer>();
+        if (!idProductos.isEmpty()){
+            for(int copia : idProductos ){
+                this.idProductos.add(copia);
+                /*Producto producto = new Producto(copia.getIdProducto(), copia.getTitulo(), copia.getDetalles(), copia.getCosto(), copia.getDisponible());
+                productos.add(producto);*/
             }
         }
     }
@@ -36,6 +39,14 @@ public class Pedido{
         this.idPedido = idPedido;
     }
 
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+    /*
     public Cliente getCliente(){
         return cliente;
     }
@@ -52,7 +63,7 @@ public class Pedido{
         cliente.setTotalPC(clienteP.getTotalP());    
         cliente.setMetPag(clienteP.getMetPag());
         cliente.setCalif(clienteP.getCalif());
-    }
+    }*/
 
     public Repartidor getRepartidor(){
         return repartidor;
@@ -72,6 +83,15 @@ public class Pedido{
         repartidor.setCalif(repartidorP.getCalif());
     }
 
+    public int getIdRestaurante() {
+        return idRestaurante;
+    }
+
+    public void setIdRestaurante(int idRestaurante) {
+        this.idRestaurante = idRestaurante;
+    }
+
+    /*
     public Restaurante getRestaurante(){
         return restaurante;
     }
@@ -83,8 +103,9 @@ public class Pedido{
         restaurante.setHorario(restauranteP.getHorario());
         restaurante.setDisp(restauranteP.getDisp());
         restaurante.setProductos(restauranteP.getProductos());
-    }
+    }*/
 
+    /*
     public ArrayList<Producto> getProductos(){
         return productos;
     }
@@ -96,7 +117,7 @@ public class Pedido{
                 productos.add(producto);
             }
         }
-    }
+    }*/
 
     public String getLocal(){
         return local;

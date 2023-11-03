@@ -59,6 +59,10 @@ public class FoodCourtUVG{
 
         indexA = usuarios.indexOf(usuario);
     }
+
+    public int getIndexUsuarioA(){
+        return usuarioA.getId();
+    }
     /* 
     public ArrayList<Cliente> getClientes(){
         return clientes;
@@ -414,6 +418,9 @@ public class FoodCourtUVG{
         return !restaurantes.isEmpty();
     }
 
+    public void cambiarDisponibilidadRest(boolean disp){
+        restauranteA.setDisp(disp);
+    }
     public String nombreRestaurante(int index){
         if(restaurantes.get(index) != null){
             return restaurantes.get(index).getNombre();
