@@ -1,11 +1,12 @@
-/* 
+/*
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class DriverProgramFoodCourt{
     static Scanner scanner = new Scanner(System.in);
     static FoodCourtUVG food = new FoodCourtUVG();
     public static void main(String[] args){
-        /*DriverProgramFoodCourt program = new DriverProgramFoodCourt();
+        DriverProgramFoodCourt program = new DriverProgramFoodCourt();
        
         program.menuProveedor();
         menuUsuario();
@@ -183,12 +184,16 @@ public class DriverProgramFoodCourt{
 
                     try {
                         System.out.println(food.iniciarUsuario(idLogin, tipoU));
-                        if(tipoU == 3){ 
+                        if(tipoU == 1){
+                            mostrarMenuCliente();
+                        }
+                        else if(tipoU == 3){ 
                             if(food.getIdRestProveedor() == -1){
                                 System.out.println("Ha ocurrido un error tratando de seleccionar el id del restaurante del proveedor actual");
                                 break;
                             }
                             food.iniciarRest(food.getIdRestProveedor());
+                            menuProveedor();
                         }
 
                     } catch (Exception e) {
@@ -275,7 +280,7 @@ public class DriverProgramFoodCourt{
         }
     }
 
-    public void mostrarMenuCliente() {
+    public static void mostrarMenuCliente() {
         boolean seguirEnMenu = true;
         while (seguirEnMenu) {
             System.out.println("\nMenu de Cliente:");
@@ -293,31 +298,125 @@ public class DriverProgramFoodCourt{
 
             switch (opcion) {
                 case 1: 
-                    //Metodo
+                    int idClienteA = -1;
+                    try {
+                        idClienteA = food.getIndexUsuarioA();
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString());
+                    }
+
+                    int idPedido = -1;
+                    System.out.println("Ingrese el id de su pedido");
+                    try {
+                        idPedido = scanner.nextInt();
+                        scanner.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Asegúrse de ingresar un valor numérico. Error: " + e.toString());
+                        scanner.nextLine();
+                        break;
+                    }
+
+                    System.out.println("Elija el restaurante para su pedido:");
+                    if(!food.existeRestaurantes()){
+                        System.out.println("Aún no se han ingresado al menos un restaurante para realizar la operación");
+                        break;
+                    }
+                    System.out.println(food.mostrarRestaurantes());
+                    System.out.println("Ingrese el id del restaurante seleccionado");
+                    int idRestaurante = -1;
+
+                    try {
+                        idRestaurante = scanner.nextInt();
+                        scanner.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Asegúrse de ingresar un valor numérico. Error: " + e.toString());
+                        scanner.nextLine();
+                        break;
+                    }
+                    
+
+                    try {
+                        food.iniciarRest(idRestaurante);
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error tratando de realizar la operación, asegúrse de ingresar un id válido. Error: " + e.toString());
+                    }
+
+                    int productoId = -1;
+                    ArrayList<Integer> idProductos = new ArrayList<Integer>();
+                    try {
+                        System.out.println("Elija el menu: ");
+                        System.out.println(food.mostrarProductos());
+                        System.out.println("Ingrese el id del producto a comprar");
+                        productoId = scanner.nextInt();
+                        scanner.nextLine();
+                        idProductos.add(productoId);
+                    } catch (Exception e) {
+                        System.out.println("Asegúrse de ingresar un id válido. Error: " + e.toString());
+                    }
+                    
+                    System.out.println("Ingrese el punto para recoger su pedido");
+                    String local = "";
+
+                    try {
+                        local = scanner.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error: " + e.toString());
+
+                    }
+
+                    //Crear un nuevo pedido
+                    try {
+                        Pedido pedido = new Pedido(idPedido, idClienteA, idRestaurante, local, idProductos);
+                        food.agregarPedido(pedido);
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString());
+                    }
+                    
+                    //boolean exito = SistemaPedidos.solicitarPedido(pedido);
+
                     break;
 
                 case 2:
-                    //Metodo
-                    break;
+                    System.out.println("Elija la fecha y hora para su pedido (formato DD/MM/YYYY HH:MM)");
+                    String fechaHora = scanner.nextLine();
+
+                    System.out.println("COMING SOON...");
 
                 case 3:
-                    //Metodo
+                    System.out.println("Ingrese el ID del pedido que desea cancelar: ");
+                    int pedidoId = -1;
+
+                    try {
+                        pedidoId = scanner.nextInt();
+                        scanner.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Asegúrse de ingresar un valor numérico");
+                    }
+
+                    try {
+                        food.eliminarPedido(pedidoId);
+                        System.out.println("Pedido eliminado exitosamente");
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString());
+                    }
+                    
                     break;
 
                 case 4: 
-                    //Metodo
+                    System.out.println("COMING SOON... ");
                     break;
 
                 case 5: 
-                    //Metodo
+                    System.out.println("COMING SOON... ");
                     break;
 
                 case 6: 
-                    //Metodo
+                    System.out.println("COMING SOON...");
+        
                     break; 
                 
                 case 7: 
-                    //Metodo
+                    System.out.println("COMING SOON...");
                     break;
 
                 case 8: 
@@ -346,15 +445,52 @@ public class DriverProgramFoodCourt{
 
             switch (opcionSubMenu) {
                 case 1: 
-                    //Metodo
+                    String[] menus = {"Pizza", "Sushi", "Hamburguesa", "Ensalada", "Pasta"};
+                    System.out.println("Elija el menu de su preferencia:");
+                    for (int i = 0; i < menus.length; i++) {
+                        System.out.println((i+1) + ". " + menus[i]);
+                    }
+                    System.out.print("Ingrese el numero del menu que desea: ");
+                    int eleccion = Integer.parseInt(scanner.nextLine());
+                    if (eleccion > 0 && eleccion <= menus.length) {
+                        System.out.println("Usted ha elegido el menu: " + menus[eleccion-1]);
+                    } else {
+                        System.out.println("Ingrese una opcion valida");
+                    }
                     break;
 
                 case 2:
-                    //Metodo
-                    break;
+                    String[] metodosPago = {"Tarjeta de credito", "Tarjeta de debito", "Efectivo"};
+                    System.out.println("Elija el metodo de pago de su preferencia:");
+                    System.out.println("COMING SOON...");
+                    /*for (int i = 0; i < metodosPago.length; i++) {
+                        System.out.println((i+1) + ". " + metodosPago[i]);
+                    }
+                    System.out.print("Ingrese el numero del metodo de pago que desea: ");
+                    int eleccion = Integer.parseInt(scanner.nextLine());
+                    if (eleccion > 0 && eleccion <= metodosPago.length) {
+                        System.out.println("Usted ha elegido el metodo de pago: " + metodosPago[eleccion-1]);
+                    } else {
+                        System.out.println("Ingrese una opcion valida");
+                    }*/
+/*                    break;
 
                 case 3:
-                    //Metodo
+                    System.out.println("COMING SOON...");
+                    /*System.out.println("Su pedido es el siguiente:");
+                    System.out.println(pedidoActual.resumenPedido());
+                    System.out.println("Desea confirmar su pedido? (si/no)");
+                    String confirmacion = scanner.nextLine();
+                    if (confirmacion.equals("si")) {
+                        System.out.println("Su pedido ha sido confirmado");
+                        seguirEnSubMenu = false;
+                    } else if (confirmacion.equals("no")) {
+                        System.out.println("Su pedido ha sido cancelado");
+                        seguirEnSubMenu = false;
+                    } else {
+                        System.out.println("Ingrese una opcion valida");
+                    }*/
+/*                    
                     break;
 
                 case 4: 
@@ -366,19 +502,64 @@ public class DriverProgramFoodCourt{
             }
         }
     }
+/*
+    private void confirmarEntregaSubMenu() {
+        boolean seguirEnSubMenu = true;
+        while (seguirEnSubMenu){
+            System.out.println("\nConfirmar Entrega del Pedido:");
+            System.out.println("1. Confirmar pedido");
+            System.out.println("2. Calificar Atencion del repartidor");
+            System.out.println("3. Volver al menu principal");
 
-    public void menuProveedor() {
+            System.out.print("Seleccione una opcion: ");
+            int opcionSubMenu = Integer.parseInt(scanner.nextLine());
+
+            switch (opcionSubMenu) {
+                case 1: 
+                    System.out.println("COMING SOON...");
+                    /*if (pedidoActual != null && !pedidoActual.isEntregado()){
+                        pedidoActual.setEntregado(true);
+                        System.out.println("Su pedido ha sido entregado");
+                    } else {
+                        System.out.println("No tiene ningun pedido pendiente");
+                    }
+                    seguirEnSubMenu = false;*/
+/*                  break;
+
+                case 2:
+                    System.out.println("Califique la atencion del repartidor (1-5):");
+                    int calificacion = Integer.parseInt(scanner.nextLine());
+                    if (calificacion >= 1 && calificacion <= 5) {
+                        System.out.println("Su calificacion ha sido registrada");
+                    } else {
+                        System.out.println("Ingrese una calificacion valida");
+                    }
+                    System.out.println("COMING SOON...");
+                    break;
+
+                case 3: 
+                    seguirEnSubMenu = false;
+                    break;
+                default:
+                    System.out.println("Ingrese una opcion valida");
+                    break;
+            }
+        }
+    }
+
+    public static void menuProveedor() {
         boolean seguirEnMenu = true;
 
         while (seguirEnMenu) {
             System.out.println("\n--- Menú del proveedor ---");
-            System.out.println("1. Agregar/eliminar establecimientos");
-            System.out.println("2. Agregar/eliminar opciones del menú");
-            System.out.println("3. Modificar menús existentes");
-            System.out.println("4. Personalizar pantalla principal de un negocio");
-            System.out.println("5. Modificar datos de la pantalla principal");
-            System.out.println("6. Modificar disponiblidad de pedidos");
-            System.out.println("7. Salir");
+            System.out.println("1. Agregar producto");
+            System.out.println("2. Eliminar producto");
+            System.out.println("3. Mostrar producto");
+           /*System.out.println("4. Modificar menús existentes");
+            System.out.println("5. Personalizar pantalla principal de un negocio");
+            System.out.println("6. Modificar datos de la pantalla principal");*/
+/*            System.out.println("7. Modificar disponiblidad del restaurante");
+            System.out.println("8. Salir");
             System.out.print("Seleccione una opción: ");
 
             int opcion = scanner.nextInt();
@@ -386,39 +567,70 @@ public class DriverProgramFoodCourt{
 
             switch (opcion) {
                 case 1:
-                    System.out.println("Ingrese los datos del restaurante.");
-                    System.out.print("ID del restaurante: ");
-                    int idRest = scanner.nextInt();
+                    System.out.println("Ingrese los detalles del nuevo producto: ");
+                    System.out.print("ID del producto: ");
+                    int idProducto = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.print("Nombre: ");
-                    String nombre = scanner.nextLine();
-                    System.out.print("Descripción: ");
-                    String descripcion = scanner.nextLine();
-                    System.out.print("Horario: ");
-                    String horario = scanner.nextLine();
+                    System.out.print("Nombre: "); 
+                    String titulo = scanner.nextLine();
+                    System.out.print("Detalles: ");
+                    String detalles = scanner.nextLine();
+                    System.out.print("Costo: ");
+                    double costo = scanner.nextDouble();
                     System.out.print("Disponible (true/false): ");
                     boolean disponible = scanner.nextBoolean();
+                    scanner.nextLine();
 
-                    food.agregarRest(idRest, nombre, descripcion, horario, disponible);
-                    System.out.println("Restaurante agregado exitosamente.");
-                    //Método para agregar/eliminar establecimientos
+                    food.agregarProducto(idProducto, titulo, detalles, costo, disponible);
+                    System.out.println("Se ha agregado el producto exitosamente.");
                     break;
                 case 2:
-                    //Método para agregar/eliminar opciones del menú
+                    //eliminar menús
+                    System.out.println("Ingrese el ID del producto a eliminar: ");
+                    int idProductoe = scanner.nextInt();
+                    food.eliminarProducto(idProductoe);
+                    System.out.println("Producto eliminado exitosamente");
                     break;
                 case 3:
-                    //Método para modificar menús existentes
+                    //mostrar menús
+                    String productos = food.mostrarProductos();
+                    System.out.println(productos);
                     break;
                 case 4:
-                    //Método para personalizar pantalla principal de un negocio
+                    //Método para modificar menús existentes
                     break;
                 case 5:
-                    //Método para modificar datos de la pantalla principal
+                    //Método para personalizar pantalla principal de un negocio
                     break;
                 case 6:
-                    //Método para modificar disponiblididad de pedidos
+                    //Método para modificar datos de la pantalla principal
                     break;
                 case 7:
+                    System.out.println("Ingrese el estado de disponibilidad actual para recibir pedidos");
+                    System.out.println(" 1. Disponible \n 2. No disponible");
+                    int dispIndex = -1;
+
+                    try {
+                        dispIndex = scanner.nextInt();
+                        scanner.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Ingrese un valor numérico válido. Error: " + e.toString());
+                        scanner.nextLine();
+                    }
+
+                    try {
+                        if(dispIndex == 1){
+                            food.cambiarDisponibilidadRest(true);
+                        }else if(dispIndex == 2){
+                            food.cambiarDisponibilidadRest(false);
+                        }else{
+                            System.out.println("Ingrese una opción válida");
+                        }
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                    }
+                    break;
+                case 8:
                     seguirEnMenu = false;
                     break;
                 default:
@@ -487,8 +699,4 @@ public class DriverProgramFoodCourt{
         }
     }
 
-    public void menuRestaurante(){
-
-    }
-}
-*/
+}*/

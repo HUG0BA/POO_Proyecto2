@@ -316,6 +316,10 @@ public class DriverProgramFoodCourt{
                     }
 
                     System.out.println("Elija el restaurante para su pedido:");
+                    if(!food.existeRestaurantes()){
+                        System.out.println("Aún no se han ingresado al menos un restaurante para realizar la operación");
+                        break;
+                    }
                     System.out.println(food.mostrarRestaurantes());
                     System.out.println("Ingrese el id del restaurante seleccionado");
                     int idRestaurante = -1;
