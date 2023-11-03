@@ -183,7 +183,10 @@ public class DriverProgramFoodCourt{
 
                     try {
                         System.out.println(food.iniciarUsuario(idLogin, tipoU));
-                        if(tipoU == 3){ 
+                        if(tipoU == 1){
+                            mostrarMenuCliente();
+                        }
+                        else if(tipoU == 3){ 
                             if(food.getIdRestProveedor() == -1){
                                 System.out.println("Ha ocurrido un error tratando de seleccionar el id del restaurante del proveedor actual");
                                 break;
@@ -276,7 +279,7 @@ public class DriverProgramFoodCourt{
         }
     }
 
-    public void mostrarMenuCliente() {
+    public static void mostrarMenuCliente() {
         boolean seguirEnMenu = true;
         while (seguirEnMenu) {
             System.out.println("\nMenu de Cliente:");
@@ -294,6 +297,13 @@ public class DriverProgramFoodCourt{
 
             switch (opcion) {
                 case 1: 
+                    int idClienteA = -1;
+                    try {
+                        idClienteA = food.getIndexUsuarioA();
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString());
+                    }
+
                     int idPedido = -1;
                     System.out.println("Ingrese el id de su pedido");
                     try {
@@ -339,91 +349,69 @@ public class DriverProgramFoodCourt{
                         System.out.println("Asegúrse de ingresar un id válido. Error: " + e.toString());
                     }
                     
+                    System.out.println("Ingrese el punto para recoger su pedido");
+                    String local = "";
+
+                    try {
+                        local = scanner.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error: " + e.toString());
+
+                    }
 
                     //Crear un nuevo pedido
-                    Pedido pedido = new Pedido(restaurante, menu);
-                    boolean exito = SistemaPedidos.solicitarPedido(pedido);
-
-                    if(exito){
-                        System.out.println("Su pedido del restaurante " + restaurante + " con el menu " + menu + " ha sido solicitado." );
-                    }else{
-                        System.out.println("No se ha podido solicitar su pedido. Intente de nuevo.");
+                    try {
+                        Pedido pedido = new Pedido(idPedido, idClienteA, idRestaurante, local, idProductos);
+                        food.agregarPedido(pedido);
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString());
                     }
+                    
+                    //boolean exito = SistemaPedidos.solicitarPedido(pedido);
+
                     break;
 
                 case 2:
                     System.out.println("Elija la fecha y hora para su pedido (formato DD/MM/YYYY HH:MM)");
                     String fechaHora = scanner.nextLine();
 
-                    Pedido pedido = new Pedido();
-                    pedido.setFechaHora(fechaHora); 
-                    boolean exito = SistemaPedidos.solicitarPedido(pedido);
-
-                    if(exito){
-                        System.out.println("Su pedido para la fecha " + fechaHora + " ha sido solicitado." );
-                    }else{
-                        System.out.println("No se ha podido solicitar su pedido. Intente de nuevo.");
-                    }
-                    break;
+                    System.out.println("COMING SOON...");
 
                 case 3:
                     System.out.println("Ingrese el ID del pedido que desea cancelar: ");
-                    String pedidoId = scanner.nextLine();
+                    int pedidoId = -1;
 
-                    boolean exito = SistemaPedidos.cancelarPedido(pedidoId);
-
-                    if(exito){
-                        System.out.println("Su pedido con el ID " + pedidoId + " ha sido cancelado." );
-                    }else{
-                        System.out.println("No se ha podido cancelar su pedido. Intente de nuevo.");
+                    try {
+                        pedidoId = scanner.nextInt();
+                        scanner.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Asegúrse de ingresar un valor numérico");
                     }
+
+                    try {
+                        food.eliminarPedido(pedidoId);
+                        System.out.println("Pedido eliminado exitosamente");
+                    } catch (Exception e) {
+                        System.out.println("Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString());
+                    }
+                    
                     break;
 
                 case 4: 
-                    System.out.println("Ingrese el ID del pedido que desea modificar: ");
-                    String pedidoId = scanner.nextLine();
-
-                    boolean exito = SistemaPedidos.modificarPedido(pedidoId);
-
-                    if(exito){
-                        System.out.println("Su pedido con el ID " + pedidoId + " ha sido modificado." );
-                    }else{
-                        System.out.println("No se ha podido modificar su pedido. Intente de nuevo.");
-                    }
+                    System.out.println("COMING SOON... ");
                     break;
 
                 case 5: 
-                    System.out.println("Ingrese el ID del pedido cuyo estado desea mopnitorear: ");
-                    String pedidoId = scanner.nextLine();
-
-                    String estado = SistemaPedidos.monitorearPedido(pedidoId);
-                    System.out.println("El estado de su pedido " + pedidoID + " es: " + estado);
+                    System.out.println("COMING SOON... ");
                     break;
 
                 case 6: 
-                    System.out.println("Ingrese el ID del pedido que desea confirmar su entrega:");
-                    String pedidoId = scanner.nextLine();
-
-                    boolean exito = SistemaPedidos.confirmarEntrega(pedidoId);
-
-                    if(exito){
-                        System.out.println("Su pedido con el ID " + pedidoId + " ha sido confirmado." );
-                    }else{
-                        System.out.println("No se ha podido confirmar su pedido. Intente de nuevo.");
-                    }
+                    System.out.println("COMING SOON...");
+        
                     break; 
                 
                 case 7: 
-                    System.out.println("Ingrese los nuevos datos de su perfil:");
-
-                    Perfil perfil = new Perfil();
-                    boolean exito = SistemaPedidos.modificarPerfil(perfil);
-
-                    if(exito){
-                        System.out.println("Su perfil ha sido modificado exitosamente.");
-                    }else{
-                        System.out.println("No se ha podido modificar su perfil. Intente de nuevo.");
-                    }
+                    System.out.println("COMING SOON...");
                     break;
 
                 case 8: 
@@ -469,7 +457,8 @@ public class DriverProgramFoodCourt{
                 case 2:
                     String[] metodosPago = {"Tarjeta de credito", "Tarjeta de debito", "Efectivo"};
                     System.out.println("Elija el metodo de pago de su preferencia:");
-                    for (int i = 0; i < metodosPago.length; i++) {
+                    System.out.println("COMING SOON...");
+                    /*for (int i = 0; i < metodosPago.length; i++) {
                         System.out.println((i+1) + ". " + metodosPago[i]);
                     }
                     System.out.print("Ingrese el numero del metodo de pago que desea: ");
@@ -478,11 +467,12 @@ public class DriverProgramFoodCourt{
                         System.out.println("Usted ha elegido el metodo de pago: " + metodosPago[eleccion-1]);
                     } else {
                         System.out.println("Ingrese una opcion valida");
-                    }
+                    }*/
                     break;
 
                 case 3:
-                    System.out.println("Su pedido es el siguiente:");
+                    System.out.println("COMING SOON...");
+                    /*System.out.println("Su pedido es el siguiente:");
                     System.out.println(pedidoActual.resumenPedido());
                     System.out.println("Desea confirmar su pedido? (si/no)");
                     String confirmacion = scanner.nextLine();
@@ -494,7 +484,7 @@ public class DriverProgramFoodCourt{
                         seguirEnSubMenu = false;
                     } else {
                         System.out.println("Ingrese una opcion valida");
-                    }
+                    }*/
                     break;
 
                 case 4: 
@@ -520,13 +510,14 @@ public class DriverProgramFoodCourt{
 
             switch (opcionSubMenu) {
                 case 1: 
-                    if (pedidoActual != null && !pedidoActual.isEntregado()){
+                    System.out.println("COMING SOON...");
+                    /*if (pedidoActual != null && !pedidoActual.isEntregado()){
                         pedidoActual.setEntregado(true);
                         System.out.println("Su pedido ha sido entregado");
                     } else {
                         System.out.println("No tiene ningun pedido pendiente");
                     }
-                    seguirEnSubMenu = false;
+                    seguirEnSubMenu = false;*/
                     break;
 
                 case 2:
@@ -537,6 +528,7 @@ public class DriverProgramFoodCourt{
                     } else {
                         System.out.println("Ingrese una calificacion valida");
                     }
+                    System.out.println("COMING SOON...");
                     break;
 
                 case 3: 

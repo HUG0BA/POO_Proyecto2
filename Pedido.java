@@ -35,6 +35,18 @@ public class Pedido{
         return idPedido;
     }
 
+    public ArrayList<Integer> getIdProductos() {
+        return idProductos;
+    }
+
+    public void setIdProductos(ArrayList<Integer> idProductos) {
+        if(!idProductos.isEmpty()){
+            this.idProductos.clear();
+            for(int id : idProductos){
+                idProductos.add(id);
+            }
+        }
+    }
     public void setIdPedido(int idPedido){
         this.idPedido = idPedido;
     }
