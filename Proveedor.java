@@ -10,12 +10,13 @@ public class Proveedor extends Usuario{
     public Proveedor() {
     }
 
+
     // Constructor con parámetros
     public Proveedor(int id, String nombre, String apellido, String email, int edad, String rest, int idRest, int nivAccess){
-    super(id, nombre, apellido, email, edad);  
-    this.rest = rest;
-    this.idRest = idRest;
-    this.nivAccess = nivAccess;
+        super(id, nombre, apellido, email, edad);  
+        this.rest = rest;
+        this.idRest = idRest;
+        this.nivAccess = nivAccess;
     }
 
 
