@@ -21,6 +21,23 @@ public class Restaurante{
         this.productos = new ArrayList<Producto>();
     }
 
+    public Restaurante(int idRest, String nombre, String des, String horario, boolean disp, ArrayList<Producto> productos){
+        this.idRest = idRest;
+        this.nombre = nombre;
+        this.des = des;
+        this.horario = horario;
+        this.disp = disp;
+        this.productos = new ArrayList<Producto>();
+        this.productos = new ArrayList<Producto>();
+        if(!productos.isEmpty()){
+            for (Producto producto : productos){
+                Producto copia = new Producto(producto.getIdProducto(), producto.getTitulo(), producto.getDetalles(), producto.getCosto(), producto.getDisponible());
+                this.productos.add(copia);
+            }
+        }
+
+    }
+
     public int getIdRest(){
         return idRest;
     }

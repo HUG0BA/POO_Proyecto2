@@ -183,7 +183,14 @@ public class FoodCourtUVG{
     }
 
     public void setRestA(Restaurante restauranteP){
+        if(restauranteA != null){
+            restaurantes.set(indexA, restauranteA);
+        }
 
+        restauranteA = null;
+        restauranteA = new Restaurante(restauranteP.getIdRest(), restauranteP.getNombre(), restauranteP.getDes(), restauranteP.getHorario(), restauranteP.getDisp(), restauranteP.getProductos());
+
+        indexR = restaurantes.indexOf(restauranteP);
         /*
         restA.setIdRest(restauranteP.getIdRest());
         restA.setNombre(restauranteP.getNombre());
@@ -421,11 +428,16 @@ public class FoodCourtUVG{
     public void cambiarDisponibilidadRest(boolean disp){
         restauranteA.setDisp(disp);
     }
-    public String nombreRestaurante(int index){
-        if(restaurantes.get(index) != null){
-            return restaurantes.get(index).getNombre();
+    public String nombreRestaurante(int id){
+        if(!restaurantes.isEmpty()){
+            return "No se ha ingresado ningún restaurante";
         }
-        return null;
+        for(Restaurante restaurante : restaurantes){
+            if(restaurante.getIdRest() == id){
+                return restaurante.getNombre();
+            }
+        }
+        return "No existe ningún restaurante con el ID indicado";
     }
 
     public int getIdRestProveedor(){

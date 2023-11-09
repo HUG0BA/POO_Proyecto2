@@ -9,14 +9,13 @@ public class DriverProgramFoodCourt{
        
         program.menuProveedor();*/
         menuUsuario();
-
     }
 
     public static void menuUsuario(){
         boolean menuUsuario = true;
 
         while(menuUsuario){
-            System.out.println("¡Bienvenido al menu de cliente! Ingrese la opción que desea ejecutar.");
+            System.out.println("¡Bienvenido al menu de usuario! Ingrese la opción que desea ejecutar.");
             System.out.println(" 1. Agregar Usuario (Cliente, Proveedor, Repartidor) \n 2. Iniciar sesión (Cliente, Proveedor, Repartidor) \n 3. Mostrar clientes \n 4. Mostrar repartidores \n 5. Mostrar proveedores \n 6. Agregar restaurante \n 7. Mostrar restaurantes");
             int opcion = -1;
 
@@ -125,7 +124,7 @@ public class DriverProgramFoodCourt{
 
                             try {
                                 System.out.println(food.mostrarRestaurantes());
-                                System.out.println("Id del restaurante donde labora: ");
+                                System.out.println("Index del restaurante donde labora: ");
                                 restIndex = scanner.nextInt();
                                 scanner.nextLine();
                                 rest = food.nombreRestaurante(restIndex);
@@ -185,6 +184,9 @@ public class DriverProgramFoodCourt{
                         System.out.println(food.iniciarUsuario(idLogin, tipoU));
                         if(tipoU == 1){
                             mostrarMenuCliente();
+                        }
+                        else if(tipoU == 2){
+                            menuRepartidores();
                         }
                         else if(tipoU == 3){ 
                             if(food.getIdRestProveedor() == -1){
@@ -638,7 +640,7 @@ public class DriverProgramFoodCourt{
         }
     }
 
-    public void menuRepartidores(){
+    public static void menuRepartidores(){
         boolean menu = true;
 
         while(menu){

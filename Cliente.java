@@ -8,7 +8,7 @@ public class Cliente extends Usuario {
    private int totalP;
    private int totalPE;
    private int totalPC;
-   private ArrayList<String> metPag;
+   //private ArrayList<String> metPag;
    private int calif;
 
    // Constructor predeterminado
@@ -19,7 +19,17 @@ public class Cliente extends Usuario {
     public Cliente(int id, String nombre, String apellido, String email, int edad, String tipo) {
         super(id, nombre, apellido, email, edad);
         this.tipo = tipo;
-        this.metPag = new ArrayList<String>();
+        //this.metPag = new ArrayList<String>();
+        this.totalP = 0;
+        this.totalPE = 0;
+        this.totalPC = 0;
+        this.calif = 0;
+    }
+
+    public Cliente(int id, String nombre, String apellido, String email, int edad, String tipo, String tipo, ) {
+        super(id, nombre, apellido, email, edad);
+        this.tipo = tipo;
+        //this.metPag = new ArrayList<String>();
         this.totalP = 0;
         this.totalPE = 0;
         this.totalPC = 0;
