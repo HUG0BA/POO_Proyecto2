@@ -26,21 +26,74 @@ public class SubMenuClientes2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLbl1S2MC = new javax.swing.JLabel();
+        jComboBox1S2MC = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jBtn1S2MC = new javax.swing.JButton();
+        jBtn2S2MC = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLbl1S2MC.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLbl1S2MC.setText("Confirmar Entrega");
+
+        jComboBox1S2MC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Confirmar pedido", "2. Calificar Atencion del repartidor", "3. Volver al menu principal" }));
+
+        jLabel1.setText("Elige la opcion que desea ejecutar");
+
+        jBtn1S2MC.setText("Aceptar");
+
+        jBtn2S2MC.setText("Salir");
+        jBtn2S2MC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtn2S2MCActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(256, 256, 256)
+                .addComponent(jLbl1S2MC, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBtn1S2MC)
+                        .addGap(53, 53, 53)
+                        .addComponent(jBtn2S2MC)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox1S2MC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(282, 282, 282))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLbl1S2MC)
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1S2MC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(91, 91, 91)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtn1S2MC)
+                    .addComponent(jBtn2S2MC))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBtn2S2MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn2S2MCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtn2S2MCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +131,10 @@ public class SubMenuClientes2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtn1S2MC;
+    private javax.swing.JButton jBtn2S2MC;
+    private javax.swing.JComboBox<String> jComboBox1S2MC;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLbl1S2MC;
     // End of variables declaration//GEN-END:variables
 }
