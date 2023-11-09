@@ -3,6 +3,7 @@
  */
 
 package com.mycompany.uvg_eats;
+import clases.*;
 
 /**
  *
@@ -11,6 +12,9 @@ package com.mycompany.uvg_eats;
 public class UVG_EATS {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        
+        Menu_Usuario menuUsario = new Menu_Usuario();
+        menuUsario.setVisible(true);
     }
 }
