@@ -41,6 +41,11 @@ public class Menú_proveedores extends javax.swing.JFrame {
         btn1.setText("Aceptar");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Agregar producto", "2. Eliminar producto", "3. Modificar disponibilidad del restaurante" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         lbl2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl2.setText("Elige la acción deseada:");
@@ -86,6 +91,10 @@ public class Menú_proveedores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments

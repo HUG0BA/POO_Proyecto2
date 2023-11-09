@@ -38,6 +38,11 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
         jLlbl1S1MC.setText("Pedido Inmediato");
 
         jComboBox1S1MC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Elegir Menu", "2. Elegir metodo de pago", "3. Confirmar orden", "4. Volver al menu principal" }));
+        jComboBox1S1MC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1S1MCActionPerformed(evt);
+            }
+        });
 
         jLlbl2S1MC.setText("Ingrese la opcion que desea ejecutar");
 
@@ -101,6 +106,10 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
     private void jBtn2S1MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn2S1MCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtn2S1MCActionPerformed
+
+    private void jComboBox1S1MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1S1MCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1S1MCActionPerformed
 
     /**
      * @param args the command line arguments
