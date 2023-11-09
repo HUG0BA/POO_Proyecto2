@@ -31,6 +31,16 @@ public class Repartidor extends Usuario{
         this.calif = 0;
     }
 
+    public Repartidor(int id, String nombre, String apellido, String email, int edad, int totalP, int totalT, int totalPC, int totalTC, int totalH, int calif) {
+        super(id, nombre, apellido, email, edad);
+        this.totalP = totalP;
+        this.totalT = totalT;
+        this.totalPC = totalPC;
+        this.totalTC = totalTC;
+        this.totalH = totalH;
+        this.calif = calif;
+    }
+
     // Getters y setters
     public int getTotalP() {
         return totalP;

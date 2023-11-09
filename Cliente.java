@@ -26,14 +26,14 @@ public class Cliente extends Usuario {
         this.calif = 0;
     }
 
-    public Cliente(int id, String nombre, String apellido, String email, int edad, String tipo, String tipo, ) {
+    public Cliente(int id, String nombre, String apellido, String email, int edad, String tipo, int totalP, int totalPE, int totalPC, int calif) {
         super(id, nombre, apellido, email, edad);
         this.tipo = tipo;
         //this.metPag = new ArrayList<String>();
-        this.totalP = 0;
-        this.totalPE = 0;
-        this.totalPC = 0;
-        this.calif = 0;
+        this.totalP = totalP;
+        this.totalPE = totalPE;
+        this.totalPC = totalPC;
+        this.calif = calif;
     }
 
     // Getters
@@ -53,9 +53,10 @@ public class Cliente extends Usuario {
         return totalPC;
     }
 
+    /*
     public ArrayList<String> getMetPag() {
         return metPag;
-    }
+    }*/
 
     public int getCalif() {
         return calif;
@@ -78,6 +79,7 @@ public class Cliente extends Usuario {
         this.totalPC = totalPC;
     }
 
+    /*
     public void setMetPag(ArrayList<String> metPagP) {
         if(!metPagP.isEmpty()){
             metPag.clear();
@@ -85,7 +87,7 @@ public class Cliente extends Usuario {
                 metPag.add(str);
             }
         }
-    }
+    }*/
 
     public void setCalif(int calif) {
         this.calif = calif;
