@@ -23,27 +23,24 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="255" max="-2" attributes="0"/>
+              <Component id="jLlbl1S1MC" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
-              <Component id="jLlbl2S1MC" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jBtn1S1MC" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jBtn2S1MC" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jLlbl2S1MC" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="jComboBox1S1MC" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="282" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="255" max="-2" attributes="0"/>
-                      <Component id="jLlbl1S1MC" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                      <Component id="jbtn1S1MC" min="-2" pref="111" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="jBtn2S1MC" min="-2" pref="111" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,12 +54,12 @@
                   <Component id="jLlbl2S1MC" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jComboBox1S1MC" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="122" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbtn1S1MC" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBtn1S1MC" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBtn2S1MC" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+              <EmptySpace pref="157" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,18 +93,21 @@
         <Property name="text" type="java.lang.String" value="Ingrese la opcion que desea ejecutar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jbtn1S1MC">
+    <Component class="javax.swing.JButton" name="jBtn1S1MC">
       <Properties>
         <Property name="text" type="java.lang.String" value="Aceptar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtn1S1MCActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtn1S1MCActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jBtn2S1MC">
+    <Component class="javax.swing.JButton" name="jBtn2S1MC">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Salr"/>
+        <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtn2S1MCActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

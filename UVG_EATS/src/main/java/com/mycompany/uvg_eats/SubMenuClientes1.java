@@ -29,8 +29,8 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
         jLlbl1S1MC = new javax.swing.JLabel();
         jComboBox1S1MC = new javax.swing.JComboBox<>();
         jLlbl2S1MC = new javax.swing.JLabel();
-        jbtn1S1MC = new javax.swing.JToggleButton();
-        jBtn2S1MC = new javax.swing.JToggleButton();
+        jBtn1S1MC = new javax.swing.JButton();
+        jBtn2S1MC = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,36 +41,39 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
 
         jLlbl2S1MC.setText("Ingrese la opcion que desea ejecutar");
 
-        jbtn1S1MC.setText("Aceptar");
-        jbtn1S1MC.addActionListener(new java.awt.event.ActionListener() {
+        jBtn1S1MC.setText("Aceptar");
+        jBtn1S1MC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtn1S1MCActionPerformed(evt);
+                jBtn1S1MCActionPerformed(evt);
             }
         });
 
-        jBtn2S1MC.setText("Salr");
+        jBtn2S1MC.setText("Salir");
+        jBtn2S1MC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtn2S1MCActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addGap(255, 255, 255)
+                .addComponent(jLlbl1S1MC)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(105, 105, 105)
-                .addComponent(jLlbl2S1MC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBtn1S1MC)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBtn2S1MC))
+                    .addComponent(jLlbl2S1MC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addComponent(jComboBox1S1MC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(282, 282, 282))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(jLlbl1S1MC))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jbtn1S1MC, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jBtn2S1MC, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,19 +84,23 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLlbl2S1MC)
                     .addComponent(jComboBox1S1MC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtn1S1MC)
+                    .addComponent(jBtn1S1MC)
                     .addComponent(jBtn2S1MC))
-                .addGap(115, 115, 115))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbtn1S1MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn1S1MCActionPerformed
+    private void jBtn1S1MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn1S1MCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbtn1S1MCActionPerformed
+    }//GEN-LAST:event_jBtn1S1MCActionPerformed
+
+    private void jBtn2S1MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn2S1MCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBtn2S1MCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,10 +138,10 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton jBtn2S1MC;
+    private javax.swing.JButton jBtn1S1MC;
+    private javax.swing.JButton jBtn2S1MC;
     private javax.swing.JComboBox<String> jComboBox1S1MC;
     private javax.swing.JLabel jLlbl1S1MC;
     private javax.swing.JLabel jLlbl2S1MC;
-    private javax.swing.JToggleButton jbtn1S1MC;
     // End of variables declaration//GEN-END:variables
 }
