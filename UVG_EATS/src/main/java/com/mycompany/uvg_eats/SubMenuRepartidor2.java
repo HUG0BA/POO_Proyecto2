@@ -8,12 +8,12 @@ package com.mycompany.uvg_eats;
  *
  * @author javie
  */
-public class SubMenu_Repartidor1 extends javax.swing.JFrame {
+public class SubMenuRepartidor2 extends javax.swing.JFrame {
 
     /**
-     * Creates new form SubMenu_Repartidor1
+     * Creates new form SubMenuRepartidor2
      */
-    public SubMenu_Repartidor1() {
+    public SubMenuRepartidor2() {
         initComponents();
     }
 
@@ -26,27 +26,38 @@ public class SubMenu_Repartidor1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lbl1 = new javax.swing.JLabel();
+        lbl2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        lbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbl1.setText("Pedidos entregados:");
+
+        lbl2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl2.setText("pedidos...");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(91, Short.MAX_VALUE)
+                .addComponent(lbl1)
+                .addGap(86, 86, 86))
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addGap(157, 157, 157)
+                .addComponent(lbl2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addComponent(jLabel1)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(lbl1)
+                .addGap(102, 102, 102)
+                .addComponent(lbl2)
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         pack();
@@ -69,25 +80,26 @@ public class SubMenu_Repartidor1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SubMenu_Repartidor1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SubMenuRepartidor2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SubMenu_Repartidor1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SubMenuRepartidor2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SubMenu_Repartidor1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SubMenuRepartidor2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SubMenu_Repartidor1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SubMenuRepartidor2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SubMenu_Repartidor1().setVisible(true);
+                new SubMenuRepartidor2().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lbl2;
     // End of variables declaration//GEN-END:variables
 }
