@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package com.mycompany.uvg_eats;
-
+/*ea
 /**
  *
  * @author ferna
  */
+package com.mycompany.uvg_eats;
+
+import javax.swing.JOptionPane;
+
 public class Menu_clientes extends javax.swing.JFrame {
 
     /**
@@ -27,23 +26,28 @@ public class Menu_clientes extends javax.swing.JFrame {
     private void initComponents() {
 
         jLbl1MC = new javax.swing.JLabel();
-        jComboBox1MC = new javax.swing.JComboBox<>();
+        cBoxOpcion = new javax.swing.JComboBox<>();
         jLbl2MC = new javax.swing.JLabel();
-        jBtn1MC = new javax.swing.JButton();
-        jBtn2MC = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLbl1MC.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLbl1MC.setText("Bienvenido al Menu Clientes");
 
-        jComboBox1MC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Solicitar pedido inmediato", "2. Calendarizar pedido", "3. Cancelar pedido", "4. Modificar pedido", "5. Monitorear estado del pedido", "6. Confirmar entrega del pedido", "7. Modificar informacion del perfil" }));
+        cBoxOpcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "1. Solicitar pedido inmediato", "2. Cancelar pedido", "3. Confirmar entrega del pedido", " " }));
 
         jLbl2MC.setText("Eliga la opcion que desea ejecutar");
 
-        jBtn1MC.setText("Aceptar");
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
-        jBtn2MC.setText("Salir");
+        btnSalir.setText("Salir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,13 +61,13 @@ public class Menu_clientes extends javax.swing.JFrame {
                 .addGap(106, 106, 106)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBtn1MC)
+                        .addComponent(btnAceptar)
                         .addGap(26, 26, 26)
-                        .addComponent(jBtn2MC))
+                        .addComponent(btnSalir))
                     .addComponent(jLbl2MC))
                 .addGap(26, 26, 26)
-                .addComponent(jComboBox1MC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 170, Short.MAX_VALUE))
+                .addComponent(cBoxOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 182, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,17 +76,42 @@ public class Menu_clientes extends javax.swing.JFrame {
                 .addComponent(jLbl1MC, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1MC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cBoxOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLbl2MC))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtn1MC)
-                    .addComponent(jBtn2MC))
+                    .addComponent(btnAceptar)
+                    .addComponent(btnSalir))
                 .addGap(107, 107, 107))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        // TODO add your handling code here:
+        int opcion = cBoxOpcion.getSelectedIndex();
+        
+        switch (opcion){
+            case 0: 
+                JOptionPane.showMessageDialog(this, "Por favor, seleccione una opcion valida.", "Seleccion Invalida", JOptionPane.ERROR_MESSAGE);
+                break;
+            case 1: //solicitar pedido inmediato
+                SubMenuClientes1 subMenu = new SubMenuClientes1();
+                subMenu.setVisible(true);
+                this.setVisible(false);
+                break;
+            case 2: //Cancelar pedido
+                // Codigo para cancelar el pedido
+                break;
+            case 3: //Confirmar entrega del pedido
+                // Codigo para confirmar entrega
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "Opcion no reconocida.", "Error", JOptionPane.ERROR_MESSAGE);
+                break;
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,9 +149,9 @@ public class Menu_clientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtn1MC;
-    private javax.swing.JButton jBtn2MC;
-    private javax.swing.JComboBox<String> jComboBox1MC;
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox<String> cBoxOpcion;
     private javax.swing.JLabel jLbl1MC;
     private javax.swing.JLabel jLbl2MC;
     // End of variables declaration//GEN-END:variables
