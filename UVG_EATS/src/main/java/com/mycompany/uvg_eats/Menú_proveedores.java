@@ -16,9 +16,9 @@ import clases.FoodCourtUVG;
  */
 public class Menú_proveedores extends JFrame {
     
-    private JPanel agregarProductoPanel, eliminarProductoPanel;
+    private JPanel agregarProductoPanel, eliminarProductoPanel, disponibilidadRestaurantePanel;
     private JTextField idProductoField, nombreProductoField, detallesProductoField, costoProductoField, idEliminarProductoField;
-    private JCheckBox disponibleCheckBox;
+    private JCheckBox disponibleCheckBox, disponibilidadCheckBox;
     /**
      * Creates new form Menú_proveedores
      */
@@ -27,9 +27,11 @@ public class Menú_proveedores extends JFrame {
         postInitComponents();
         setupAgregarProductoPanel();
         setupEliminarProductoPanel();
+        setupDisponibilidadRestaurantePanel();
         
         agregarProductoPanel.setBounds(100, 100, 300, 200);
         eliminarProductoPanel.setBounds(100, 100, 300, 200);
+        disponibilidadRestaurantePanel.setBounds(100, 100, 300, 200);
     }
 
     /**
@@ -194,14 +196,47 @@ public class Menú_proveedores extends JFrame {
         eliminarProductoPanel.setVisible(false);
         getContentPane().add(eliminarProductoPanel, BorderLayout.CENTER);
     }
+    
+    private void setupDisponibilidadRestaurantePanel(){
+        disponibilidadRestaurantePanel = new JPanel();
+        disponibilidadRestaurantePanel.setBorder(BorderFactory.createTitledBorder("Cambiar Disponibilidad del Restaurante: "));
+        disponibilidadRestaurantePanel.setBackground(Color.YELLOW);
+        
+        disponibilidadCheckBox = new JCheckBox("Disponible");
+        disponibilidadRestaurantePanel.add(disponibilidadCheckBox);
+        
+        JButton cambiarDisponibilidadButton = new JButton("Cambiar disponibilidad");
+        cambiarDisponibilidadButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    boolean disponibilidad = disponibilidadCheckBox.isSelected();
+                    FoodCourtUVG.getInstance().cambiarDisponibilidadRest(disponibilidad);
+                    JOptionPane.showMessageDialog(Menú_proveedores.this, "La disponibilidad fue cambiada exitosamente.");
+                }catch (Exception ex) {
+                    JOptionPane.showMessageDialog(Menú_proveedores.this, "Error al cambiar disponibilidad" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        disponibilidadRestaurantePanel.add(cambiarDisponibilidadButton);
+        disponibilidadRestaurantePanel.setVisible(false);
+        getContentPane().add(disponibilidadRestaurantePanel, BorderLayout.CENTER);
+    }
     private void aceptarActionPerformed(ActionEvent evt) {
-        System.out.println("El botón aceptar fue presionado.");
         int selectedIndex = jComboBox1.getSelectedIndex();
-        if (selectedIndex == 0) {
-            System.out.println("Mostrando formulario");
-            mostrarFormularioAgregarProducto();
-        }else if (selectedIndex == 1) {
-            mostrarFormularioEliminarProducto();
+        switch (selectedIndex) {
+            case 0:
+                mostrarFormularioAgregarProducto();
+                break;
+            case 1:
+                mostrarFormularioEliminarProducto();
+                break;
+            case 2:
+                mostrarFormularioDisponibiidadRestaurante();
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "Por favor, seleccione una opción válida.");
+                break;
+                
         }
     }
     
@@ -214,6 +249,15 @@ public class Menú_proveedores extends JFrame {
     private void mostrarFormularioEliminarProducto(){
         agregarProductoPanel.setVisible(false);
         eliminarProductoPanel.setVisible(true);
+        this.pack();
+        this.setLocationRelativeTo(null);
+    }
+    
+    private void mostrarFormularioDisponibiidadRestaurante(){
+        agregarProductoPanel.setVisible(false);
+        eliminarProductoPanel.setVisible(false);
+        
+        disponibilidadRestaurantePanel.setVisible(true);
         this.pack();
         this.setLocationRelativeTo(null);
     }
