@@ -286,12 +286,12 @@ public class DriverProgramFoodCourt{
         while (seguirEnMenu) {
             System.out.println("\nMenu de Cliente:");
             System.out.println("1. Solicitar pedido inmediato");
-            System.out.println("2. Calendarizar pedido");
+            //System.out.println("2. Calendarizar pedido");
             System.out.println("3. Cancelar pedido");
-            System.out.println("4. Modificar pedido");
-            System.out.println("5. Monitorear estado del pedido");
+            //System.out.println("4. Modificar pedido");
+            //System.out.println("5. Monitorear estado del pedido");
             System.out.println("6. Confirmar entrega del pedido");
-            System.out.println("7. Modificar informacion del perfil");
+            //System.out.println("7. Modificar informacion del perfil");
             System.out.println("8. Salir");
 
             System.out.print("Seleccione una opcion: ");
