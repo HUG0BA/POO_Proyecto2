@@ -19,8 +19,12 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
      */
     public SubMenuUsuario1() {
         initComponents();
-        String[] test = {"Hola", "Soy", "Hugo"};
-        cBoxTCliente.setModel(new javax.swing.DefaultComboBoxModel(test));
+        String[] modelUsuario = {"1. Cliente", "2. Reparatidor", "3. Proveedor"};
+        cBoxTUsuario.setModel(new javax.swing.DefaultComboBoxModel(modelUsuario));
+        labelTipoCliente.setVisible(false);
+        cBoxTCliente.setVisible(false);
+        labelNivelAcceso.setVisible(false);
+        txtNivAcceso.setVisible(false);
     }
     
     public void setRestaurantesDeMenu(String[] restaurantes){
@@ -63,8 +67,10 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
         txt_email = new javax.swing.JTextField();
         cBoxTUsuario = new javax.swing.JComboBox<>();
         lbl7 = new javax.swing.JLabel();
-        lbl8 = new javax.swing.JLabel();
+        labelTipoCliente = new javax.swing.JLabel();
         cBoxTCliente = new javax.swing.JComboBox<>();
+        labelNivelAcceso = new javax.swing.JLabel();
+        txtNivAcceso = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -135,13 +141,22 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
         lbl7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl7.setText("Tipo de usuario");
 
-        lbl8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lbl8.setText("Tipo de cliente");
+        labelTipoCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelTipoCliente.setText("Tipo de cliente");
 
         cBoxTCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Estudiante", "2. Docente", "3. Personal administrativo" }));
         cBoxTCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cBoxTClienteActionPerformed(evt);
+            }
+        });
+
+        labelNivelAcceso.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelNivelAcceso.setText("Nivel de acceso");
+
+        txtNivAcceso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNivAccesoActionPerformed(evt);
             }
         });
 
@@ -166,7 +181,8 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
                                         .addComponent(lbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(lbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lbl8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(labelTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelNivelAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(25, 25, 25)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cBoxTCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -175,7 +191,8 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
                                         .addComponent(txt_nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txt_apellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txt_edad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(txt_email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtNivAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(119, 119, 119)
                         .addComponent(btn_aceptar)
@@ -220,9 +237,13 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
                     .addComponent(cBoxTUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl8)
+                    .addComponent(labelTipoCliente)
                     .addComponent(cBoxTCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNivelAcceso)
+                    .addComponent(txtNivAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_aceptar)
                     .addComponent(btn2))
@@ -287,23 +308,44 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
     }//GEN-LAST:event_cBoxTClienteActionPerformed
 
     private void cBoxTUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxTUsuarioActionPerformed
-        int index = cBoxTCliente.getSelectedIndex();
-        
+        int index = cBoxTUsuario.getSelectedIndex();
+        System.out.println(index);
         switch(index){
             case 0:
                 
+                labelNivelAcceso.setVisible(false);
+                txtNivAcceso.setVisible(false);
+                String[] modelUsurio = {"1. Estudiante", "2. Docente", "3. Personal administrativo"};
+                cBoxTCliente.setModel(new javax.swing.DefaultComboBoxModel(modelUsurio));
+                labelTipoCliente.setText("Tipo de cliente");
+                
+                labelTipoCliente.setVisible(true);
+                cBoxTCliente.setVisible(true);
                 break;
             
             case 1:
-                
+                labelTipoCliente.setVisible(false);
+                cBoxTCliente.setVisible(false);
+                labelNivelAcceso.setVisible(false);
+                txtNivAcceso.setVisible(false);
                 break;
                 
             case 2:
-                
+                labelTipoCliente.setText("Restaurante donde trabaja");
+                cBoxTCliente.setModel(new javax.swing.DefaultComboBoxModel(restaurantes));
+                labelTipoCliente.setVisible(true);
+                cBoxTCliente.setVisible(true);
+                labelNivelAcceso.setVisible(true);
+                txtNivAcceso.setVisible(true);
                 break;
+               
                
         }
     }//GEN-LAST:event_cBoxTUsuarioActionPerformed
+
+    private void txtNivAccesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNivAccesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNivAccesoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,6 +392,8 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
     private javax.swing.JButton btn_aceptar;
     private javax.swing.JComboBox<String> cBoxTCliente;
     private javax.swing.JComboBox<String> cBoxTUsuario;
+    private javax.swing.JLabel labelNivelAcceso;
+    private javax.swing.JLabel labelTipoCliente;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl2;
     private javax.swing.JLabel lbl3;
@@ -357,7 +401,7 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
     private javax.swing.JLabel lbl5;
     private javax.swing.JLabel lbl6;
     private javax.swing.JLabel lbl7;
-    private javax.swing.JLabel lbl8;
+    private javax.swing.JTextField txtNivAcceso;
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_edad;
     private javax.swing.JTextField txt_email;
