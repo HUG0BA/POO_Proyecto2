@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import clases.FoodCourtUVG;
 
 
 /**
@@ -15,8 +16,9 @@ import java.awt.event.ActionListener;
  */
 public class Menú_proveedores extends JFrame {
     
-    private JPanel agregarProductoPanel;
-    private JTextField idProductoField, nombreProductoField, detallesProductoField, costoProductoField;
+    private JPanel agregarProductoPanel, eliminarProductoPanel, disponibilidadRestaurantePanel;
+    private JTextField idProductoField, nombreProductoField, detallesProductoField, costoProductoField, idEliminarProductoField;
+    private JCheckBox disponibleCheckBox, disponibilidadCheckBox;
     /**
      * Creates new form Menú_proveedores
      */
@@ -24,8 +26,12 @@ public class Menú_proveedores extends JFrame {
         initComponents();
         postInitComponents();
         setupAgregarProductoPanel();
+        setupEliminarProductoPanel();
+        setupDisponibilidadRestaurantePanel();
         
         agregarProductoPanel.setBounds(100, 100, 300, 200);
+        eliminarProductoPanel.setBounds(100, 100, 300, 200);
+        disponibilidadRestaurantePanel.setBounds(100, 100, 300, 200);
     }
 
     /**
@@ -77,7 +83,7 @@ public class Menú_proveedores extends JFrame {
                         .addGap(152, 152, 152))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -90,7 +96,7 @@ public class Menú_proveedores extends JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl2)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -121,30 +127,39 @@ public class Menú_proveedores extends JFrame {
     }
     
     private void setupAgregarProductoPanel(){
-        agregarProductoPanel = new JPanel(new GridLayout(5, 2, 10, 10));
+        agregarProductoPanel = new JPanel(new GridLayout(6, 2, 10, 10));
         agregarProductoPanel.setBorder(BorderFactory.createTitledBorder("Agregar Producto: "));
         agregarProductoPanel.setBackground(Color.CYAN);
         
+        
         agregarProductoPanel.add(new JLabel("ID del producto: "));
         idProductoField = new JTextField(10);
+        idProductoField.setFont(new Font("SansSerif", Font.PLAIN, 8));
         agregarProductoPanel.add(idProductoField);
         
         agregarProductoPanel.add(new JLabel("Nombre: "));
         nombreProductoField = new JTextField (10);
+        nombreProductoField.setFont(new Font("SansSerif", Font.PLAIN, 8));
         agregarProductoPanel.add(nombreProductoField);
         
         agregarProductoPanel.add(new JLabel("Detalles: "));
         detallesProductoField = new JTextField(10);
+        detallesProductoField.setFont(new Font("SansSerif", Font.PLAIN, 8));
         agregarProductoPanel.add(detallesProductoField);
         
         agregarProductoPanel.add(new JLabel("Costo: "));
         costoProductoField = new JTextField(10);
+        costoProductoField.setFont(new Font("SansSerif", Font.PLAIN, 8));
         agregarProductoPanel.add(costoProductoField);
+        
+        disponibleCheckBox = new JCheckBox("Disponible");
+        agregarProductoPanel.add(new JLabel("Disponible: "));
+        agregarProductoPanel.add(disponibleCheckBox);
         
         JButton agregarButton = new JButton ("Agregar");
         agregarButton.addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent e) {
-               agregarProducto();
+               agregarProductomp();
            } 
         });
         agregarProductoPanel.add(agregarButton);
@@ -154,18 +169,95 @@ public class Menú_proveedores extends JFrame {
         getContentPane().add(agregarProductoPanel, BorderLayout.CENTER);
         
     }
+    private void setupEliminarProductoPanel(){
+        eliminarProductoPanel = new JPanel();
+        eliminarProductoPanel.setBorder(BorderFactory.createTitledBorder("Eliminar producto: "));
+        eliminarProductoPanel.setBackground(Color.ORANGE);
+        
+        eliminarProductoPanel.add(new JLabel("ID del producto a eliminar: "));
+        idEliminarProductoField = new JTextField(10);
+        eliminarProductoPanel.add(idEliminarProductoField);
+        
+        JButton eliminarButton = new JButton("Eliminar");
+        eliminarButton.addActionListener(new ActionListener(){
+          public void actionPerformed(ActionEvent e) {
+              try {
+                  int idProducto = Integer.parseInt(idEliminarProductoField.getText());
+                  FoodCourtUVG.getInstance().eliminarProducto(idProducto);
+                  JOptionPane.showMessageDialog(Menú_proveedores.this, "Producto eliminado exitosamente.");
+              }catch (NumberFormatException ex){
+                  JOptionPane.showMessageDialog(Menú_proveedores.this, "Por favor, ingrese un valor numérico.");
+              }catch (Exception ex) {
+                  JOptionPane.showMessageDialog(Menú_proveedores.this, "Error al eliminar el producto" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+              }
+          }  
+        });
+        eliminarProductoPanel.add(eliminarButton);
+        eliminarProductoPanel.setVisible(false);
+        getContentPane().add(eliminarProductoPanel, BorderLayout.CENTER);
+    }
     
+    private void setupDisponibilidadRestaurantePanel(){
+        disponibilidadRestaurantePanel = new JPanel();
+        disponibilidadRestaurantePanel.setBorder(BorderFactory.createTitledBorder("Cambiar Disponibilidad del Restaurante: "));
+        disponibilidadRestaurantePanel.setBackground(Color.YELLOW);
+        
+        disponibilidadCheckBox = new JCheckBox("Disponible");
+        disponibilidadRestaurantePanel.add(disponibilidadCheckBox);
+        
+        JButton cambiarDisponibilidadButton = new JButton("Cambiar disponibilidad");
+        cambiarDisponibilidadButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    boolean disponibilidad = disponibilidadCheckBox.isSelected();
+                    FoodCourtUVG.getInstance().cambiarDisponibilidadRest(disponibilidad);
+                    JOptionPane.showMessageDialog(Menú_proveedores.this, "La disponibilidad fue cambiada exitosamente.");
+                }catch (Exception ex) {
+                    JOptionPane.showMessageDialog(Menú_proveedores.this, "Error al cambiar disponibilidad" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        disponibilidadRestaurantePanel.add(cambiarDisponibilidadButton);
+        disponibilidadRestaurantePanel.setVisible(false);
+        getContentPane().add(disponibilidadRestaurantePanel, BorderLayout.CENTER);
+    }
     private void aceptarActionPerformed(ActionEvent evt) {
-        System.out.println("El botón aceptar fue presionado.");
         int selectedIndex = jComboBox1.getSelectedIndex();
-        if (selectedIndex == 0) {
-            System.out.println("Mostrando formulario");
-            mostrarFormularioAgregarProducto();
+        switch (selectedIndex) {
+            case 0:
+                mostrarFormularioAgregarProducto();
+                break;
+            case 1:
+                mostrarFormularioEliminarProducto();
+                break;
+            case 2:
+                mostrarFormularioDisponibiidadRestaurante();
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "Por favor, seleccione una opción válida.");
+                break;
+                
         }
     }
     
     private void mostrarFormularioAgregarProducto(){
         agregarProductoPanel.setVisible(true);
+        this.pack();
+        this.setLocationRelativeTo(null);
+    }
+    
+    private void mostrarFormularioEliminarProducto(){
+        agregarProductoPanel.setVisible(false);
+        eliminarProductoPanel.setVisible(true);
+        this.pack();
+        this.setLocationRelativeTo(null);
+    }
+    
+    private void mostrarFormularioDisponibiidadRestaurante(){
+        agregarProductoPanel.setVisible(false);
+        eliminarProductoPanel.setVisible(false);
+        
+        disponibilidadRestaurantePanel.setVisible(true);
         this.pack();
         this.setLocationRelativeTo(null);
     }
@@ -177,8 +269,23 @@ public class Menú_proveedores extends JFrame {
         
     }//GEN-LAST:event_jComboBox1ActionPerformed
     
-    private void agregarProducto() {
-        
+    private void agregarProductomp() {
+        try {
+            int idProducto = Integer.parseInt(idProductoField.getText());
+            String titulo = nombreProductoField.getText();
+            String detalles = detallesProductoField.getText();
+            double costo = Double.parseDouble(costoProductoField.getText());
+            boolean disponible = disponibleCheckBox.isSelected();
+            
+            FoodCourtUVG.getInstance().agregarProducto(idProducto, titulo, detalles, costo, disponible);
+            
+            JOptionPane.showMessageDialog(this, "Producto agregado exitosamente");
+        }catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, introduce valores válidos.");
+        }catch (Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al agregar el producto: " + e.getMessage());
+        }
     }
     /**
      * @param args the command line arguments

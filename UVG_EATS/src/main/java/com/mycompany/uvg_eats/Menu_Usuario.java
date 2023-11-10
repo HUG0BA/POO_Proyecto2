@@ -19,6 +19,8 @@ public class Menu_Usuario extends javax.swing.JFrame {
     public Menu_Usuario() {
         //food = new FoodCourtUVG();
         initComponents();
+        labelTitulo.setVisible(false);
+        txtPaneInfo.setVisible(false);
     }
 
     public String[] getRestaurantesArray(){
@@ -46,6 +48,9 @@ public class Menu_Usuario extends javax.swing.JFrame {
         btn1 = new javax.swing.JButton();
         btn2 = new javax.swing.JButton();
         comboBoxUsuario = new javax.swing.JComboBox<>();
+        scroll_pane_text = new javax.swing.JScrollPane();
+        txtPaneInfo = new javax.swing.JTextPane();
+        labelTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,42 +81,63 @@ public class Menu_Usuario extends javax.swing.JFrame {
             }
         });
 
+        scroll_pane_text.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll_pane_text.setViewportView(txtPaneInfo);
+
+        labelTitulo.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(btn1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn2)
-                .addGap(115, 115, 115))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
-                        .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addComponent(scroll_pane_text))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btn1)
+                                            .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(47, 47, 47)
+                                                .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(141, 141, 141)
+                                                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(99, 99, 99)
+                                        .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 64, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl2)
                     .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn1)
                     .addComponent(btn2))
-                .addGap(43, 43, 43))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(labelTitulo)
+                .addGap(34, 34, 34)
+                .addComponent(scroll_pane_text, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
 
         pack();
@@ -120,6 +146,8 @@ public class Menu_Usuario extends javax.swing.JFrame {
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         switch (index){
             case 0:
+                labelTitulo.setVisible(false);
+                txtPaneInfo.setVisible(false);
                 SubMenuUsuario1 subClientes1 = new SubMenuUsuario1();
                 //subClientes1.setMenuPadre(this);
                 subClientes1.setVisible(true);
@@ -127,12 +155,40 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 //this.setVisible(false);
                 break;
             case 1:
+                labelTitulo.setVisible(false);
+                txtPaneInfo.setVisible(false);
                 SubMenuInicioSesion menuSesion = new SubMenuInicioSesion();
                 menuSesion.setVisible(true);
                 break;
+            case 2:
+                labelTitulo.setText("Clientes regitrados");
+                txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarClientes());
+                labelTitulo.setVisible(true);
+                txtPaneInfo.setVisible(true);
+                break;
+            case 3:
+                labelTitulo.setText("Repartidores regitrados");
+                txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarRepartidores());
+                labelTitulo.setVisible(true);
+                txtPaneInfo.setVisible(true);
+                break;
+            case 4:
+                labelTitulo.setText("Proveedores regitrados");
+                txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarProveedores());
+                labelTitulo.setVisible(true);
+                txtPaneInfo.setVisible(true);
+                break;
             case 5:
+                labelTitulo.setVisible(false);
+                txtPaneInfo.setVisible(false);
                 SubMenuRestaurante subRestaurante = new SubMenuRestaurante();
                 subRestaurante.setVisible(true);
+                break;
+            case 6:
+                labelTitulo.setText("Restaurantes regitrados");
+                txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarRestaurantes());
+                labelTitulo.setVisible(true);
+                txtPaneInfo.setVisible(true);
                 break;
             default:
                 JOptionPane.showMessageDialog(null,"Ingrese una opción válida", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
@@ -189,7 +245,10 @@ public class Menu_Usuario extends javax.swing.JFrame {
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn2;
     private javax.swing.JComboBox<String> comboBoxUsuario;
+    private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl2;
+    private javax.swing.JScrollPane scroll_pane_text;
+    private javax.swing.JTextPane txtPaneInfo;
     // End of variables declaration//GEN-END:variables
 }
