@@ -4,6 +4,8 @@
  */
 package com.mycompany.uvg_eats;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ferna
@@ -115,6 +117,26 @@ public class SubMenuClientes2 extends javax.swing.JFrame {
 
     private void jBtn2S2MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn2S2MCActionPerformed
         // TODO add your handling code here:
+        String haRecibidoPedido = txt1.getText().trim();
+        String calificacionRepartidor = txt2.getText().trim();
+        
+        if(!haRecibidoPedido.equalsIgnoreCase("Si")&& !haRecibidoPedido.equalsIgnoreCase("No")){
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese 'Si' o  'No' para confirmar si ha recibido su pedido", "Entrada Invalida", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        int calificacion;
+        try{
+            calificacion = Integer.parseInt(calificacionRepartidor);
+            if (calificacion < 1 || calificacion > 5){
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un numero del 1 al 5 para caligicar el repartidor.", "Entrada Invalida", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        JOptionPane.showMessageDialog(this, "Pedido confirado y repartidor calificado con exito", "Proceso Completo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jBtn2S2MCActionPerformed
 
     private void txt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt1ActionPerformed

@@ -267,10 +267,11 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(txt_id.getText().equals("") || txt_nombre.getText().equals("") || txt_apellido.getText().equals("") || txt_email.getText().equals("") || txt_edad.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Todos los campos deben estar llenos para continuar", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
-        }else if(cBoxTUsuario.getSelectedIndex() == 0){
-            if(cBoxTCliente.getSelectedIndex()== -1){
-                JOptionPane.showMessageDialog(null,"Seleccione tipo tipo de cliente", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
-            }
+        }
+        else if(cBoxTUsuario.getSelectedIndex()== -1){
+            JOptionPane.showMessageDialog(null,"Seleccione tipo tipo de cliente", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(cBoxTUsuario.getSelectedIndex() == 0){
             int id = -1;
             int edad = -1;
             try{
@@ -280,13 +281,19 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"El campo Id y Edad deben ser números enteros", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
             }
             
-            try{
-                FoodCourtUVG.getInstance().agregarCliente(id, txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), edad, cBoxTCliente.getSelectedItem().toString());
-                JOptionPane.showMessageDialog(null,"Cliente registrado exitosamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
-                dispose();
-            }catch(Exception e){
-                
+            System.out.println(cBoxTCliente.getSelectedIndex());
+            if(cBoxTCliente.getSelectedIndex() == -1 || cBoxTCliente.getSelectedIndex() == 0){
+                JOptionPane.showMessageDialog(null,"Debe seleccionar un tipo de cliente ha ingresar", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                try{
+                    FoodCourtUVG.getInstance().agregarCliente(id, txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), edad, cBoxTCliente.getSelectedItem().toString());
+                    JOptionPane.showMessageDialog(null,"Cliente registrado exitosamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null,"Ha ocurrido un error tratando de realizar la operación. Error.: " +e.toString(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
+            
         }else if(cBoxTUsuario.getSelectedIndex() == 1){
             int id = -1;
             int edad = -1;
@@ -389,7 +396,7 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
                 
                 labelNivelAcceso.setVisible(false);
                 txtNivAcceso.setVisible(false);
-                String[] modelUsurio = {"Estudiante", "Docente", "Personal administrativo"};
+                String[] modelUsurio = {"Seleccionar" , "Estudiante", "Docente", "Personal administrativo"};
                 cBoxTCliente.setModel(new javax.swing.DefaultComboBoxModel(modelUsurio));
                 labelTipoCliente.setText("Tipo de cliente");
                 
