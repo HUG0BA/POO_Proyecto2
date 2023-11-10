@@ -3,18 +3,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.uvg_eats;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 /**
  *
  * @author Fercho
  */
-public class Menú_proveedores extends javax.swing.JFrame {
-
+public class Menú_proveedores extends JFrame {
+    
+    private JPanel agregarProductoPanel;
+    private JTextField idProductoField, nombreProductoField, detallesProductoField, costoProductoField;
     /**
      * Creates new form Menú_proveedores
      */
     public Menú_proveedores() {
         initComponents();
+        postInitComponents();
+        setupAgregarProductoPanel();
+        
+        agregarProductoPanel.setBounds(100, 100, 300, 200);
     }
 
     /**
@@ -57,45 +68,118 @@ public class Menú_proveedores extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(83, 83, 83)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(lbl2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
                         .addComponent(btn1)
-                        .addGap(54, 54, 54)
-                        .addComponent(btn2)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn2)
+                        .addGap(152, 152, 152))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl2)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(120, 120, 120)
+                .addGap(127, 127, 127)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn1)
                     .addComponent(btn2))
-                .addGap(101, 101, 101))
+                .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void postInitComponents(){
+        setupAgregarProductoPanel();
+        
+        btn1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent evt) {
+                aceptarActionPerformed(evt);
+            }
+        });
+        
+        btn2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+    }
+    
+    private void setupAgregarProductoPanel(){
+        agregarProductoPanel = new JPanel(new GridLayout(5, 2, 10, 10));
+        agregarProductoPanel.setBorder(BorderFactory.createTitledBorder("Agregar Producto: "));
+        agregarProductoPanel.setBackground(Color.CYAN);
+        
+        agregarProductoPanel.add(new JLabel("ID del producto: "));
+        idProductoField = new JTextField(10);
+        agregarProductoPanel.add(idProductoField);
+        
+        agregarProductoPanel.add(new JLabel("Nombre: "));
+        nombreProductoField = new JTextField (10);
+        agregarProductoPanel.add(nombreProductoField);
+        
+        agregarProductoPanel.add(new JLabel("Detalles: "));
+        detallesProductoField = new JTextField(10);
+        agregarProductoPanel.add(detallesProductoField);
+        
+        agregarProductoPanel.add(new JLabel("Costo: "));
+        costoProductoField = new JTextField(10);
+        agregarProductoPanel.add(costoProductoField);
+        
+        JButton agregarButton = new JButton ("Agregar");
+        agregarButton.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent e) {
+               agregarProducto();
+           } 
+        });
+        agregarProductoPanel.add(agregarButton);
+        
+        agregarProductoPanel.setVisible(false);
+        
+        getContentPane().add(agregarProductoPanel, BorderLayout.CENTER);
+        
+    }
+    
+    private void aceptarActionPerformed(ActionEvent evt) {
+        System.out.println("El botón aceptar fue presionado.");
+        int selectedIndex = jComboBox1.getSelectedIndex();
+        if (selectedIndex == 0) {
+            System.out.println("Mostrando formulario");
+            mostrarFormularioAgregarProducto();
+        }
+    }
+    
+    private void mostrarFormularioAgregarProducto(){
+        agregarProductoPanel.setVisible(true);
+        this.pack();
+        this.setLocationRelativeTo(null);
+    }
+    
+    private void salirActionPerformed(ActionEvent evt) {
+        System.exit(0);
+    }
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
+    
+    private void agregarProducto() {
+        
+    }
     /**
      * @param args the command line arguments
      */
