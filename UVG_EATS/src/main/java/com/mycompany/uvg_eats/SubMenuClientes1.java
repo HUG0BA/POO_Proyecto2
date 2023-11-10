@@ -37,14 +37,14 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
         jLlbl1S1MC.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLlbl1S1MC.setText("Pedido Inmediato");
 
-        jComboBox1S1MC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Elegir Menu", "2. Elegir metodo de pago", "3. Confirmar orden", "4. Volver al menu principal" }));
+        jComboBox1S1MC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sellecione", " " }));
         jComboBox1S1MC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1S1MCActionPerformed(evt);
             }
         });
 
-        jLlbl2S1MC.setText("Ingrese la opcion que desea ejecutar");
+        jLlbl2S1MC.setText("Eliga el menu que desea ordenar");
 
         jBtn1S1MC.setText("Aceptar");
         jBtn1S1MC.addActionListener(new java.awt.event.ActionListener() {
@@ -65,35 +65,36 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(255, 255, 255)
-                .addComponent(jLlbl1S1MC)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(105, 105, 105)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBtn1S1MC)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBtn2S1MC))
-                    .addComponent(jLlbl2S1MC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
-                .addComponent(jComboBox1S1MC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(282, 282, 282))
+                .addComponent(jBtn1S1MC)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
+                .addComponent(jBtn2S1MC)
+                .addContainerGap(201, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLlbl2S1MC, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBox1S1MC, 0, 0, Short.MAX_VALUE)
+                .addGap(210, 210, 210))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLlbl1S1MC)
+                .addGap(229, 229, 229))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(21, 21, 21)
                 .addComponent(jLlbl1S1MC)
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(68, 68, 68)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLlbl2S1MC)
                     .addComponent(jComboBox1S1MC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(80, 80, 80)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtn1S1MC)
                     .addComponent(jBtn2S1MC))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         pack();
