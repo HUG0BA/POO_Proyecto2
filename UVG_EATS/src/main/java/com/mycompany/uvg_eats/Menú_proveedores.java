@@ -206,6 +206,9 @@ public class Menú_proveedores extends JFrame {
             java.util.logging.Logger.getLogger(Menú_proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

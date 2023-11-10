@@ -126,6 +126,10 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 subClientes1.setRestaurantesDeMenu(getRestaurantesArray());
                 //this.setVisible(false);
                 break;
+            case 1:
+                SubMenuInicioSesion menuSesion = new SubMenuInicioSesion();
+                menuSesion.setVisible(true);
+                break;
             case 5:
                 SubMenuRestaurante subRestaurante = new SubMenuRestaurante();
                 subRestaurante.setVisible(true);

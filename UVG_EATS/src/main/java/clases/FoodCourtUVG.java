@@ -54,6 +54,7 @@ public class FoodCourtUVG{
     
     public static synchronized FoodCourtUVG getInstance(){
         if(single_instance == null){
+            System.out.println("NUEVO");
             single_instance = new FoodCourtUVG();
         }
         return single_instance;
