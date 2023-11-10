@@ -12,21 +12,23 @@ import javax.swing.JFrame;
  * @author javie
  */
 public class SubMenuUsuario1 extends javax.swing.JFrame {
+    String[] restaurantes;
     //Menu_Usuario menuPadre;
     /**
      * Creates new form Menu_Usuario
      */
     public SubMenuUsuario1() {
-        /*this.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                menuPadre.setVisible(true);
-                //JOptionPane.showMessageDialog(null,"Test?", "Close window?", JOptionPane.INFORMATION_MESSAGE);
-                
-            }
-        });*/
-        //this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         initComponents();
+        String[] test = {"Hola", "Soy", "Hugo"};
+        cBoxTCliente.setModel(new javax.swing.DefaultComboBoxModel(test));
+    }
+    
+    public void setRestaurantesDeMenu(String[] restaurantes){
+        if(this.restaurantes != null){
+            this.restaurantes = null;
+        }
+        
+        this.restaurantes = restaurantes;
     }
     
     /*public void setMenuPadre(Menu_Usuario menuPadre){
@@ -59,6 +61,10 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
         txt_apellido = new javax.swing.JTextField();
         txt_edad = new javax.swing.JTextField();
         txt_email = new javax.swing.JTextField();
+        cBoxTUsuario = new javax.swing.JComboBox<>();
+        lbl7 = new javax.swing.JLabel();
+        lbl8 = new javax.swing.JLabel();
+        cBoxTCliente = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -119,6 +125,26 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
             }
         });
 
+        cBoxTUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Cliente", "2. Repartidor", "3. Proveedor" }));
+        cBoxTUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cBoxTUsuarioActionPerformed(evt);
+            }
+        });
+
+        lbl7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl7.setText("Tipo de usuario");
+
+        lbl8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl8.setText("Tipo de cliente");
+
+        cBoxTCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Estudiante", "2. Docente", "3. Personal administrativo" }));
+        cBoxTCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cBoxTClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,26 +152,35 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(61, 61, 61)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl7, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(57, 57, 57)
+                                .addComponent(cBoxTUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lbl6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lbl8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cBoxTCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txt_id, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_apellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_edad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
                         .addComponent(btn_aceptar)
-                        .addGap(55, 55, 55)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txt_id, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_apellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_edad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btn2))
+                        .addGap(84, 84, 84)
+                        .addComponent(btn2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
@@ -155,9 +190,9 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl2)
@@ -180,10 +215,18 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl7)
+                    .addComponent(cBoxTUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl8)
+                    .addComponent(cBoxTCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn2)
-                    .addComponent(btn_aceptar))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(btn_aceptar)
+                    .addComponent(btn2))
+                .addGap(87, 87, 87))
         );
 
         pack();
@@ -200,7 +243,8 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
                 id = Integer.parseInt(txt_id.getText());
                 edad = Integer.parseInt(txt_edad.getText());
 
-                SubMenuUsuario2 subUsuario2 = new SubMenuUsuario2(id, txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), edad);
+                SubMenuUsuario2 subUsuario2 = new SubMenuUsuario2();
+                subUsuario2.pasarValores(id, txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), edad);
                 subUsuario2.setVisible(true);
                 dispose();
             }catch(Exception e){
@@ -229,6 +273,37 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
     private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_emailActionPerformed
+
+    private void cBoxTClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxTClienteActionPerformed
+        int index = cBoxTCliente.getSelectedIndex();
+        
+        switch(index){
+            case 0:
+                
+                break;
+                
+               
+        }
+    }//GEN-LAST:event_cBoxTClienteActionPerformed
+
+    private void cBoxTUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxTUsuarioActionPerformed
+        int index = cBoxTCliente.getSelectedIndex();
+        
+        switch(index){
+            case 0:
+                
+                break;
+            
+            case 1:
+                
+                break;
+                
+            case 2:
+                
+                break;
+               
+        }
+    }//GEN-LAST:event_cBoxTUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,12 +348,16 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn2;
     private javax.swing.JButton btn_aceptar;
+    private javax.swing.JComboBox<String> cBoxTCliente;
+    private javax.swing.JComboBox<String> cBoxTUsuario;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl2;
     private javax.swing.JLabel lbl3;
     private javax.swing.JLabel lbl4;
     private javax.swing.JLabel lbl5;
     private javax.swing.JLabel lbl6;
+    private javax.swing.JLabel lbl7;
+    private javax.swing.JLabel lbl8;
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_edad;
     private javax.swing.JTextField txt_email;

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class UVG_EATS {
     static Scanner scanner = new Scanner(System.in);
-    static FoodCourtUVG food = new FoodCourtUVG();
+    
     
     public static void main(String[] args) {
         

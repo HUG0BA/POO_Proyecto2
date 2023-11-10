@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.uvg_eats;
+import clases.*;
 import javax.swing.JOptionPane;
 /**
  *
@@ -10,14 +11,22 @@ import javax.swing.JOptionPane;
  */
 public class Menu_Usuario extends javax.swing.JFrame {
 
+    FoodCourtUVG food;
     int index = -1;
     /**
      * Creates new form Menu_Usuario
      */
     public Menu_Usuario() {
+        food = new FoodCourtUVG();
         initComponents();
     }
 
+    public String[] getRestaurantesArray(){
+        String[] vacio = {"Aún no se han ingresado restaurantes"};
+        if(!food.existeRestaurantes()) return vacio;
+        return food.mostrarRestaurantes().split("|");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,6 +113,7 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 SubMenuUsuario1 subClientes1 = new SubMenuUsuario1();
                 //subClientes1.setMenuPadre(this);
                 subClientes1.setVisible(true);
+                subClientes1.setRestaurantesDeMenu(getRestaurantes());
                 //this.setVisible(false);
                 break;
             default:
