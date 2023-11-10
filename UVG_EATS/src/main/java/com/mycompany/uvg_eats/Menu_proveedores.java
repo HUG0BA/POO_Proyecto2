@@ -13,14 +13,14 @@ import java.awt.event.ActionListener;
  *
  * @author Fercho
  */
-public class Menú_proveedores extends JFrame {
+public class Menu_proveedores extends JFrame {
     
     private JPanel agregarProductoPanel;
     private JTextField idProductoField, nombreProductoField, detallesProductoField, costoProductoField;
     /**
      * Creates new form Menú_proveedores
      */
-    public Menú_proveedores() {
+    public Menu_proveedores() {
         initComponents();
         postInitComponents();
         setupAgregarProductoPanel();
@@ -197,20 +197,21 @@ public class Menú_proveedores extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menú_proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu_proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menú_proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu_proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menú_proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu_proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menú_proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu_proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menú_proveedores().setVisible(true);
+                new Menu_proveedores().setVisible(true);
             }
         });
     }

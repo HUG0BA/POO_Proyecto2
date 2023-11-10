@@ -202,32 +202,31 @@ public class SubMenuRestaurante extends javax.swing.JFrame {
         }else if(cBoxDisp.getSelectedIndex() == -1 || cBoxDisp.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null,"Aún no ha seleccionado la disponibilidad", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            
+            int idRest = -1;
+            try{
+                idRest = Integer.parseInt(txt_id.getText());
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null,"El campo id debe ser un número entero", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            boolean disp = false;
+
+            if(cBoxDisp.getSelectedIndex() == 1){
+                disp = true;
+            }else if(cBoxDisp.getSelectedIndex() == 2){
+                disp = false;
+            }
+
+            try{
+                FoodCourtUVG.getInstance().agregarRest(idRest, txt_nombre.getText(), txt_descripcion.getText(), txt_horario.getText(), disp);
+                JOptionPane.showMessageDialog(null,"Restaurante agregado exitosamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            } 
         }
         
-        int idRest = -1;
         
-        try{
-            idRest = Integer.parseInt(txt_id.getText());
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"El campo id debe ser un número entero", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        boolean disp = false;
-        
-        if(cBoxDisp.getSelectedIndex() == 1){
-            disp = true;
-        }else if(cBoxDisp.getSelectedIndex() == 2){
-            disp = false;
-        }
-        
-        try{
-            FoodCourtUVG.getInstance().agregarRest(idRest, txt_nombre.getText(), txt_descripcion.getText(), txt_horario.getText(), disp);
-            JOptionPane.showMessageDialog(null,"Restaurante agregado exitosamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
-            dispose();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
-        }
         
     }//GEN-LAST:event_btn_aceptarActionPerformed
 
