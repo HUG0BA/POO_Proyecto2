@@ -411,7 +411,7 @@ public class FoodCourtUVG{
         
         if(!restaurantes.isEmpty()){
             for (Restaurante rest : restaurantes){
-                text = text + ". " + rest.toString() + "\n";
+                text = text + ". " + rest.toString()+ "|" ;
             }
         }
         else {

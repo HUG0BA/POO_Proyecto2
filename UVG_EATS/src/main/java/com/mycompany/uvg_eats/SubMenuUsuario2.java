@@ -10,10 +10,32 @@ package com.mycompany.uvg_eats;
  */
 public class SubMenuUsuario2 extends javax.swing.JFrame {
 
+    int id = -1;
+    String nombre = "";
+    String apellido = "";
+    String email = "";
+    int edad = -1;
     /**
      * Creates new form Menu_Usuario
      */
-    public SubMenuUsuario2() {
+    /*public SubMenuUsuario2(int id, String nombre, String apellido, String email, int edad) {
+        initComponents();
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.edad = edad;
+    }*/
+    
+    public void pasarValores(int id, String nombre, String apellido, String email, int edad){
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.edad = edad;
+    }
+    
+    public SubMenuUsuario2(){
         initComponents();
     }
 
@@ -32,7 +54,7 @@ public class SubMenuUsuario2 extends javax.swing.JFrame {
         btn2 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl1.setText("Indique qué tipo de usuario  es.");
