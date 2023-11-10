@@ -36,7 +36,7 @@ public class Menu_clientes extends javax.swing.JFrame {
         jLbl1MC.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLbl1MC.setText("Bienvenido al Menu Clientes");
 
-        cBoxOpcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "1. Solicitar pedido inmediato", "2. Cancelar pedido", "3. Confirmar entrega del pedido", " " }));
+        cBoxOpcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "1. Solicitar pedido inmediato", "2. Cancelar pedido", "3. Confirmar entrega del pedido" }));
 
         jLbl2MC.setText("Eliga la opcion que desea ejecutar");
 
@@ -105,7 +105,9 @@ public class Menu_clientes extends javax.swing.JFrame {
                 // Codigo para cancelar el pedido
                 break;
             case 3: //Confirmar entrega del pedido
-                // Codigo para confirmar entrega
+                SubMenuClientes2 subMenu2 = new SubMenuClientes2();
+                subMenu2.setVisible(true);
+                this.setVisible(false);
                 break;
             default:
                 JOptionPane.showMessageDialog(this, "Opcion no reconocida.", "Error", JOptionPane.ERROR_MESSAGE);
