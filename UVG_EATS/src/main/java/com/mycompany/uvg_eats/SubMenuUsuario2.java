@@ -10,10 +10,24 @@ package com.mycompany.uvg_eats;
  */
 public class SubMenuUsuario2 extends javax.swing.JFrame {
 
+    int id = -1;
+    String nombre = "";
+    String apellido = "";
+    String email = "";
+    int edad = -1;
     /**
      * Creates new form Menu_Usuario
      */
-    public SubMenuUsuario2() {
+    public SubMenuUsuario2(int id, String nombre, String apellido, String email, int edad) {
+        initComponents();
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.edad = edad;
+    }
+    
+    public SubMenuUsuario2(){
         initComponents();
     }
 

@@ -4,13 +4,16 @@
 
 package com.mycompany.uvg_eats;
 import clases.*;
-
+import java.util.Scanner;
+import java.util.ArrayList;
 /**
  *
  * @author Fercho
  */
 public class UVG_EATS {
-
+    static Scanner scanner = new Scanner(System.in);
+    static FoodCourtUVG food = new FoodCourtUVG();
+    
     public static void main(String[] args) {
         
         
