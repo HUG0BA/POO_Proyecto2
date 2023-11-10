@@ -300,17 +300,19 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
             try{
                 id = Integer.parseInt(txt_id.getText());
                 edad = Integer.parseInt(txt_edad.getText());
+                
+                try{
+                    FoodCourtUVG.getInstance().agregarRepartidor(id, txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), edad);
+                    JOptionPane.showMessageDialog(null,"Repartidor registrado correctamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null,"Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                }
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null,"El campo Id y Edad deben ser números enteros", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
             }
             
-            try{
-                FoodCourtUVG.getInstance().agregarRepartidor(id, txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), edad);
-                JOptionPane.showMessageDialog(null,"Repartidor registrado correctamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
-                dispose();
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(null,"Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
-            }
+            
             
         }else if(cBoxTUsuario.getSelectedIndex() == 2){
            if(cBoxTCliente.getSelectedIndex()== -1){
