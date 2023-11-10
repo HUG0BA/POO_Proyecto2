@@ -189,7 +189,7 @@ public class SubMenuInicioSesion extends javax.swing.JFrame {
                                 JOptionPane.showMessageDialog(null,"Ha ocurrido un error tratando de seleccionar el restaurante del proveedor", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
                             }else{
                                 FoodCourtUVG.getInstance().iniciarRest(FoodCourtUVG.getInstance().getIdRestProveedor());
-                                Menu_proveedores menu_proveedor = new Menu_proveedores();
+                                Menú_proveedores menu_proveedor = new Menú_proveedores();
                                 menu_proveedor.setVisible(true);
                                 dispose();
                             }
