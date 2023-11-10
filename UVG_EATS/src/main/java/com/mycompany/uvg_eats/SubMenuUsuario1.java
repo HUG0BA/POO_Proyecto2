@@ -4,6 +4,7 @@
  */
 package com.mycompany.uvg_eats;
 
+import clases.FoodCourtUVG;
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 
@@ -33,6 +34,11 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
         }
         
         this.restaurantes = restaurantes;
+        
+        String[] array = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
+        for(String cosa : restaurantes){
+            System.out.println(cosa);
+        }
     }
     
     /*public void setMenuPadre(Menu_Usuario menuPadre){
@@ -88,6 +94,11 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
         });
 
         btn2.setText("Salir");
+        btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2ActionPerformed(evt);
+            }
+        });
 
         txt_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,15 +195,14 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
                                     .addComponent(labelTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(labelNivelAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(25, 25, 25)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cBoxTCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txt_id, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_apellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_edad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtNivAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_id, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                    .addComponent(txt_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                    .addComponent(txt_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                    .addComponent(txt_edad, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                    .addComponent(txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                    .addComponent(txtNivAcceso, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                    .addComponent(cBoxTCliente, 0, 0, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(119, 119, 119)
                         .addComponent(btn_aceptar)
@@ -257,20 +267,84 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(txt_id.getText().equals("") || txt_nombre.getText().equals("") || txt_apellido.getText().equals("") || txt_email.getText().equals("") || txt_edad.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Todos los campos deben estar llenos para continuar", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
-        }else{
+        }else if(cBoxTUsuario.getSelectedIndex() == 0){
+            if(cBoxTCliente.getSelectedIndex()== -1){
+                JOptionPane.showMessageDialog(null,"Seleccione tipo tipo de cliente", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+            }
             int id = -1;
             int edad = -1;
             try{
                 id = Integer.parseInt(txt_id.getText());
                 edad = Integer.parseInt(txt_edad.getText());
-
-                SubMenuUsuario2 subUsuario2 = new SubMenuUsuario2();
-                subUsuario2.pasarValores(id, txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), edad);
-                subUsuario2.setVisible(true);
-                dispose();
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null,"El campo Id y Edad deben ser números enteros", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
             }
+            
+            try{
+                FoodCourtUVG.getInstance().agregarCliente(id, txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), edad, cBoxTCliente.getSelectedItem().toString());
+                JOptionPane.showMessageDialog(null,"Cliente registrado exitosamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+            }catch(Exception e){
+                
+            }
+        }else if(cBoxTUsuario.getSelectedIndex() == 1){
+            int id = -1;
+            int edad = -1;
+            try{
+                id = Integer.parseInt(txt_id.getText());
+                edad = Integer.parseInt(txt_edad.getText());
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null,"El campo Id y Edad deben ser números enteros", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+            try{
+                FoodCourtUVG.getInstance().agregarRepartidor(id, txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), edad);
+                JOptionPane.showMessageDialog(null,"Repartidor registrado correctamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+        }else if(cBoxTUsuario.getSelectedIndex() == 2){
+           if(cBoxTCliente.getSelectedIndex()== -1){
+                JOptionPane.showMessageDialog(null,"Seleccione un restaurante", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+            }
+           else if(cBoxTCliente.getSelectedItem().toString().equals("Aún no se han ingresado restaurantes")){
+               
+               JOptionPane.showMessageDialog(null,"Aún no existe ningún restaurante, primero debe crear uno.", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+           }else{
+               if(txtNivAcceso.getText().equals("")){
+               JOptionPane.showMessageDialog(null,"Todos los campos deben estar llenos para continuar", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+           }else{
+                    int id = -1;
+                    int edad = -1;
+                    int nivAccess = -1;
+                    try{
+                        id = Integer.parseInt(txt_id.getText());
+                        edad = Integer.parseInt(txt_edad.getText());
+                        nivAccess = Integer.parseInt(txtNivAcceso.getText());
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(null,"El campo Id y Edad deben ser números enteros", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                    }
+
+                    try{
+                        String rest = FoodCourtUVG.getInstance().nombreRestaurante(cBoxTCliente.getSelectedIndex());
+                        if(rest == null){
+                            JOptionPane.showMessageDialog(null,"No se ha encontrado el restaurante ingresado", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                        }else{
+                           FoodCourtUVG.getInstance().agregarProveedor(id, txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), edad, rest, cBoxTCliente.getSelectedIndex(), nivAccess);
+                           JOptionPane.showMessageDialog(null,"Proveedor agregado exitosamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
+                           dispose();
+                        }
+
+                    }catch(Exception e){
+                        JOptionPane.showMessageDialog(null,"Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                    }
+               }
+           }
+           
+           
+            
         }
         
     }//GEN-LAST:event_btn_aceptarActionPerformed
@@ -315,7 +389,7 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
                 
                 labelNivelAcceso.setVisible(false);
                 txtNivAcceso.setVisible(false);
-                String[] modelUsurio = {"1. Estudiante", "2. Docente", "3. Personal administrativo"};
+                String[] modelUsurio = {"Estudiante", "Docente", "Personal administrativo"};
                 cBoxTCliente.setModel(new javax.swing.DefaultComboBoxModel(modelUsurio));
                 labelTipoCliente.setText("Tipo de cliente");
                 
@@ -346,6 +420,10 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
     private void txtNivAccesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNivAccesoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNivAccesoActionPerformed
+
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_btn2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -11,20 +11,25 @@ import javax.swing.JOptionPane;
  */
 public class Menu_Usuario extends javax.swing.JFrame {
 
-    FoodCourtUVG food;
+    //FoodCourtUVG food;
     int index = -1;
     /**
      * Creates new form Menu_Usuario
      */
     public Menu_Usuario() {
-        food = new FoodCourtUVG();
+        //food = new FoodCourtUVG();
         initComponents();
     }
 
     public String[] getRestaurantesArray(){
         String[] vacio = {"Aún no se han ingresado restaurantes"};
-        if(!food.existeRestaurantes()) return vacio;
-        return food.mostrarRestaurantes().split("|");
+        if(!FoodCourtUVG.getInstance().existeRestaurantes()) return vacio;
+        /*String[] array = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
+        for(String cosa : array){
+            System.out.println(cosa);
+        }*/
+        String[] restaurantes = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
+        return restaurantes;
     }
     
     /**
@@ -45,7 +50,7 @@ public class Menu_Usuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl1.setText("¡Bienvenido al menú de usuario!");
+        lbl1.setText("¡Bienvenido al menú de FoodCourtUVG!");
 
         lbl2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl2.setText("Elige la acción deseada:");
@@ -58,6 +63,11 @@ public class Menu_Usuario extends javax.swing.JFrame {
         });
 
         btn2.setText("Salir");
+        btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2ActionPerformed(evt);
+            }
+        });
 
         comboBoxUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agregar Usuario (Cliente, Proveedor, Repartidor)", "Iniciar Sesión (Cliente, Proveedor, Repartidor)", "Mostrar Clientes", "Mostrar Repartidores", "Mostrar proveedores", "Agregar Restaurante", "Mostrar Restaurante" }));
         comboBoxUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -71,22 +81,22 @@ public class Menu_Usuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
-                        .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addComponent(btn1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn2)
                 .addGap(115, 115, 115))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)
+                        .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,6 +126,10 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 subClientes1.setRestaurantesDeMenu(getRestaurantesArray());
                 //this.setVisible(false);
                 break;
+            case 5:
+                SubMenuRestaurante subRestaurante = new SubMenuRestaurante();
+                subRestaurante.setVisible(true);
+                break;
             default:
                 JOptionPane.showMessageDialog(null,"Ingrese una opción válida", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
                 break;
@@ -127,6 +141,10 @@ public class Menu_Usuario extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_comboBoxUsuarioActionPerformed
+
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btn2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -33,8 +33,10 @@ public class FoodCourtUVG{
     private Restaurante restauranteA;
     private int indexR;
     private PedidoManager pedidoManager;
+    
+    private static FoodCourtUVG single_instance = null;
 
-    public FoodCourtUVG(){
+    private FoodCourtUVG(){
         usuarios = new ArrayList<Usuario>();
         restaurantes = new ArrayList<Restaurante>();
         pedidoManager = new PedidoManager();
@@ -48,6 +50,13 @@ public class FoodCourtUVG{
         indexRA = -1;
         indexRestA = -1;
         */
+    }
+    
+    public static synchronized FoodCourtUVG getInstance(){
+        if(single_instance == null){
+            single_instance = new FoodCourtUVG();
+        }
+        return single_instance;
     }
 
     public void setUsuarioA(Usuario usuario){
@@ -422,6 +431,20 @@ public class FoodCourtUVG{
         if(!restaurantes.isEmpty()){
             for (Restaurante rest : restaurantes){
                 text = text + ". " + rest.toString()+ "|" ;;
+            }
+        }
+        else {
+            text = "Aún no se han registrado restaurantes";
+        }
+
+        return text;
+    }
+    
+    public String mostrarRestaurantesParaMenu(){
+        String text = "";
+        if(!restaurantes.isEmpty()){
+            for (Restaurante rest : restaurantes){
+                text = text + "Nombre: " + rest.getNombre()+ ";" ;
             }
         }
         else {

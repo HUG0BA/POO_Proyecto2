@@ -421,6 +421,20 @@ public class FoodCourtUVG{
         return text;
     }
 
+    public String mostrarRestaurantesParaMenu(){
+        String text = "";
+        if(!restaurantes.isEmpty()){
+            for (Restaurante rest : restaurantes){
+                text = text + "Nombre" + rest.getNombre()+ "|" ;
+            }
+        }
+        else {
+            text = "Aún no se han registrado restaurantes";
+        }
+
+        return text;
+    }
+
     public boolean existeRestaurantes(){
         return !restaurantes.isEmpty();
     }
