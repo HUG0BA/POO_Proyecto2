@@ -16,8 +16,8 @@ import clases.FoodCourtUVG;
  */
 public class Menú_proveedores extends JFrame {
     
-    private JPanel agregarProductoPanel;
-    private JTextField idProductoField, nombreProductoField, detallesProductoField, costoProductoField;
+    private JPanel agregarProductoPanel, eliminarProductoPanel;
+    private JTextField idProductoField, nombreProductoField, detallesProductoField, costoProductoField, idEliminarProductoField;
     private JCheckBox disponibleCheckBox;
     /**
      * Creates new form Menú_proveedores
@@ -26,8 +26,10 @@ public class Menú_proveedores extends JFrame {
         initComponents();
         postInitComponents();
         setupAgregarProductoPanel();
+        setupEliminarProductoPanel();
         
         agregarProductoPanel.setBounds(100, 100, 300, 200);
+        eliminarProductoPanel.setBounds(100, 100, 300, 200);
     }
 
     /**
@@ -165,18 +167,53 @@ public class Menú_proveedores extends JFrame {
         getContentPane().add(agregarProductoPanel, BorderLayout.CENTER);
         
     }
-    
+    private void setupEliminarProductoPanel(){
+        eliminarProductoPanel = new JPanel();
+        eliminarProductoPanel.setBorder(BorderFactory.createTitledBorder("Eliminar producto: "));
+        eliminarProductoPanel.setBackground(Color.ORANGE);
+        
+        eliminarProductoPanel.add(new JLabel("ID del producto a eliminar: "));
+        idEliminarProductoField = new JTextField(10);
+        eliminarProductoPanel.add(idEliminarProductoField);
+        
+        JButton eliminarButton = new JButton("Eliminar");
+        eliminarButton.addActionListener(new ActionListener(){
+          public void actionPerformed(ActionEvent e) {
+              try {
+                  int idProducto = Integer.parseInt(idEliminarProductoField.getText());
+                  FoodCourtUVG.getInstance().eliminarProducto(idProducto);
+                  JOptionPane.showMessageDialog(Menú_proveedores.this, "Producto eliminado exitosamente.");
+              }catch (NumberFormatException ex){
+                  JOptionPane.showMessageDialog(Menú_proveedores.this, "Por favor, ingrese un valor numérico.");
+              }catch (Exception ex) {
+                  JOptionPane.showMessageDialog(Menú_proveedores.this, "Error al eliminar el producto" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+              }
+          }  
+        });
+        eliminarProductoPanel.add(eliminarButton);
+        eliminarProductoPanel.setVisible(false);
+        getContentPane().add(eliminarProductoPanel, BorderLayout.CENTER);
+    }
     private void aceptarActionPerformed(ActionEvent evt) {
         System.out.println("El botón aceptar fue presionado.");
         int selectedIndex = jComboBox1.getSelectedIndex();
         if (selectedIndex == 0) {
             System.out.println("Mostrando formulario");
             mostrarFormularioAgregarProducto();
+        }else if (selectedIndex == 1) {
+            mostrarFormularioEliminarProducto();
         }
     }
     
     private void mostrarFormularioAgregarProducto(){
         agregarProductoPanel.setVisible(true);
+        this.pack();
+        this.setLocationRelativeTo(null);
+    }
+    
+    private void mostrarFormularioEliminarProducto(){
+        agregarProductoPanel.setVisible(false);
+        eliminarProductoPanel.setVisible(true);
         this.pack();
         this.setLocationRelativeTo(null);
     }
