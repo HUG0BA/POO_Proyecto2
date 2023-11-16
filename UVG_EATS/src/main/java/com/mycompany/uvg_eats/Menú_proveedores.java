@@ -49,13 +49,18 @@ public class Menú_proveedores extends JFrame {
         lbl2 = new javax.swing.JLabel();
         btn2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(51, 255, 255));
 
         lbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl1.setText("¡Bienvenido al menú de proveedores!");
 
         btn1.setText("Aceptar");
+        btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn1ActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Agregar producto", "2. Eliminar producto", "3. Modificar disponibilidad del restaurante" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -268,6 +273,10 @@ public class Menú_proveedores extends JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn1ActionPerformed
     
     private void agregarProductomp() {
         try {

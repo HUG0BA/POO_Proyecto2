@@ -37,6 +37,11 @@ public class Menu_clientes extends javax.swing.JFrame {
         jLbl1MC.setText("Bienvenido al Menu Clientes");
 
         cBoxOpcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "1. Solicitar pedido inmediato", "2. Cancelar pedido", "3. Confirmar entrega del pedido" }));
+        cBoxOpcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cBoxOpcionActionPerformed(evt);
+            }
+        });
 
         jLbl2MC.setText("Eliga la opcion que desea ejecutar");
 
@@ -114,6 +119,10 @@ public class Menu_clientes extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void cBoxOpcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBoxOpcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cBoxOpcionActionPerformed
 
     /**
      * @param args the command line arguments

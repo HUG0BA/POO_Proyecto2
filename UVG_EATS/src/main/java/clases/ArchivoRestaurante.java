@@ -26,7 +26,8 @@ public class ArchivoRestaurante{
         archivoRestaurante = new File(nombreArchivoRestaurante);
     }
 
-    public void escribirArchivo(ArrayList<Restaurante> restaurantes) throws Exception{
+    public boolean escribirArchivo(ArrayList<Restaurante> restaurantes) throws Exception{
+        boolean exito = false;
         PrintWriter escritor = new PrintWriter(archivoRestaurante, "UTF-8");
         String linea = "";
         if(archivoRestaurante.length() > 0){
@@ -45,9 +46,11 @@ public class ArchivoRestaurante{
                 textProductos = textProductos + producto.getIdProducto() + ";" + producto.getTitulo() + ";" + producto.getDetalles() + ";" + producto.getCosto() + ";" + producto.getDisponible() + "|";
             }
             linea = linea + "," + textProductos;
-            escritor.println(linea);    
+            escritor.println(linea);
+            exito = true;
         }
         escritor.close();
+        return exito;
 
     }
 

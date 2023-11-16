@@ -25,13 +25,48 @@ public class Menu_Usuario extends javax.swing.JFrame {
 
     public String[] getRestaurantesArray(){
         String[] vacio = {"Aún no se han ingresado restaurantes"};
-        if(!FoodCourtUVG.getInstance().existeRestaurantes()) return vacio;
+        try{
+            if(!FoodCourtUVG.getInstance().existeRestaurantes()) return vacio;
+        }catch(Exception e){
+            
+        }
+        
         /*String[] array = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
         for(String cosa : array){
             System.out.println(cosa);
         }*/
-        String[] restaurantes = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
-        return restaurantes;
+        String[] restaurantes;
+        try{
+            restaurantes = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
+            return restaurantes;
+        }catch(Exception e){
+            
+        }
+        
+        return null;
+    }
+    
+    public String[] getRestaurantesIndex(){
+        String[] vacio = {"Aún no se han ingresado restaurantes"};
+        try{
+            if(!FoodCourtUVG.getInstance().existeRestaurantes()) return vacio;
+        }catch(Exception e){
+            
+        }
+        
+        /*String[] array = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
+        for(String cosa : array){
+            System.out.println(cosa);
+        }*/
+        String[] restaurantes;
+        try{
+            restaurantes = FoodCourtUVG.getInstance().obtenerIndexRestaurantesMenu().split(";");
+            return restaurantes;
+        }catch(Exception e){
+            
+        }
+        
+        return null;
     }
     
     /**
@@ -74,7 +109,8 @@ public class Menu_Usuario extends javax.swing.JFrame {
             }
         });
 
-        comboBoxUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agregar Usuario (Cliente, Proveedor, Repartidor)", "Iniciar Sesión (Cliente, Proveedor, Repartidor)", "Mostrar Clientes", "Mostrar Repartidores", "Mostrar proveedores", "Agregar Restaurante", "Mostrar Restaurante" }));
+        comboBoxUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agregar Usuario", "Iniciar Sesión", "Mostrar Clientes", "Mostrar Repartidores", "Mostrar proveedores", "Agregar Restaurante", "Mostrar Restaurante", "Guardar Usuarios", "Guardar Restaurantes" }));
+        comboBoxUsuario.setToolTipText("");
         comboBoxUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxUsuarioActionPerformed(evt);
@@ -117,7 +153,7 @@ public class Menu_Usuario extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(99, 99, 99)
                                         .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 64, Short.MAX_VALUE)))
+                        .addGap(0, 74, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -151,7 +187,7 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 SubMenuUsuario1 subClientes1 = new SubMenuUsuario1();
                 //subClientes1.setMenuPadre(this);
                 subClientes1.setVisible(true);
-                subClientes1.setRestaurantesDeMenu(getRestaurantesArray());
+                subClientes1.setRestaurantesDeMenu(getRestaurantesArray(), getRestaurantesIndex());
                 //this.setVisible(false);
                 break;
             case 1:
@@ -162,19 +198,34 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 break;
             case 2:
                 labelTitulo.setText("Clientes regitrados");
-                txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarClientes());
+                try{
+                    txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarClientes());
+                }catch(Exception e){
+                    
+                }
+                
                 labelTitulo.setVisible(true);
                 txtPaneInfo.setVisible(true);
                 break;
             case 3:
                 labelTitulo.setText("Repartidores regitrados");
-                txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarRepartidores());
+                try{
+                   txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarRepartidores()); 
+                }catch(Exception e){
+                    
+                }
+                
                 labelTitulo.setVisible(true);
                 txtPaneInfo.setVisible(true);
                 break;
             case 4:
                 labelTitulo.setText("Proveedores regitrados");
-                txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarProveedores());
+                try{
+                    txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarProveedores());
+                }catch(Exception e){
+                    
+                }
+                
                 labelTitulo.setVisible(true);
                 txtPaneInfo.setVisible(true);
                 break;
@@ -186,9 +237,41 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 break;
             case 6:
                 labelTitulo.setText("Restaurantes regitrados");
-                txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarRestaurantes());
+                try{
+                    txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarRestaurantes());
+                }catch(Exception e){
+                    
+                }
+                
                 labelTitulo.setVisible(true);
                 txtPaneInfo.setVisible(true);
+                break;
+            case 7:
+                try{
+                   boolean exito = FoodCourtUVG.getInstance().guardarUsuarios();
+                   if(exito){
+                       JOptionPane.showMessageDialog(null,"Usuarios guardados exitosamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
+                   }else{
+                       JOptionPane.showMessageDialog(null,"Asegúrese de ingresar usuarios antes de realizar la operación", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+                   }
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null,"Ha ocurrido un error al guardar los usuarios. Error: " + e.toString(), "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
+                break;
+                
+            case 8:
+                try{
+                   boolean exito = FoodCourtUVG.getInstance().guardarRestaurantes(); 
+                   if(exito){
+                       JOptionPane.showMessageDialog(null,"Restaurantes guardados exitosamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
+                   }else{
+                       JOptionPane.showMessageDialog(null,"Asegúrese de ingresar restaurantes antes de realizar la operación", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+                   }
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null,"Ha ocurrido un error al guardar los restaurantes. Error: " + e.toString(), "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
                 break;
             default:
                 JOptionPane.showMessageDialog(null,"Ingrese una opción válida", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
