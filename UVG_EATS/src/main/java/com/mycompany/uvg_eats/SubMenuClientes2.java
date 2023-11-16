@@ -132,7 +132,7 @@ public class SubMenuClientes2 extends javax.swing.JFrame {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e){
-            JOptionPane.showMessageDialog(this, "Por favor, ingrese un numero del 1 al 5 para caligicar el repartidor.", "Entrada Invalida", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un numero del 1 al 5 para calificar el repartidor.", "Entrada Invalida", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
