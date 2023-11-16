@@ -60,10 +60,11 @@ public class Menu_Usuario extends javax.swing.JFrame {
         for(String cosa : array){
             System.out.println(cosa);
         }*/
-        String[] restaurantes;
+        String[] indexs;
         try{
-            restaurantes = FoodCourtUVG.getInstance().obtenerIndexRestaurantesMenu().split(";");
-            return restaurantes;
+            indexs = FoodCourtUVG.getInstance().obtenerIndexRestaurantesMenu().split(";");
+            //System.out.println(indexs);
+            return indexs;
         }catch(Exception e){
             
         }

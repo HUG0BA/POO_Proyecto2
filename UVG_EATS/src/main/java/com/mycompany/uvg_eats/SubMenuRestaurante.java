@@ -66,7 +66,7 @@ public class SubMenuRestaurante extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl1.setText("Ingrese sus datos para crear su usuario");
+        lbl1.setText("Ingrese sus datos para crear su restaurante");
 
         lbl2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl2.setText("Id");

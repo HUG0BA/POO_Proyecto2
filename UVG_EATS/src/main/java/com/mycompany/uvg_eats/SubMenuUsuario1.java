@@ -29,13 +29,17 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
         txtNivAcceso.setVisible(false);
     }
     
-    public void setRestaurantesDeMenu(String[] restaurantes, String[] restaurantesID){
+    public void setRestaurantesDeMenu(String[] restaurantes, String[] restaurantesId){
         if(this.restaurantes != null){
             this.restaurantes = null;
+        }
+        if(this.restaurantesId != null){
+            this.restaurantesId = null;
         }
         
         this.restaurantes = restaurantes;
         this.restaurantesId = restaurantesId;
+        //System.out.println(restaurantesId);
         
         try{
             String[] array = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");

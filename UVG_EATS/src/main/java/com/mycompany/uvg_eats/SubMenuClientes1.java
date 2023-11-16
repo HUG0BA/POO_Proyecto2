@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.uvg_eats;
+import clases.*;
+import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,10 +16,138 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
     /**
      * Creates new form SubMenuClientes1
      */
+    private String[] restaurantes;
+    private String[] indexRestaurantes;
+    private String[][] productos;
+    private String[][] indexProductos;
+    private String carrito;
     public SubMenuClientes1() {
+        try{
+            restaurantes = getRestaurantesArray();
+            indexRestaurantes = getRestaurantesIndex();
+            productos = getProductosArray();
+            indexProductos = getProductosIndex();
+        }catch(Exception e){
+            dispose();
+        }
+        
         initComponents();
+        comboBRest.setModel(new javax.swing.DefaultComboBoxModel(restaurantes));
     }
 
+    public String[] getRestaurantesArray(){
+        String[] vacio = {"Aún no se han ingresado restaurantes"};
+        try{
+            if(!FoodCourtUVG.getInstance().existeRestaurantes()) return vacio;
+        }catch(Exception e){
+            
+        }
+        
+        /*String[] array = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
+        for(String cosa : array){
+            System.out.println(cosa);
+        }*/
+        String[] restaurantes;
+        try{
+            restaurantes = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
+            return restaurantes;
+        }catch(Exception e){
+            
+        }
+        
+        return null;
+    }
+    
+    public String[][] getProductosArray(){
+        
+        //String[] vacio = {"Aún no se han ingresado restaurantes"};
+        try{
+            String[][] mensaje = {{"Cero productos"}};
+            if(!FoodCourtUVG.getInstance().existeRestaurantes()) return mensaje;
+        }catch(Exception e){
+            
+        }
+        
+        try{
+            String[][] mensaje = {{"Cero productos"}};
+            if(!FoodCourtUVG.getInstance().existenProductos()) return mensaje;
+        }catch(Exception e){
+            
+        }
+        
+        
+        
+        try{
+            String[] cargaProductos = FoodCourtUVG.getInstance().mostrarProductosParaMenu().split("=");
+            productos = new String[cargaProductos.length][];
+            int i = 0;
+            for(String linea : cargaProductos){
+                String[] productosA = linea.split(";");
+                productos[i] = productosA;
+            }
+            return productos;
+        }catch(Exception e){
+            
+        }
+        return null;
+        
+    }
+    
+    public String[] getRestaurantesIndex(){
+        String[] vacio = {"Aún no se han ingresado restaurantes"};
+        try{
+            if(!FoodCourtUVG.getInstance().existeRestaurantes()) return vacio;
+        }catch(Exception e){
+            
+        }
+        
+        /*String[] array = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
+        for(String cosa : array){
+            System.out.println(cosa);
+        }*/
+        String[] indexs;
+        try{
+            indexs = FoodCourtUVG.getInstance().obtenerIndexRestaurantesMenu().split(";");
+            //System.out.println(indexs);
+            return indexs;
+        }catch(Exception e){
+            
+        }
+        
+        return null;
+    }
+    
+    public String[][] getProductosIndex(){
+        try{
+            String[][] mensaje = {{"Cero productos"}};
+            if(!FoodCourtUVG.getInstance().existeRestaurantes()) return mensaje;
+        }catch(Exception e){
+            
+        }
+        
+        try{
+            String[][] mensaje = {{"Cero productos"}};
+            if(!FoodCourtUVG.getInstance().existenProductos()) return mensaje;
+        }catch(Exception e){
+            
+        }
+        
+        
+        
+        try{
+            String[] cargaProductos = FoodCourtUVG.getInstance().mostrarProductosParaMenu().split("=");
+            productos = new String[cargaProductos.length][];
+            int i = 0;
+            for(String linea : cargaProductos){
+                String[] productosA = linea.split(";");
+                productos[i] = productosA;
+            }
+            return productos;
+        }catch(Exception e){
+            
+        }
+        return null;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,20 +158,26 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jLlbl1S1MC = new javax.swing.JLabel();
-        jComboBox1S1MC = new javax.swing.JComboBox<>();
+        comboBMenu = new javax.swing.JComboBox<>();
         jLlbl2S1MC = new javax.swing.JLabel();
         jBtn1S1MC = new javax.swing.JButton();
         jBtn2S1MC = new javax.swing.JButton();
+        jLlbl2S1MC1 = new javax.swing.JLabel();
+        comboBRest = new javax.swing.JComboBox<>();
+        jLlbl2S1MC2 = new javax.swing.JLabel();
+        txt_id = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txt_local = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLlbl1S1MC.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLlbl1S1MC.setText("Pedido Inmediato");
 
-        jComboBox1S1MC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sellecione", " " }));
-        jComboBox1S1MC.addActionListener(new java.awt.event.ActionListener() {
+        comboBMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sellecione", " " }));
+        comboBMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1S1MCActionPerformed(evt);
+                comboBMenuActionPerformed(evt);
             }
         });
 
@@ -60,57 +197,132 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
             }
         });
 
+        jLlbl2S1MC1.setText("Elija el restaurante preferido");
+
+        comboBRest.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sellecione", " " }));
+        comboBRest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBRestActionPerformed(evt);
+            }
+        });
+
+        jLlbl2S1MC2.setText("Id Pedido");
+
+        jLabel1.setText("Punto para recoger el pedido");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jBtn1S1MC)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
-                .addComponent(jBtn2S1MC)
-                .addContainerGap(201, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLlbl2S1MC, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox1S1MC, 0, 0, Short.MAX_VALUE)
-                .addGap(210, 210, 210))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLlbl1S1MC)
-                .addGap(229, 229, 229))
+                .addContainerGap(127, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLlbl1S1MC)
+                        .addGap(229, 229, 229))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLlbl2S1MC1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLlbl2S1MC2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(53, 53, 53)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(comboBRest, 0, 139, Short.MAX_VALUE)
+                                    .addComponent(txt_id)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLlbl2S1MC, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(53, 53, 53))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jBtn1S1MC)
+                                        .addGap(103, 103, 103)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jBtn2S1MC)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(comboBMenu, 0, 139, Short.MAX_VALUE)
+                                        .addComponent(txt_local)))))
+                        .addGap(160, 160, 160))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLlbl1S1MC)
-                .addGap(68, 68, 68)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLlbl2S1MC2)
+                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLlbl2S1MC1)
+                    .addComponent(comboBRest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLlbl2S1MC)
-                    .addComponent(jComboBox1S1MC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                    .addComponent(comboBMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txt_local, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtn1S1MC)
                     .addComponent(jBtn2S1MC))
-                .addGap(18, 18, 18))
+                .addGap(60, 60, 60))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtn1S1MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn1S1MCActionPerformed
-        // TODO add your handling code here:
+        if(txt_id.getText().equals("") || txt_local.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Todos los campos deben estar llenos para continuar", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+        }else if(comboBRest.getSelectedIndex()== -1 || comboBMenu.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(null,"Seleccione el restaurante y su respectivo menu", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            int id = -1;
+            try{
+                id = Integer.parseInt(txt_id.getText());
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Asegúre que id se un valor numérico entero", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+            int indexRest = comboBRest.getSelectedIndex();
+            int idRest = Integer.parseInt(indexRestaurantes[indexRest]);
+            int indexProducto = comboBMenu.getSelectedIndex();
+            int idProducto = Integer.parseInt(indexProductos[indexRest][indexProducto]);
+            
+            ArrayList<Integer> productosParametro = new ArrayList<Integer>();
+            productosParametro.add(idProducto);
+            
+            try{
+                FoodCourtUVG.getInstance().agregarPedido(id, idRest, txt_local.getText(), productosParametro);
+                JOptionPane.showMessageDialog(null,"Su pedido se ha añadido a la cola", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Ha ocurrido un error al realizar el pedido", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        
+        
     }//GEN-LAST:event_jBtn1S1MCActionPerformed
 
     private void jBtn2S1MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn2S1MCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtn2S1MCActionPerformed
 
-    private void jComboBox1S1MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1S1MCActionPerformed
+    private void comboBMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBMenuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1S1MCActionPerformed
+    }//GEN-LAST:event_comboBMenuActionPerformed
+
+    private void comboBRestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBRestActionPerformed
+        int index = comboBRest.getSelectedIndex();
+        comboBMenu.setModel(new javax.swing.DefaultComboBoxModel(productos[index]));
+        
+    }//GEN-LAST:event_comboBRestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,10 +360,16 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboBMenu;
+    private javax.swing.JComboBox<String> comboBRest;
     private javax.swing.JButton jBtn1S1MC;
     private javax.swing.JButton jBtn2S1MC;
-    private javax.swing.JComboBox<String> jComboBox1S1MC;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLlbl1S1MC;
     private javax.swing.JLabel jLlbl2S1MC;
+    private javax.swing.JLabel jLlbl2S1MC1;
+    private javax.swing.JLabel jLlbl2S1MC2;
+    private javax.swing.JTextField txt_id;
+    private javax.swing.JTextField txt_local;
     // End of variables declaration//GEN-END:variables
 }

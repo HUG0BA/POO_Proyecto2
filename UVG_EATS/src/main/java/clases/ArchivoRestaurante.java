@@ -43,7 +43,7 @@ public class ArchivoRestaurante{
             ArrayList<Producto> produtos = restaurante.getProductos();
             String textProductos = "";
             for(Producto producto : produtos){
-                textProductos = textProductos + producto.getIdProducto() + ";" + producto.getTitulo() + ";" + producto.getDetalles() + ";" + producto.getCosto() + ";" + producto.getDisponible() + "|";
+                textProductos = textProductos + producto.getIdProducto() + ";" + producto.getTitulo() + ";" + producto.getDetalles() + ";" + producto.getCosto() + ";" + producto.getDisponible() + ":";
             }
             linea = linea + "," + textProductos;
             escritor.println(linea);
@@ -69,26 +69,36 @@ public class ArchivoRestaurante{
         BufferedReader br = new BufferedReader(new FileReader(archivoRestaurante));
         String line = "";
 
-
+        boolean firstTime = true;
         while((line = br.readLine()) != null){
-            
-            String[] values = line.split(",");
-            ArrayList<Producto> productos = new ArrayList<Producto>();
-            if(values[5] != null){
-                String[] textProductos  = values[5].split("|");  
-                for(String textProducto : textProductos){
-                    String[] infoProducto = textProducto.split(";");
-                    Producto producto = new Producto(Integer.parseInt(infoProducto[0]), infoProducto[1], infoProducto[2], Double.parseDouble(infoProducto[3]), Boolean.parseBoolean(infoProducto[4]));
-                    productos.add(producto);
-                } 
+            if(firstTime){
+                firstTime = false;
+                continue;
             }
-             
-            Restaurante restaurante = new Restaurante(Integer.parseInt(values[0]), values[1], values[2], values[3], Boolean.parseBoolean(values[4]), productos);
-            restaurantes.add(restaurante);
+            String[] values = line.split(",");
+            
+            if(values != null || values.length != 0){
+                ArrayList<Producto> productos = new ArrayList<Producto>();
+                if(values[5] != null){
+                    String[] textProductos  = values[5].split(":");  
+                    System.out.println(textProductos.toString());
+                    for(String textProducto : textProductos){
+                        String[] infoProducto = textProducto.split(";");
+                        System.out.println(infoProducto.toString());
+                        Producto producto = new Producto(Integer.parseInt(infoProducto[0]), infoProducto[1], infoProducto[2], Double.parseDouble(infoProducto[3]), Boolean.parseBoolean(infoProducto[4]));
+                        productos.add(producto);
+                    } 
+                }
+
+                Restaurante restaurante = new Restaurante(Integer.parseInt(values[0]), values[1], values[2], values[3], Boolean.parseBoolean(values[4]), productos);
+                restaurantes.add(restaurante);
+                System.out.println("LLEGO");
+            }          
         }
         
+        System.out.println("AYUDAAA");
         br.close();
-
+        
         return restaurantes;
     }
 }

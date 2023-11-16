@@ -38,7 +38,7 @@ public class Restaurante{
         this.horario = horario;
         this.disp = disp;
         this.productos = new ArrayList<Producto>();
-        this.productos = new ArrayList<Producto>();
+        //this.productos = new ArrayList<Producto>();
         if(!productos.isEmpty()){
             for (Producto producto : productos){
                 Producto copia = new Producto(producto.getIdProducto(), producto.getTitulo(), producto.getDetalles(), producto.getCosto(), producto.getDisponible());
