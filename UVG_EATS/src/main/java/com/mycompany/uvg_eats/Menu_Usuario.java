@@ -5,6 +5,7 @@
 package com.mycompany.uvg_eats;
 import clases.*;
 import javax.swing.JOptionPane;
+import java.awt.Color;
 /**
  *
  * @author javie
@@ -19,19 +20,55 @@ public class Menu_Usuario extends javax.swing.JFrame {
     public Menu_Usuario() {
         //food = new FoodCourtUVG();
         initComponents();
+        this.getContentPane().setBackground(Color.green);
         labelTitulo.setVisible(false);
         txtPaneInfo.setVisible(false);
     }
 
     public String[] getRestaurantesArray(){
         String[] vacio = {"Aún no se han ingresado restaurantes"};
-        if(!FoodCourtUVG.getInstance().existeRestaurantes()) return vacio;
+        try{
+            if(!FoodCourtUVG.getInstance().existeRestaurantes()) return vacio;
+        }catch(Exception e){
+            
+        }
+        
         /*String[] array = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
         for(String cosa : array){
             System.out.println(cosa);
         }*/
-        String[] restaurantes = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
-        return restaurantes;
+        String[] restaurantes;
+        try{
+            restaurantes = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
+            return restaurantes;
+        }catch(Exception e){
+            
+        }
+        
+        return null;
+    }
+    
+    public String[] getRestaurantesIndex(){
+        String[] vacio = {"Aún no se han ingresado restaurantes"};
+        try{
+            if(!FoodCourtUVG.getInstance().existeRestaurantes()) return vacio;
+        }catch(Exception e){
+            
+        }
+        
+        /*String[] array = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
+        for(String cosa : array){
+            System.out.println(cosa);
+        }*/
+        String[] restaurantes;
+        try{
+            restaurantes = FoodCourtUVG.getInstance().obtenerIndexRestaurantesMenu().split(";");
+            return restaurantes;
+        }catch(Exception e){
+            
+        }
+        
+        return null;
     }
     
     /**
@@ -51,8 +88,10 @@ public class Menu_Usuario extends javax.swing.JFrame {
         scroll_pane_text = new javax.swing.JScrollPane();
         txtPaneInfo = new javax.swing.JTextPane();
         labelTitulo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 153, 0));
 
         lbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl1.setText("¡Bienvenido al menú de FoodCourtUVG!");
@@ -74,7 +113,8 @@ public class Menu_Usuario extends javax.swing.JFrame {
             }
         });
 
-        comboBoxUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agregar Usuario (Cliente, Proveedor, Repartidor)", "Iniciar Sesión (Cliente, Proveedor, Repartidor)", "Mostrar Clientes", "Mostrar Repartidores", "Mostrar proveedores", "Agregar Restaurante", "Mostrar Restaurante" }));
+        comboBoxUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agregar Usuario", "Iniciar Sesión", "Mostrar Clientes", "Mostrar Repartidores", "Mostrar proveedores", "Agregar Restaurante", "Mostrar Restaurante", "Guardar Usuarios", "Guardar Restaurantes" }));
+        comboBoxUsuario.setToolTipText("");
         comboBoxUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxUsuarioActionPerformed(evt);
@@ -86,6 +126,8 @@ public class Menu_Usuario extends javax.swing.JFrame {
 
         labelTitulo.setText("jLabel1");
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoUVG.jpg"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,16 +135,15 @@ public class Menu_Usuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(scroll_pane_text))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(99, 99, 99)
-                                .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(74, 74, 74)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(scroll_pane_text, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(btn1)
@@ -113,18 +154,22 @@ public class Menu_Usuario extends javax.swing.JFrame {
                                                 .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(141, 141, 141)
-                                                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(99, 99, 99)
-                                        .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 64, Short.MAX_VALUE)))
-                .addContainerGap())
+                                                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(376, 376, 376)
+                        .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl2)
@@ -133,11 +178,11 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn1)
                     .addComponent(btn2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelTitulo)
-                .addGap(34, 34, 34)
-                .addComponent(scroll_pane_text, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
+                .addGap(18, 18, 18)
+                .addComponent(scroll_pane_text, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119))
         );
 
         pack();
@@ -151,7 +196,7 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 SubMenuUsuario1 subClientes1 = new SubMenuUsuario1();
                 //subClientes1.setMenuPadre(this);
                 subClientes1.setVisible(true);
-                subClientes1.setRestaurantesDeMenu(getRestaurantesArray());
+                subClientes1.setRestaurantesDeMenu(getRestaurantesArray(), getRestaurantesIndex());
                 //this.setVisible(false);
                 break;
             case 1:
@@ -162,19 +207,34 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 break;
             case 2:
                 labelTitulo.setText("Clientes regitrados");
-                txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarClientes());
+                try{
+                    txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarClientes());
+                }catch(Exception e){
+                    
+                }
+                
                 labelTitulo.setVisible(true);
                 txtPaneInfo.setVisible(true);
                 break;
             case 3:
                 labelTitulo.setText("Repartidores regitrados");
-                txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarRepartidores());
+                try{
+                   txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarRepartidores()); 
+                }catch(Exception e){
+                    
+                }
+                
                 labelTitulo.setVisible(true);
                 txtPaneInfo.setVisible(true);
                 break;
             case 4:
                 labelTitulo.setText("Proveedores regitrados");
-                txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarProveedores());
+                try{
+                    txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarProveedores());
+                }catch(Exception e){
+                    
+                }
+                
                 labelTitulo.setVisible(true);
                 txtPaneInfo.setVisible(true);
                 break;
@@ -186,9 +246,41 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 break;
             case 6:
                 labelTitulo.setText("Restaurantes regitrados");
-                txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarRestaurantes());
+                try{
+                    txtPaneInfo.setText(FoodCourtUVG.getInstance().mostrarRestaurantes());
+                }catch(Exception e){
+                    
+                }
+                
                 labelTitulo.setVisible(true);
                 txtPaneInfo.setVisible(true);
+                break;
+            case 7:
+                try{
+                   boolean exito = FoodCourtUVG.getInstance().guardarUsuarios();
+                   if(exito){
+                       JOptionPane.showMessageDialog(null,"Usuarios guardados exitosamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
+                   }else{
+                       JOptionPane.showMessageDialog(null,"Asegúrese de ingresar usuarios antes de realizar la operación", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+                   }
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null,"Ha ocurrido un error al guardar los usuarios. Error: " + e.toString(), "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
+                break;
+                
+            case 8:
+                try{
+                   boolean exito = FoodCourtUVG.getInstance().guardarRestaurantes(); 
+                   if(exito){
+                       JOptionPane.showMessageDialog(null,"Restaurantes guardados exitosamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
+                   }else{
+                       JOptionPane.showMessageDialog(null,"Asegúrese de ingresar restaurantes antes de realizar la operación", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+                   }
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null,"Ha ocurrido un error al guardar los restaurantes. Error: " + e.toString(), "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
                 break;
             default:
                 JOptionPane.showMessageDialog(null,"Ingrese una opción válida", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
@@ -245,6 +337,7 @@ public class Menu_Usuario extends javax.swing.JFrame {
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn2;
     private javax.swing.JComboBox<String> comboBoxUsuario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl2;

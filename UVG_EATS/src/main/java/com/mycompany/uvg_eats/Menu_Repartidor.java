@@ -4,6 +4,8 @@
  */
 package com.mycompany.uvg_eats;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author javie
@@ -97,6 +99,11 @@ public class Menu_Repartidor extends javax.swing.JFrame {
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         // TODO add your handling code here:
 
+        
+ 
+                 
+            
+        
     }//GEN-LAST:event_btn1ActionPerformed
 
     /**

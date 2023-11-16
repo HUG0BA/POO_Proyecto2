@@ -17,8 +17,6 @@ public class Proveedor extends Usuario{
     private int nivAccess;
 
     // Constructor predeterminado
-    public Proveedor() {
-    }
 
 
     // Constructor con parámetros

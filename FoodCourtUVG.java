@@ -349,7 +349,7 @@ public class FoodCourtUVG{
                             text = "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido();
                             break;
                         }else{
-                            text = "No se ha encontrado ningún cliente con el id " + id;
+                            text = "No se ha encontrado ningún usuario con el id " + id;
                         }
                         break;
                 
@@ -359,7 +359,7 @@ public class FoodCourtUVG{
                             text = "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido();
                             break;
                         }else{
-                            text = "No se ha encontrado ningún cliente con el id " + id;
+                            text = "No se ha encontrado usuario cliente con el id " + id;
                         }
                         break;
 
@@ -369,7 +369,7 @@ public class FoodCourtUVG{
                             text = "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido();
                             break;
                         }else{
-                            text = "No se ha encontrado ningún cliente con el id " + id;
+                            text = "No se ha encontrado usuario cliente con el id " + id;
                         }
                         break;
                 }

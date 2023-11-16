@@ -10,8 +10,7 @@ package clases;
  */
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.FileNotFoundException;
+
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.io.BufferedReader;
@@ -22,17 +21,15 @@ public class ArchivoUsuario{
     private File archivoProveedor;
     private File archivoRepartidor;
 
-    /** 
-     * @param nombreArchivo
-     * @description Constructor asgina parámetros ingresados para crear nuevo archivo
-     */
+
     public ArchivoUsuario(String nombreArchivoClientes, String nombreArchivoProveedor, String nombreArchivoRepartidor){
         archivoCliente = new File(nombreArchivoClientes);
         archivoProveedor = new File(nombreArchivoProveedor);
         archivoRepartidor = new File(nombreArchivoRepartidor);
     }
 
-    public void escribirArchivo(ArrayList<Usuario> usuarios) throws Exception{
+    public boolean escribirArchivo(ArrayList<Usuario> usuarios) throws Exception{
+        boolean exito = false;
         PrintWriter escritorCliente = new PrintWriter(archivoCliente, "UTF-8");
         String linea = "";
         if(archivoCliente.length() > 0){
@@ -46,8 +43,9 @@ public class ArchivoUsuario{
         for(Usuario usuario : usuarios){
             if (usuario instanceof Cliente){
                 linea = usuario.getId() + "," + usuario.getNombre() + "," + usuario.getApellido() + "," + usuario.getEmail() + "," + usuario.getEdad(); 
-                linea = linea + "," + ((Cliente)usuario).getTotalP() + "," + ((Cliente)usuario).getTotalPE() + "," + ((Cliente)usuario).getTotalPC() + "," + ((Cliente)usuario).getCalif();
+                linea = linea + "," + ((Cliente)usuario).getTipo() + "," + ((Cliente)usuario).getTotalP() + "," + ((Cliente)usuario).getTotalPE() + "," + ((Cliente)usuario).getTotalPC() + "," + ((Cliente)usuario).getCalif();
                 escritorCliente.println(linea);
+                exito = true;
             }     
         }
         escritorCliente.close();
@@ -67,6 +65,7 @@ public class ArchivoUsuario{
                 linea = usuario.getId() + "," + usuario.getNombre() + "," + usuario.getApellido() + "," + usuario.getEmail() + "," + usuario.getEdad(); 
                 linea = linea + "," + ((Proveedor)usuario).getRest() + "," + ((Proveedor)usuario).getIdRest() + "," + ((Proveedor)usuario).getNivAccess();
                 escritorProveedor.println(linea);
+                exito = true;
             }     
         }
         escritorProveedor.close();
@@ -86,9 +85,11 @@ public class ArchivoUsuario{
                 linea = usuario.getId() + "," + usuario.getNombre() + "," + usuario.getApellido() + "," + usuario.getEmail() + "," + usuario.getEdad(); 
                 linea = linea + "," + ((Repartidor)usuario).getTotalP() + "," + ((Repartidor)usuario).getTotalT() + "," + ((Repartidor)usuario).getTotalPC() + "," + ((Repartidor)usuario).getTotalTC() + "," + ((Repartidor)usuario).getTotalH() + "," + ((Repartidor)usuario).getCalif();
                 escritorRepartidor.println(linea);
+                exito = true;
             }     
         }
         escritorRepartidor.close();
+        return exito;
     }
 
     /** 
@@ -97,16 +98,16 @@ public class ArchivoUsuario{
      * @throws Exception
      */
     public ArrayList<Usuario> leerArchivo() throws Exception{
-        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+        ArrayList<Usuario> usuariosLectura = new ArrayList<Usuario>();
 
-        if(!archivoCliente.exists() && !archivoProveedor.exists() && !archivoRepartidor.exists()){
-            return usuarios;
+        if(archivoCliente.length() == 0 && archivoProveedor.length() == 0 && archivoRepartidor.length() == 0){
+            return usuariosLectura;
         }
         
         BufferedReader clienteBr = new BufferedReader(new FileReader(archivoCliente));
         String line = "";
 
-        if(archivoCliente.exists()){
+        if(archivoCliente.length() > 0){
             boolean fisrtTime = true;
             while((line = clienteBr.readLine()) != null){
                 if(fisrtTime){
@@ -115,7 +116,7 @@ public class ArchivoUsuario{
                 }
                 String[] values = line.split(",");
                 Cliente cliente = new Cliente(Integer.parseInt(values[0]), values[1], values[2], values[3], Integer.parseInt(values[4]), values[5] , Integer.parseInt(values[6]), Integer.parseInt(values[7]), Integer.parseInt(values[8]), Integer.parseInt(values[9]));
-                usuarios.add(cliente);
+                usuariosLectura.add(cliente);
             }
         }
         clienteBr.close();
@@ -123,7 +124,7 @@ public class ArchivoUsuario{
         BufferedReader proveedorBr = new BufferedReader(new FileReader(archivoProveedor));
         line = "";
 
-        if(archivoProveedor.exists()){
+        if(archivoProveedor.length() > 0){
             boolean fisrtTime = true;
             while((line = proveedorBr.readLine()) != null){
                 if(fisrtTime){
@@ -132,7 +133,7 @@ public class ArchivoUsuario{
                 }
                 String[] values = line.split(",");
                 Proveedor proveedor = new Proveedor(Integer.parseInt(values[0]), values[1], values[2], values[3], Integer.parseInt(values[4]), values[5], Integer.parseInt(values[6]), Integer.parseInt(values[7]));
-                usuarios.add(proveedor);
+                usuariosLectura.add(proveedor);
             }
         }
         proveedorBr.close();
@@ -140,7 +141,7 @@ public class ArchivoUsuario{
         BufferedReader repartidorBr = new BufferedReader(new FileReader(archivoProveedor));
         line = "";
 
-        if(archivoRepartidor.exists()){
+        if(archivoRepartidor.length() > 0){
             boolean fisrtTime = true;
             while((line = repartidorBr.readLine()) != null){
                 if(fisrtTime){
@@ -149,11 +150,11 @@ public class ArchivoUsuario{
                 }
                 String[] values = line.split(",");
                 Repartidor proveedor = new Repartidor(Integer.parseInt(values[0]), values[1], values[2], values[3], Integer.parseInt(values[4]), Integer.parseInt(values[5]), Integer.parseInt(values[6]), Integer.parseInt(values[7]), Integer.parseInt(values[8]), Integer.parseInt(values[9]), Integer.parseInt(values[10]));
-                usuarios.add(proveedor);
+                usuariosLectura.add(proveedor);
             }
         }
         repartidorBr.close();
 
-        return usuarios;
+        return usuariosLectura;
     }
 }

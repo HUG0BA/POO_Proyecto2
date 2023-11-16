@@ -14,6 +14,7 @@ import javax.swing.JFrame;
  */
 public class SubMenuUsuario1 extends javax.swing.JFrame {
     String[] restaurantes;
+    String[] restaurantesId;
     //Menu_Usuario menuPadre;
     /**
      * Creates new form Menu_Usuario
@@ -28,17 +29,24 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
         txtNivAcceso.setVisible(false);
     }
     
-    public void setRestaurantesDeMenu(String[] restaurantes){
+    public void setRestaurantesDeMenu(String[] restaurantes, String[] restaurantesID){
         if(this.restaurantes != null){
             this.restaurantes = null;
         }
         
         this.restaurantes = restaurantes;
+        this.restaurantesId = restaurantesId;
         
-        String[] array = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
-        for(String cosa : restaurantes){
-            System.out.println(cosa);
+        try{
+            String[] array = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
+            //String[] 
+            /*for(String cosa : restaurantes){
+                System.out.println(cosa);
+            }*/ 
+        }catch(Exception e){
+            
         }
+        
     }
     
     /*public void setMenuPadre(Menu_Usuario menuPadre){
@@ -281,7 +289,7 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"El campo Id y Edad deben ser números enteros", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
             }
             
-            System.out.println(cBoxTCliente.getSelectedIndex());
+            //System.out.println(cBoxTCliente.getSelectedIndex());
             if(cBoxTCliente.getSelectedIndex() == -1 || cBoxTCliente.getSelectedIndex() == 0){
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un tipo de cliente ha ingresar", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
             }else{
@@ -303,10 +311,10 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
                 
                 try{
                     FoodCourtUVG.getInstance().agregarRepartidor(id, txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), edad);
-                    JOptionPane.showMessageDialog(null,"Repartidor registrado correctamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
+                    //JOptionPane.showMessageDialog(null,"Repartidor registrado correctamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                 }catch(Exception e){
-                    JOptionPane.showMessageDialog(null,"Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"AQUII Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
                 }
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null,"El campo Id y Edad deben ser números enteros", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
@@ -337,11 +345,12 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
                     }
 
                     try{
-                        String rest = FoodCourtUVG.getInstance().nombreRestaurante(cBoxTCliente.getSelectedIndex());
+                        int idIndex = cBoxTCliente.getSelectedIndex();
+                        String rest = FoodCourtUVG.getInstance().nombreRestaurante(Integer.parseInt(restaurantesId[idIndex]));
                         if(rest == null){
                             JOptionPane.showMessageDialog(null,"No se ha encontrado el restaurante ingresado", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
                         }else{
-                           FoodCourtUVG.getInstance().agregarProveedor(id, txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), edad, rest, cBoxTCliente.getSelectedIndex(), nivAccess);
+                           FoodCourtUVG.getInstance().agregarProveedor(id, txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), edad, rest, Integer.parseInt(restaurantesId[idIndex]), nivAccess);
                            JOptionPane.showMessageDialog(null,"Proveedor agregado exitosamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
                            dispose();
                         }

@@ -30,10 +30,15 @@ public class SubMenuInicioSesion extends javax.swing.JFrame {
         
         this.restaurantes = restaurantes;
         
-        String[] array = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
-        for(String cosa : restaurantes){
-            System.out.println(cosa);
+        try{
+            String[] array = FoodCourtUVG.getInstance().mostrarRestaurantesParaMenu().split(";");
+            for(String cosa : restaurantes){
+                System.out.println(cosa);
+            }
+        }catch(Exception e){
+            
         }
+        
     }
     
     /*public void setMenuPadre(Menu_Usuario menuPadre){
@@ -166,9 +171,9 @@ public class SubMenuInicioSesion extends javax.swing.JFrame {
             }
             
             try{
-                System.out.println((cBoxTUsuario.getSelectedIndex()) + "  HIIIIII");
+                //System.out.println((cBoxTUsuario.getSelectedIndex()) + "  HIIIIII");
                 String mensaje = FoodCourtUVG.getInstance().iniciarUsuario(id, (cBoxTUsuario.getSelectedIndex()));
-                System.out.println(mensaje);
+                //System.out.println(mensaje);
                 if(mensaje.contains("No se ha encontrado ningún usuario con el id")){
                     JOptionPane.showMessageDialog(null,mensaje, "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
                 }
