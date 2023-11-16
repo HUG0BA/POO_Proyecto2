@@ -342,6 +342,7 @@ public class FoodCourtUVG{
     public void agregarProducto(int idProducto, String titulo, String detalles, double costo, boolean disponible){
         Producto nuevo = new Producto(idProducto, titulo, detalles, costo, disponible);
         restauranteA.agregarProducto(nuevo);
+        restaurantes.set(indexR, restauranteA);
     }
 
     public void eliminarProducto(int idProductoe){

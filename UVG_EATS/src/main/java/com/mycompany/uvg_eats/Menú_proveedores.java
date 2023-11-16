@@ -73,6 +73,11 @@ public class Menú_proveedores extends JFrame {
         lbl2.setText("Elige la acción deseada:");
 
         btn2.setText("Salir");
+        btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -268,7 +273,7 @@ public class Menú_proveedores extends JFrame {
     }
     
     private void salirActionPerformed(ActionEvent evt) {
-        System.exit(0);
+        dispose();
     }
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         
@@ -277,6 +282,10 @@ public class Menú_proveedores extends JFrame {
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn1ActionPerformed
+
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn2ActionPerformed
     
     private void agregarProductomp() {
         try {
