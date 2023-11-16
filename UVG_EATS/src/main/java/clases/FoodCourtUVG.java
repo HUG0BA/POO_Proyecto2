@@ -43,6 +43,7 @@ public class FoodCourtUVG{
         archivoRestaurante = new ArchivoRestaurante("restaurantes.csv");
         usuarios = archivoUsuario.leerArchivo();
         restaurantes = archivoRestaurante.leerArchivo();
+        System.out.println("QUE PASO");
         pedidoManager = new PedidoManager();
         
     }
@@ -352,8 +353,54 @@ public class FoodCourtUVG{
     public String mostrarProductos(){
         return restauranteA.mostrarProductos();
     }
+    
+    public String mostrarProductosParaMenu(){
+        String text = "";
+        if(!restaurantes.isEmpty()){
+            for (Restaurante rest : restaurantes){
+                ArrayList<Producto> productos = rest.getProductos();
+                for(Producto producto: productos){
+                    text = text + "Nombre: " + producto.getTitulo() + " Detalles: " + producto.getDetalles() + " Precio: " + producto.getCosto() + ";" ;
+                }
+                
+                text = text + "=";
+            }
+        }
+        else {
+            text = "Aún no se han registrado restaurantes";
+        }
 
-    public void agregarPedido(Pedido pedido){
+        return text;
+    }
+    
+    public String obtenerIndexProductos(){
+        String text = "";
+        if(!restaurantes.isEmpty()){
+            for (Restaurante rest : restaurantes){
+                ArrayList<Producto> productos = rest.getProductos();
+                for(Producto producto: productos){
+                    text = text + producto.getIdProducto() + ";" ;
+                }
+                
+                text = text + "=";
+            }
+        }
+        else {
+            text = "Aún no se han registrado restaurantes";
+        }
+
+        return text;
+    }
+    
+    public boolean existenProductos(){
+        if(restauranteA.getProductos() == null){
+            return false;
+        }
+        return true;
+    }
+
+    public void agregarPedido(int idPedido, int idRestaurante, String local, ArrayList<Integer> idProductos){
+        Pedido pedido = new Pedido(idPedido, usuarioA.getId(), idRestaurante, local, idProductos);
         pedidoManager.agregarPedido(pedido);
     }
 
