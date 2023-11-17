@@ -6,6 +6,7 @@ package com.mycompany.uvg_eats;
 import clases.*;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import java.awt.Color;
 
 /**
  *
@@ -32,6 +33,8 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
         }
         
         initComponents();
+        Color backGround= new Color(8,165,0);
+        getContentPane().setBackground(backGround);
         comboBRest.setModel(new javax.swing.DefaultComboBoxModel(restaurantes));
     }
 
@@ -169,12 +172,14 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
         txt_id = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txt_local = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLlbl1S1MC.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLlbl1S1MC.setText("Pedido Inmediato");
 
+        comboBMenu.setBackground(new java.awt.Color(204, 255, 204));
         comboBMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sellecione", " " }));
         comboBMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,6 +189,7 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
 
         jLlbl2S1MC.setText("Eliga el menu que desea ordenar");
 
+        jBtn1S1MC.setBackground(new java.awt.Color(255, 51, 51));
         jBtn1S1MC.setText("Aceptar");
         jBtn1S1MC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,6 +197,7 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
             }
         });
 
+        jBtn2S1MC.setBackground(new java.awt.Color(255, 51, 51));
         jBtn2S1MC.setText("Salir");
         jBtn2S1MC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,6 +207,7 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
 
         jLlbl2S1MC1.setText("Elija el restaurante preferido");
 
+        comboBRest.setBackground(new java.awt.Color(204, 255, 204));
         comboBRest.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sellecione", " " }));
         comboBRest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,12 +219,16 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
 
         jLabel1.setText("Punto para recoger el pedido");
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoUVG.jpg"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(127, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLlbl1S1MC)
@@ -251,12 +263,17 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLlbl1S1MC)
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLlbl2S1MC2)
-                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLlbl1S1MC)
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLlbl2S1MC2)
+                            .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLlbl2S1MC1)
@@ -368,6 +385,7 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
     private javax.swing.JButton jBtn1S1MC;
     private javax.swing.JButton jBtn2S1MC;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLlbl1S1MC;
     private javax.swing.JLabel jLlbl2S1MC;
     private javax.swing.JLabel jLlbl2S1MC1;

@@ -6,6 +6,7 @@ package com.mycompany.uvg_eats;
 
 import javax.swing.JOptionPane;
 import clases.*;
+import java.awt.Color;
 
 /**
  *
@@ -21,6 +22,8 @@ public class Menu_Repartidor extends javax.swing.JFrame {
      */
     public Menu_Repartidor() {
         initComponents();
+        Color backGround= new Color(8,165,0);
+        getContentPane().setBackground(backGround);
         labelPedido.setVisible(false);
         cBoxPedidos.setVisible(false);
         btnAceptar.setVisible(false);
@@ -46,6 +49,7 @@ public class Menu_Repartidor extends javax.swing.JFrame {
         cBoxPedidos = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAreaPedidos = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -55,6 +59,7 @@ public class Menu_Repartidor extends javax.swing.JFrame {
         lbl2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl2.setText("Elige la opción deseada.");
 
+        cBoxOpcion.setBackground(new java.awt.Color(204, 255, 204));
         cBoxOpcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar opción", "Buscar pedidos disponibles", "Cancelar pedido", "Mostrar pedidos entregados" }));
         cBoxOpcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +67,7 @@ public class Menu_Repartidor extends javax.swing.JFrame {
             }
         });
 
+        btnAceptar.setBackground(new java.awt.Color(0, 255, 51));
         btnAceptar.setText("Aceptar pedido");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +78,7 @@ public class Menu_Repartidor extends javax.swing.JFrame {
         labelPedido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelPedido.setText("Pedidos disponibles");
 
+        cBoxPedidos.setBackground(new java.awt.Color(204, 255, 204));
         cBoxPedidos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar opción", "Buscar pedidos disponibles", "Cancelar pedido", "Mostrar pedidos entregados" }));
         cBoxPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,44 +91,49 @@ public class Menu_Repartidor extends javax.swing.JFrame {
         txtAreaPedidos.setRows(5);
         jScrollPane2.setViewportView(txtAreaPedidos);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoUVG.jpg"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbl2)
-                    .addComponent(labelPedido))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(85, 85, 85)
+                            .addComponent(lbl1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(173, 173, 173)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lbl2)
+                                        .addComponent(labelPedido))
+                                    .addGap(26, 26, 26)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cBoxOpcion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cBoxPedidos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(26, 26, 26)))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cBoxOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(cBoxPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(62, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(lbl1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
+                        .addGap(236, 236, 236)
                         .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lbl1)
-                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lbl1)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl2)
                     .addComponent(cBoxOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -133,7 +145,7 @@ public class Menu_Repartidor extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAceptar)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pack();
@@ -268,6 +280,7 @@ public class Menu_Repartidor extends javax.swing.JFrame {
     private javax.swing.JButton btnAceptar;
     private javax.swing.JComboBox<String> cBoxOpcion;
     private javax.swing.JComboBox<String> cBoxPedidos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelPedido;
     private javax.swing.JLabel lbl1;

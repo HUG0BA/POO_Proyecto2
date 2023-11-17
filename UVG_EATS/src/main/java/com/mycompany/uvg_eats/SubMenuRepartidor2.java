@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.uvg_eats;
-
+import java.awt.Color;
 /**
  *
  * @author javie
@@ -15,6 +15,8 @@ public class SubMenuRepartidor2 extends javax.swing.JFrame {
      */
     public SubMenuRepartidor2() {
         initComponents();
+        Color backGround= new Color(8,165,0);
+        getContentPane().setBackground(backGround);
     }
 
     /**
@@ -28,6 +30,7 @@ public class SubMenuRepartidor2 extends javax.swing.JFrame {
 
         lbl1 = new javax.swing.JLabel();
         lbl2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,25 +40,34 @@ public class SubMenuRepartidor2 extends javax.swing.JFrame {
         lbl2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl2.setText("pedidos...");
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoUVG.jpg"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl1)
                 .addGap(86, 86, 86))
             .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
+                .addGap(175, 175, 175)
                 .addComponent(lbl2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(lbl1)
-                .addGap(102, 102, 102)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(lbl1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(59, 59, 59)
                 .addComponent(lbl2)
                 .addContainerGap(127, Short.MAX_VALUE))
         );
@@ -99,6 +111,7 @@ public class SubMenuRepartidor2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl2;
     // End of variables declaration//GEN-END:variables
