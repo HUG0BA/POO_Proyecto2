@@ -89,7 +89,6 @@ public class Menu_Usuario extends javax.swing.JFrame {
         scroll_pane_text = new javax.swing.JScrollPane();
         txtPaneInfo = new javax.swing.JTextPane();
         labelTitulo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 0));
@@ -127,8 +126,6 @@ public class Menu_Usuario extends javax.swing.JFrame {
 
         labelTitulo.setText("jLabel1");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoUVG.jpg"))); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,9 +133,7 @@ public class Menu_Usuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
+                        .addGap(159, 159, 159)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -164,14 +159,9 @@ public class Menu_Usuario extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(34, 34, 34)
+                .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl2)
                     .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -190,6 +180,12 @@ public class Menu_Usuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
+        
+    }//GEN-LAST:event_btn1ActionPerformed
+
+    private void comboBoxUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxUsuarioActionPerformed
+        index = comboBoxUsuario.getSelectedIndex();
+        
         switch (index){
             case 0:
                 labelTitulo.setVisible(false);
@@ -287,10 +283,6 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Ingrese una opción válida", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
                 break;
         }
-    }//GEN-LAST:event_btn1ActionPerformed
-
-    private void comboBoxUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxUsuarioActionPerformed
-        index = comboBoxUsuario.getSelectedIndex();
         
         
     }//GEN-LAST:event_comboBoxUsuarioActionPerformed
@@ -338,7 +330,6 @@ public class Menu_Usuario extends javax.swing.JFrame {
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn2;
     private javax.swing.JComboBox<String> comboBoxUsuario;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl2;

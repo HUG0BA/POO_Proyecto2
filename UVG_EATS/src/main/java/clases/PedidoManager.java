@@ -30,6 +30,22 @@ public class PedidoManager{
             }
         }
     }
+    
+    public ArrayList<Pedido> getPedidosDisponibles(){
+        ArrayList<Pedido> disponibles = new ArrayList<Pedido>();
+        if(pedidos.isEmpty()){
+            return disponibles;
+        }else{
+            for(Pedido pedido : pedidos){
+                if(!pedido.getAsignada()){
+                    disponibles.add(pedido);
+                }
+                
+            }
+            return disponibles;
+        }
+        
+    }
 
     public String mostrarPedidos(){
         String text = "";
@@ -65,22 +81,28 @@ public class PedidoManager{
         return text;
     }
 
-    public String mostrarPedidosPendientes(){
+    public String[] mostrarPedidosDisponiblesMenu(){
+        
         String text = "";
         int i = 0;
         if(!pedidos.isEmpty()){
+            String[] info = new String[pedidos.size()];
             for(Pedido pedido : pedidos){
                 if(!pedido.getAsignada()){
-                    text = text + i + ". " + pedido.toString() + "\n";
+                    text = "Id: ¡" + pedido.getIdPedido() + "! Entregar en: " + pedido.getLocal() + "";
+                    info[i] = text;
+                    i++;        
                 } 
-                i++;
+                
             }
+            return info;
         }
         else{
-            text = "Todos los pedidos actuales están asignados";
-        }
+            String[] mensaje = {"Todos los pedidos actuales están asignados"};
+            return mensaje;
+         }
 
-        return text;
+        
     }
 
     public void agregarPedido(Pedido pedido){
@@ -92,8 +114,22 @@ public class PedidoManager{
     }
     
 
-    public void asignarRepartidor(int index, Repartidor repartidor){
-        pedidos.get(index).setRepartidor(repartidor);
-        pedidos.get(index).setAsignada(true);
+    public void asignarRepartidor(int index, int idRepartidor){
+        for(Pedido pedido : pedidos){
+            if(pedido.getIdPedido() == index){
+                pedido.setRepartidor(idRepartidor);
+                pedido.setAsignada(true);
+            }
+        }
+    }
+    
+    public void cancelarRepartidor(int idRepartidor){
+       for(Pedido pedido : pedidos){
+            if(pedido.getAsignada() && pedido.getIdRepartidor() == idRepartidor){
+                
+                pedido.setRepartidor(-1);
+                pedido.setAsignada(false);
+            }
+        } 
     }
 }

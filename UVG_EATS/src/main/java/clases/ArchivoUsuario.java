@@ -138,7 +138,7 @@ public class ArchivoUsuario{
         }
         proveedorBr.close();
 
-        BufferedReader repartidorBr = new BufferedReader(new FileReader(archivoProveedor));
+        BufferedReader repartidorBr = new BufferedReader(new FileReader(archivoRepartidor));
         line = "";
 
         if(archivoRepartidor.length() > 0){
@@ -149,8 +149,8 @@ public class ArchivoUsuario{
                     continue;
                 }
                 String[] values = line.split(",");
-                Repartidor proveedor = new Repartidor(Integer.parseInt(values[0]), values[1], values[2], values[3], Integer.parseInt(values[4]), Integer.parseInt(values[5]), Integer.parseInt(values[6]), Integer.parseInt(values[7]), Integer.parseInt(values[8]), Integer.parseInt(values[9]), Integer.parseInt(values[10]));
-                usuariosLectura.add(proveedor);
+                Repartidor repartidor = new Repartidor(Integer.parseInt(values[0]), values[1], values[2], values[3], Integer.parseInt(values[4]), Integer.parseInt(values[5]), Integer.parseInt(values[6]), Integer.parseInt(values[7]), Integer.parseInt(values[8]), Integer.parseInt(values[9]), Integer.parseInt(values[10]));
+                usuariosLectura.add(repartidor);
             }
         }
         repartidorBr.close();

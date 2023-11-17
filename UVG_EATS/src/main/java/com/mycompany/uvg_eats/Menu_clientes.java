@@ -36,7 +36,7 @@ public class Menu_clientes extends javax.swing.JFrame {
         jLbl1MC.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLbl1MC.setText("Bienvenido al Menu Clientes");
 
-        cBoxOpcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "1. Solicitar pedido inmediato", "2. Cancelar pedido", "3. Confirmar entrega del pedido" }));
+        cBoxOpcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "1. Solicitar pedido inmediato" }));
         cBoxOpcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cBoxOpcionActionPerformed(evt);
@@ -72,7 +72,7 @@ public class Menu_clientes extends javax.swing.JFrame {
                     .addComponent(jLbl2MC))
                 .addGap(26, 26, 26)
                 .addComponent(cBoxOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 182, Short.MAX_VALUE))
+                .addGap(0, 201, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
