@@ -117,7 +117,7 @@ public class FoodCourtUVG{
 
     public void setRestA(Restaurante restauranteP){
         if(restauranteA != null){
-            restaurantes.set(indexA, restauranteA);
+            restaurantes.set(indexR, restauranteA);
         }
 
         restauranteA = null;
@@ -260,10 +260,10 @@ public class FoodCourtUVG{
         restaurantes.add(nuevo);
     } 
 
-    public void iniciarRest(int idRest){
-        if(!restaurantes.isEmpty()){
+    public void iniciarRest(){
+        if(!restaurantes.isEmpty() && usuarioA instanceof Proveedor){
             for (Restaurante rest : restaurantes){
-                if (rest.getIdRest() == idRest){
+                if (rest.getIdRest() == ((Proveedor)usuarioA).getIdRest()){
                     setRestA(rest);
                     indexR = restaurantes.indexOf(rest);
                 }
@@ -437,7 +437,7 @@ public class FoodCourtUVG{
         if(!restaurantes.isEmpty()){
             for(Restaurante restaurante : restaurantes){
                 if(restaurante.getIdRest() == id){
-                    return "Restaurante: " + restaurante.getNombre() + " Horario: " + restaurante.getHorario();
+                    return "Restaurante: " + restaurante.getNombre() + "Descripción: "+ restaurante.getDes() +" Horario: " + restaurante.getHorario();
                 }
             }
         }
@@ -451,7 +451,7 @@ public class FoodCourtUVG{
                     ArrayList<Producto> productos = restaurante.getProductos();
                     for(Producto producto : productos){
                         if(producto.getIdProducto() == idProducto){
-                            return "Producto: " + producto.getTitulo() + " Precio" + producto.getCosto();
+                            return "Producto: " + producto.getTitulo() + " Descripcion: " + producto.getDetalles() +" Precio" + producto.getCosto();
                         }
                                
                     }
