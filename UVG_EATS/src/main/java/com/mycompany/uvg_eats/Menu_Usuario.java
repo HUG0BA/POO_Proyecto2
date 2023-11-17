@@ -92,7 +92,7 @@ public class Menu_Usuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 153, 0));
+        setBackground(new java.awt.Color(0, 204, 0));
 
         lbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl1.setText("¡Bienvenido al menú de FoodCourtUVG!");
