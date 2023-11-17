@@ -14,7 +14,10 @@ com\mycompany\uvg_eats\Menu_Repartidor$1.class
 com\mycompany\uvg_eats\Menu_clientes$3.class
 com\mycompany\uvg_eats\Menú_proveedores$7.class
 com\mycompany\uvg_eats\SubMenuRestaurante$2.class
+<<<<<<< HEAD
+=======
 com\mycompany\uvg_eats\Menu_Repartidor$4.class
+>>>>>>> c5b264e949fcf5c39aefef833ead421fcae80482
 com\mycompany\uvg_eats\SubMenu_Repartidor1$1.class
 com\mycompany\uvg_eats\SubMenu_Repartidor1.class
 com\mycompany\uvg_eats\Menu_Repartidor$3.class

@@ -6,6 +6,7 @@ package com.mycompany.uvg_eats;
 import clases.*;
 import javax.swing.JOptionPane;
 import java.awt.Color;
+
 /**
  *
  * @author javie
@@ -20,7 +21,8 @@ public class Menu_Usuario extends javax.swing.JFrame {
     public Menu_Usuario() {
         //food = new FoodCourtUVG();
         initComponents();
-        this.getContentPane().setBackground(Color.green);
+        Color backGround= new Color(8,165,0);
+        getContentPane().setBackground(backGround);
         labelTitulo.setVisible(false);
         txtPaneInfo.setVisible(false);
     }
@@ -89,9 +91,10 @@ public class Menu_Usuario extends javax.swing.JFrame {
         scroll_pane_text = new javax.swing.JScrollPane();
         txtPaneInfo = new javax.swing.JTextPane();
         labelTitulo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 204, 0));
+        setBackground(new java.awt.Color(0, 153, 0));
 
         lbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl1.setText("¡Bienvenido al menú de FoodCourtUVG!");
@@ -99,6 +102,7 @@ public class Menu_Usuario extends javax.swing.JFrame {
         lbl2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl2.setText("Elige la acción deseada:");
 
+        btn1.setBackground(new java.awt.Color(0, 255, 51));
         btn1.setText("Aceptar");
         btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +110,7 @@ public class Menu_Usuario extends javax.swing.JFrame {
             }
         });
 
+        btn2.setBackground(new java.awt.Color(255, 51, 51));
         btn2.setText("Salir");
         btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +118,7 @@ public class Menu_Usuario extends javax.swing.JFrame {
             }
         });
 
+        comboBoxUsuario.setBackground(new java.awt.Color(204, 255, 204));
         comboBoxUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agregar Usuario", "Iniciar Sesión", "Mostrar Clientes", "Mostrar Repartidores", "Mostrar proveedores", "Agregar Restaurante", "Mostrar Restaurante", "Guardar Usuarios", "Guardar Restaurantes" }));
         comboBoxUsuario.setToolTipText("");
         comboBoxUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -122,56 +128,67 @@ public class Menu_Usuario extends javax.swing.JFrame {
         });
 
         scroll_pane_text.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        txtPaneInfo.setBackground(new java.awt.Color(8, 165, 0));
+        txtPaneInfo.setForeground(new java.awt.Color(8, 165, 0));
         scroll_pane_text.setViewportView(txtPaneInfo);
 
         labelTitulo.setText("jLabel1");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoUVG.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scroll_pane_text, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(48, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(74, 74, 74)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(scroll_pane_text, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(btn1)
-                                            .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(47, 47, 47)
-                                                .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(141, 141, 141)
-                                                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                        .addComponent(btn1)
+                        .addGap(141, 141, 141)
+                        .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(376, 376, 376)
+                        .addGap(43, 43, 43)
                         .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(130, 130, 130))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl2)
                     .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn1)
                     .addComponent(btn2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelTitulo)
-                .addGap(18, 18, 18)
+                .addGap(43, 43, 43)
                 .addComponent(scroll_pane_text, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(119, 119, 119))
         );
@@ -180,12 +197,6 @@ public class Menu_Usuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-        
-    }//GEN-LAST:event_btn1ActionPerformed
-
-    private void comboBoxUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxUsuarioActionPerformed
-        index = comboBoxUsuario.getSelectedIndex();
-        
         switch (index){
             case 0:
                 labelTitulo.setVisible(false);
@@ -283,6 +294,10 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Ingrese una opción válida", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
                 break;
         }
+    }//GEN-LAST:event_btn1ActionPerformed
+
+    private void comboBoxUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxUsuarioActionPerformed
+        index = comboBoxUsuario.getSelectedIndex();
         
         
     }//GEN-LAST:event_comboBoxUsuarioActionPerformed
@@ -330,6 +345,7 @@ public class Menu_Usuario extends javax.swing.JFrame {
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn2;
     private javax.swing.JComboBox<String> comboBoxUsuario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl2;
