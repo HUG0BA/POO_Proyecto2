@@ -13,14 +13,14 @@ import java.util.ArrayList;
 public class Pedido{
     private int idPedido;
     private int idCliente;
-    private Repartidor repartidor;
+    private int idRepartidor;
     private int idRestaurante;
-    private ArrayList<Integer> idProductos;
+    private int idProducto;
     private String local;
     private boolean asignada;
     //private boolean completado;
 
-    public Pedido(int idPedido, int idCliente, int idRestaurante, String local, ArrayList<Integer> idProductos){
+    public Pedido(int idPedido, int idCliente, int idRestaurante, String local, int idProducto){
         this.idPedido = idPedido;
         this.idCliente = idCliente;
         //cliente = new Cliente(clienteP.getId(), clienteP.getNombre(), clienteP.getApellido(), clienteP.getEmail(), clienteP.getEdad(), clienteP.getTipo());
@@ -29,33 +29,29 @@ public class Pedido{
         //restaurante.setProductos(restauranteP.getProductos());
         this.local = local;
         this.asignada = false;
+        this.idProducto = idProducto;
         //this.completado = false;
 
-        this.idProductos = new ArrayList<Integer>();
+        /*this.idProductos = new ArrayList<Integer>();
         if (!idProductos.isEmpty()){
             for(int copia : idProductos ){
                 this.idProductos.add(copia);
                 /*Producto producto = new Producto(copia.getIdProducto(), copia.getTitulo(), copia.getDetalles(), copia.getCosto(), copia.getDisponible());
-                productos.add(producto);*/
+                productos.add(producto);
             }
-        }
+        }*/
     }
 
     public int getIdPedido(){
         return idPedido;
     }
 
-    public ArrayList<Integer> getIdProductos() {
-        return idProductos;
+    public int getIdProductos() {
+        return idProducto;
     }
 
-    public void setIdProductos(ArrayList<Integer> idProductos) {
-        if(!idProductos.isEmpty()){
-            this.idProductos.clear();
-            for(int id : idProductos){
-                idProductos.add(id);
-            }
-        }
+    public void setIdProductos(int idProducto) {
+        this.idProducto = idProducto;
     }
     public void setIdPedido(int idPedido){
         this.idPedido = idPedido;
@@ -87,22 +83,12 @@ public class Pedido{
         cliente.setCalif(clienteP.getCalif());
     }*/
 
-    public Repartidor getRepartidor(){
-        return repartidor;
+    public int getIdRepartidor(){
+        return idRepartidor;
     }
 
-    public void setRepartidor(Repartidor repartidorP){
-        repartidor.setId(repartidorP.getId());
-        repartidor.setNombre(repartidorP.getNombre());
-        repartidor.setApellido(repartidorP.getApellido());
-        repartidor.setEmail(repartidorP.getEmail());
-        repartidor.setEdad(repartidorP.getEdad());
-        repartidor.setTotalP(repartidorP.getTotalP());
-        repartidor.setTotalT(repartidorP.getTotalT());
-        repartidor.setTotalPC(repartidorP.getTotalPC());
-        repartidor.setTotalTC(repartidorP.getTotalTC());
-        repartidor.setTotalH(repartidorP.getTotalH());
-        repartidor.setCalif(repartidorP.getCalif());
+    public void setRepartidor(int idRepartidor){
+        this.idRepartidor = idRepartidor;
     }
 
     public int getIdRestaurante() {

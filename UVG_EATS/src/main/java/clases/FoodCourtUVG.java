@@ -43,7 +43,7 @@ public class FoodCourtUVG{
         archivoRestaurante = new ArchivoRestaurante("restaurantes.csv");
         usuarios = archivoUsuario.leerArchivo();
         restaurantes = archivoRestaurante.leerArchivo();
-        System.out.println("QUE PASO");
+        //System.out.println("QUE PASO");
         pedidoManager = new PedidoManager();
         
     }
@@ -65,7 +65,7 @@ public class FoodCourtUVG{
 
     public void setUsuarioA(Usuario usuario){
         if(usuarioA != null){
-            usuarios.set(indexA, usuario);
+            usuarios.set(indexA, usuarioA);
         }
 
         usuarioA = null;
@@ -222,7 +222,8 @@ public class FoodCourtUVG{
                         if((usuario instanceof Cliente) && usuario.getId() == id){
                             setUsuarioA(usuario);
                             text = "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido();
-                            break;
+                            return text;
+                            
                         }else{
                             text = "No se ha encontrado ningún cliente con el id " + id;
                         }
@@ -232,7 +233,7 @@ public class FoodCourtUVG{
                         if((usuario instanceof Repartidor) && usuario.getId() == id){
                             setUsuarioA(usuario);
                             text = "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido();
-                            break;
+                            return text;
                         }else{
                             text = "No se ha encontrado ningún cliente con el id " + id;
                         }
@@ -242,7 +243,7 @@ public class FoodCourtUVG{
                         if((usuario instanceof Proveedor) && usuario.getId() == id){
                             setUsuarioA(usuario);
                             text = "Bienvenido " + usuario.getNombre() + " " + usuario.getApellido();
-                            break;
+                            return text;
                         }else{
                             text = "No se ha encontrado ningún cliente con el id " + id;
                         }
@@ -381,7 +382,6 @@ public class FoodCourtUVG{
                 for(Producto producto: productos){
                     text = text + producto.getIdProducto() + ";" ;
                 }
-                
                 text = text + "=";
             }
         }
@@ -399,8 +399,8 @@ public class FoodCourtUVG{
         return true;
     }
 
-    public void agregarPedido(int idPedido, int idRestaurante, String local, ArrayList<Integer> idProductos){
-        Pedido pedido = new Pedido(idPedido, usuarioA.getId(), idRestaurante, local, idProductos);
+    public void agregarPedido(int idPedido, int idRestaurante, String local, int idProducto){
+        Pedido pedido = new Pedido(idPedido, usuarioA.getId(), idRestaurante, local, idProducto);
         pedidoManager.agregarPedido(pedido);
     }
 
@@ -408,10 +408,19 @@ public class FoodCourtUVG{
         pedidoManager.eliminarPedido(index);
     }
 
-    public void asignarRepartidor(int index, Repartidor repartidor){
-        pedidoManager.asignarRepartidor(index, repartidor);
+    public void asignarRepartidor(int index){
+        if(usuarioA instanceof Repartidor){
+            pedidoManager.asignarRepartidor(index, usuarioA.getId());
+            ((Repartidor)usuarioA).setOcupado(true);
+        }    
     }
-
+    
+    public void cancelarRepartidor(){
+       if(usuarioA instanceof Repartidor){
+           pedidoManager.cancelarRepartidor(usuarioA.getId());
+           ((Repartidor)usuarioA).setOcupado(false);
+       } 
+    }
     public String mostrarPedidos(){
         return pedidoManager.mostrarPedidos();
     }
@@ -422,5 +431,92 @@ public class FoodCourtUVG{
     
     public boolean guardarRestaurantes() throws Exception{
         return archivoRestaurante.escribirArchivo(restaurantes);
+    }
+    
+    public String obtenerInfoRestaurante(int id){
+        if(!restaurantes.isEmpty()){
+            for(Restaurante restaurante : restaurantes){
+                if(restaurante.getIdRest() == id){
+                    return "Restaurante: " + restaurante.getNombre() + " Horario: " + restaurante.getHorario();
+                }
+            }
+        }
+        return "";
+    }
+    
+    public String obtenerInfoProducto(int idRest, int idProducto){
+        if(!restaurantes.isEmpty()){
+            for(Restaurante restaurante : restaurantes){
+                if(restaurante.getIdRest() == idRest){
+                    ArrayList<Producto> productos = restaurante.getProductos();
+                    for(Producto producto : productos){
+                        if(producto.getIdProducto() == idProducto){
+                            return "Producto: " + producto.getTitulo() + " Precio" + producto.getCosto();
+                        }
+                               
+                    }
+                }
+                
+            }
+        }
+        return "";
+    }
+    
+    public String obtenerInfoCliente(int id){
+        if(!usuarios.isEmpty()){
+            for(Usuario usuario : usuarios){
+                if(usuario instanceof Cliente){
+                    if(usuario.getId() == id){
+                        return "Cliente: " + usuario.getNombre() + " " + usuario.getApellido();
+                    }
+                }
+            }
+        }
+        
+        return "";
+    }
+    
+    public String[] obtenerPedidosMenu(){
+        if(pedidoManager != null){
+            return pedidoManager.mostrarPedidosDisponiblesMenu();
+        }
+        return null;
+    }
+    
+    public String[] obtenerInfoPedidosMenu(){
+        ArrayList<Pedido> disponibles = pedidoManager.getPedidosDisponibles();
+        if(disponibles != null){
+            String[] info = new String[disponibles.size()];
+            int i = 0;
+            for(Pedido pedido : disponibles){
+                int idRest = pedido.getIdRestaurante();
+                int idProducto = pedido.getIdProductos();
+                int idCliente = pedido.getIdCliente();
+                String text = obtenerInfoCliente(idCliente) + "\n" + obtenerInfoRestaurante(idRest) + "\n" + obtenerInfoProducto(idRest, idProducto);
+                info[i] = text;
+                i++;
+            }
+            
+            return info;
+        }
+        return null;
+    }
+    
+    public boolean isRepartidorAOcupado(){
+        if(usuarioA instanceof Repartidor){
+            return ((Repartidor)usuarioA).isOcupado();
+        }
+        return false;
+    }
+    
+    public String mostrarPedidosEntregadosRepartidor(){
+        if(usuarioA instanceof Repartidor){
+            return "Total de pedidos:" + ((Repartidor)usuarioA).getTotalP() + "\n" 
+                    + "Total de turnos: " + ((Repartidor)usuarioA).getTotalT() + "\n" 
+                    + "Total de pedidos cancelados: " + ((Repartidor)usuarioA).getTotalPC() + "\n" 
+                    + "Total de turnos cancelados: " + ((Repartidor)usuarioA).getTotalTC() + "\n" 
+                    + "Total de horas beca: " + ((Repartidor)usuarioA).getTotalH() + "\n"; 
+        }
+        return "";
     }
 }

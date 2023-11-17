@@ -267,6 +267,8 @@ public class Menú_proveedores extends JFrame {
     
     private void mostrarFormularioAgregarProducto(){
         agregarProductoPanel.setVisible(true);
+        eliminarProductoPanel.setVisible(false);
+        disponibilidadRestaurantePanel.setVisible(false);
         this.pack();
         this.setLocationRelativeTo(null);
     }
@@ -274,6 +276,7 @@ public class Menú_proveedores extends JFrame {
     private void mostrarFormularioEliminarProducto(){
         agregarProductoPanel.setVisible(false);
         eliminarProductoPanel.setVisible(true);
+        disponibilidadRestaurantePanel.setVisible(false);
         this.pack();
         this.setLocationRelativeTo(null);
     }
@@ -281,7 +284,6 @@ public class Menú_proveedores extends JFrame {
     private void mostrarFormularioDisponibiidadRestaurante(){
         agregarProductoPanel.setVisible(false);
         eliminarProductoPanel.setVisible(false);
-        
         disponibilidadRestaurantePanel.setVisible(true);
         this.pack();
         this.setLocationRelativeTo(null);

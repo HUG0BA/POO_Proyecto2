@@ -12,6 +12,7 @@ import java.util.Objects;
 
 public class Repartidor extends Usuario{
     // Atributos
+    private boolean ocupado;
     private int totalP;
     private int totalT;
     private int totalPC;
@@ -20,19 +21,12 @@ public class Repartidor extends Usuario{
     private int calif;
 
     // Constructor predeterminado
-    public Repartidor() {
-        super();
-        this.totalP = 0;
-        this.totalT = 0;
-        this.totalPC = 0;
-        this.totalTC = 0;
-        this.totalH = 0;
-        this.calif = 0;
-    }
+    
 
     // Constructor con parámetros
     public Repartidor(int id, String nombre, String apellido, String email, int edad) {
         super(id, nombre, apellido, email, edad);
+        this.ocupado = false;
         this.totalP = 0;
         this.totalT = 0;
         this.totalPC = 0;
@@ -43,6 +37,7 @@ public class Repartidor extends Usuario{
 
     public Repartidor(int id, String nombre, String apellido, String email, int edad, int totalP, int totalT, int totalPC, int totalTC, int totalH, int calif) {
         super(id, nombre, apellido, email, edad);
+        this.ocupado = false;
         this.totalP = totalP;
         this.totalT = totalT;
         this.totalPC = totalPC;
@@ -52,6 +47,10 @@ public class Repartidor extends Usuario{
     }
 
     // Getters y setters
+    public boolean isOcupado(){
+        return this.ocupado;
+    }
+    
     public int getTotalP() {
         return totalP;
     }
@@ -70,6 +69,10 @@ public class Repartidor extends Usuario{
 
     public int getTotalPC() {
         return totalPC;
+    }
+    
+    public void setOcupado(boolean ocupado){
+        this.ocupado = ocupado;
     }
 
     public void setTotalPC(int totalPC) {

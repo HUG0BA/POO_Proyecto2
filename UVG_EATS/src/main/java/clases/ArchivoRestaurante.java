@@ -84,7 +84,7 @@ public class ArchivoRestaurante{
                     System.out.println(textProductos.toString());
                     for(String textProducto : textProductos){
                         String[] infoProducto = textProducto.split(";");
-                        System.out.println(infoProducto.toString());
+                        //System.out.println(infoProducto.toString());
                         Producto producto = new Producto(Integer.parseInt(infoProducto[0]), infoProducto[1], infoProducto[2], Double.parseDouble(infoProducto[3]), Boolean.parseBoolean(infoProducto[4]));
                         productos.add(producto);
                     } 
@@ -92,11 +92,11 @@ public class ArchivoRestaurante{
 
                 Restaurante restaurante = new Restaurante(Integer.parseInt(values[0]), values[1], values[2], values[3], Boolean.parseBoolean(values[4]), productos);
                 restaurantes.add(restaurante);
-                System.out.println("LLEGO");
+                //System.out.println("LLEGO");
             }          
         }
         
-        System.out.println("AYUDAAA");
+        //System.out.println("AYUDAAA");
         br.close();
         
         return restaurantes;

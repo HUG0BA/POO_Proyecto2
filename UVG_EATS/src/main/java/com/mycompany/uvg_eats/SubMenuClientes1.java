@@ -76,7 +76,7 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
         }
         
         
-        
+        String[][] productos;
         try{
             String[] cargaProductos = FoodCourtUVG.getInstance().mostrarProductosParaMenu().split("=");
             productos = new String[cargaProductos.length][];
@@ -133,16 +133,17 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
         }
         
         
-        
+        String[][] indexs;
         try{
-            String[] cargaProductos = FoodCourtUVG.getInstance().mostrarProductosParaMenu().split("=");
-            productos = new String[cargaProductos.length][];
+            String[] cargaProductos = FoodCourtUVG.getInstance().obtenerIndexProductos().split("=");
+            indexs = new String[cargaProductos.length][];
             int i = 0;
             for(String linea : cargaProductos){
                 String[] productosA = linea.split(";");
-                productos[i] = productosA;
+                indexs[i] = productosA;
+                i++;
             }
-            return productos;
+            return indexs;
         }catch(Exception e){
             
         }
@@ -294,14 +295,16 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
             int indexRest = comboBRest.getSelectedIndex();
             int idRest = Integer.parseInt(indexRestaurantes[indexRest]);
             int indexProducto = comboBMenu.getSelectedIndex();
+            System.out.println(indexProductos[indexRest][indexProducto]);
             int idProducto = Integer.parseInt(indexProductos[indexRest][indexProducto]);
             
-            ArrayList<Integer> productosParametro = new ArrayList<Integer>();
-            productosParametro.add(idProducto);
+            /*ArrayList<Integer> productosParametro = new ArrayList<Integer>();
+            productosParametro.add(idProducto)*/
             
             try{
-                FoodCourtUVG.getInstance().agregarPedido(id, idRest, txt_local.getText(), productosParametro);
+                FoodCourtUVG.getInstance().agregarPedido(id, idRest, txt_local.getText(), idProducto);
                 JOptionPane.showMessageDialog(null,"Su pedido se ha añadido a la cola", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null,"Ha ocurrido un error al realizar el pedido", "¡Error!", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -311,7 +314,7 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtn1S1MCActionPerformed
 
     private void jBtn2S1MCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn2S1MCActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jBtn2S1MCActionPerformed
 
     private void comboBMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBMenuActionPerformed

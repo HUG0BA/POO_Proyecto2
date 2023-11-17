@@ -189,6 +189,7 @@ public class SubMenuInicioSesion extends javax.swing.JFrame {
                 //System.out.println(mensaje);
                 if(mensaje.contains("No se ha encontrado ningún usuario con el id")){
                     JOptionPane.showMessageDialog(null,mensaje, "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
                 }
                 else if(mensaje.equals("")){
                     JOptionPane.showMessageDialog(null,"Aún no se ha ingresado ningún usuario", "¡Alerta!", JOptionPane.INFORMATION_MESSAGE);
@@ -201,7 +202,9 @@ public class SubMenuInicioSesion extends javax.swing.JFrame {
                             menu_cliente.setVisible(true);
                             dispose();
                         }else if((cBoxTUsuario.getSelectedIndex()) == 2){
-
+                            Menu_Repartidor menu_repartidor = new Menu_Repartidor();
+                            menu_repartidor.setVisible(true);
+                            dispose();
                         }else if(cBoxTUsuario.getSelectedIndex() == 3){
                             if(FoodCourtUVG.getInstance().getIdRestProveedor() == -1){
                                 JOptionPane.showMessageDialog(null,"Ha ocurrido un error tratando de seleccionar el restaurante del proveedor", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);

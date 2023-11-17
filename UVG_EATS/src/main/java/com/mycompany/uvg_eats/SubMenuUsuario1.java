@@ -328,7 +328,7 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
                 
                 try{
                     FoodCourtUVG.getInstance().agregarRepartidor(id, txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), edad);
-                    //JOptionPane.showMessageDialog(null,"Repartidor registrado correctamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Repartidor registrado correctamente", "¡Exito!", JOptionPane.INFORMATION_MESSAGE);
                     dispose();
                 }catch(Exception e){
                     JOptionPane.showMessageDialog(null,"AQUII Ha ocurrido un error tratando de realizar la operación. Error: " + e.toString(), "¡Error!", JOptionPane.INFORMATION_MESSAGE);
