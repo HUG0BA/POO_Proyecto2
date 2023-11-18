@@ -42,7 +42,7 @@ public class SubMenuClientes2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLbl1S2MC.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLbl1S2MC.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         jLbl1S2MC.setText("Confirmar Entrega");
 
         jBtn1S2MC.setBackground(new java.awt.Color(0, 255, 51));
@@ -56,10 +56,10 @@ public class SubMenuClientes2 extends javax.swing.JFrame {
             }
         });
 
-        lbl1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl1.setText("Ya ha recibido su pedido?");
 
-        lbl2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl2.setText("Que nota del 1-5 le da al repartidor");
 
         txt1.addActionListener(new java.awt.event.ActionListener() {
@@ -77,10 +77,8 @@ public class SubMenuClientes2 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(lbl2, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
+                    .addComponent(lbl1)
+                    .addComponent(lbl2, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -90,7 +88,7 @@ public class SubMenuClientes2 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addComponent(jLbl1S2MC, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLbl1S2MC, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(93, 93, 93)
@@ -119,7 +117,7 @@ public class SubMenuClientes2 extends javax.swing.JFrame {
                         .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtn2S2MC)
                     .addComponent(jBtn1S2MC))

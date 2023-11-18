@@ -66,10 +66,10 @@ public class SubMenuRestaurante extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbl1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         lbl1.setText("Ingrese sus datos para crear su restaurante");
 
-        lbl2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl2.setText("Id");
 
         btn_aceptar.setBackground(new java.awt.Color(0, 255, 51));
@@ -94,16 +94,16 @@ public class SubMenuRestaurante extends javax.swing.JFrame {
             }
         });
 
-        lbl3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl3.setText("Nombre");
 
-        lbl4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl4.setText("Descripción");
 
-        lbl5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl5.setText("Horario");
 
-        lbl6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl6.setText("Disponibilidad");
 
         txt_nombre.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +125,7 @@ public class SubMenuRestaurante extends javax.swing.JFrame {
         });
 
         cBoxDisp.setBackground(new java.awt.Color(204, 255, 204));
+        cBoxDisp.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cBoxDisp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Disponible", "No disponible" }));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoUVG.jpg"))); // NOI18N
@@ -136,12 +137,11 @@ public class SubMenuRestaurante extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lbl6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,7 +150,6 @@ public class SubMenuRestaurante extends javax.swing.JFrame {
                                     .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(25, 25, 25))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_aceptar)
                                 .addGap(66, 66, 66)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,9 +161,12 @@ public class SubMenuRestaurante extends javax.swing.JFrame {
                                 .addComponent(cBoxDisp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
-                                .addComponent(btn2))))
-                    .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64))
+                                .addComponent(btn2)))
+                        .addGap(154, 154, 154))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,7 +182,9 @@ public class SubMenuRestaurante extends javax.swing.JFrame {
                         .addComponent(txt_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_horario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(96, 96, 96)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cBoxDisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_aceptar)
                             .addComponent(btn2)))
@@ -194,9 +198,7 @@ public class SubMenuRestaurante extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl6)
-                            .addComponent(cBoxDisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lbl6))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))

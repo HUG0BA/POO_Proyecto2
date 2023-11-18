@@ -29,10 +29,6 @@
               <EmptySpace pref="33" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLlbl1S1MC" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -69,6 +65,10 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLlbl1S1MC" min="-2" pref="231" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -107,7 +107,7 @@
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txt_local" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace pref="46" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBtn1S1MC" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBtn2S1MC" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -121,7 +121,7 @@
     <Component class="javax.swing.JLabel" name="jLlbl1S1MC">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="24" style="1"/>
+          <Font name="Tahoma" size="24" style="3"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Pedido Inmediato"/>
       </Properties>
@@ -147,13 +147,16 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLlbl2S1MC">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Eliga el menu que desea ordenar"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jBtn1S1MC">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="33" red="ff" type="rgb"/>
+          <Color blue="33" green="ff" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Aceptar"/>
       </Properties>
@@ -174,6 +177,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLlbl2S1MC1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Elija el restaurante preferido"/>
       </Properties>
     </Component>
@@ -198,6 +204,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLlbl2S1MC2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Id Pedido"/>
       </Properties>
     </Component>
@@ -205,6 +214,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Punto para recoger el pedido"/>
       </Properties>
     </Component>

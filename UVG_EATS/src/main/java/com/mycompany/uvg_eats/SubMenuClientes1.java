@@ -176,7 +176,7 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLlbl1S1MC.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLlbl1S1MC.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         jLlbl1S1MC.setText("Pedido Inmediato");
 
         comboBMenu.setBackground(new java.awt.Color(204, 255, 204));
@@ -187,9 +187,10 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
             }
         });
 
+        jLlbl2S1MC.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLlbl2S1MC.setText("Eliga el menu que desea ordenar");
 
-        jBtn1S1MC.setBackground(new java.awt.Color(255, 51, 51));
+        jBtn1S1MC.setBackground(new java.awt.Color(0, 255, 51));
         jBtn1S1MC.setText("Aceptar");
         jBtn1S1MC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,6 +206,7 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
             }
         });
 
+        jLlbl2S1MC1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLlbl2S1MC1.setText("Elija el restaurante preferido");
 
         comboBRest.setBackground(new java.awt.Color(204, 255, 204));
@@ -215,8 +217,10 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
             }
         });
 
+        jLlbl2S1MC2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLlbl2S1MC2.setText("Id Pedido");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Punto para recoger el pedido");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoUVG.jpg"))); // NOI18N
@@ -230,9 +234,6 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLlbl1S1MC)
-                        .addGap(229, 229, 229))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -258,7 +259,10 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(comboBMenu, 0, 139, Short.MAX_VALUE)
                                         .addComponent(txt_local)))))
-                        .addGap(160, 160, 160))))
+                        .addGap(160, 160, 160))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLlbl1S1MC, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(212, 212, 212))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,7 +290,7 @@ public class SubMenuClientes1 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txt_local, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtn1S1MC)
                     .addComponent(jBtn2S1MC))

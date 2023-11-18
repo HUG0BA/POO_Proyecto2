@@ -96,10 +96,10 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbl1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         lbl1.setText("Ingrese sus datos para crear su usuario");
 
-        lbl2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl2.setText("ID");
 
         btn_aceptar.setBackground(new java.awt.Color(0, 255, 51));
@@ -124,16 +124,16 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
             }
         });
 
-        lbl3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl3.setText("Nombre");
 
-        lbl4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl4.setText("Apellido");
 
-        lbl5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl5.setText("Email");
 
-        lbl6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl6.setText("Edad");
 
         txt_nombre.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +161,7 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
         });
 
         cBoxTUsuario.setBackground(new java.awt.Color(204, 255, 204));
+        cBoxTUsuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cBoxTUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Cliente", "2. Repartidor", "3. Proveedor" }));
         cBoxTUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,13 +169,14 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
             }
         });
 
-        lbl7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl7.setText("Tipo de usuario");
 
-        labelTipoCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelTipoCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labelTipoCliente.setText("Tipo de cliente");
 
         cBoxTCliente.setBackground(new java.awt.Color(204, 255, 204));
+        cBoxTCliente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cBoxTCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1. Estudiante", "2. Docente", "3. Personal administrativo" }));
         cBoxTCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,7 +184,7 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
             }
         });
 
-        labelNivelAcceso.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelNivelAcceso.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labelNivelAcceso.setText("Nivel de acceso");
 
         txtNivAcceso.addActionListener(new java.awt.event.ActionListener() {
@@ -200,41 +202,45 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl7, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(57, 57, 57)
-                                .addComponent(cBoxTUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lbl6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(labelTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelNivelAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(25, 25, 25)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_id)
-                                    .addComponent(txt_nombre)
-                                    .addComponent(txt_apellido)
-                                    .addComponent(txt_edad)
-                                    .addComponent(txt_email)
-                                    .addComponent(txtNivAcceso)
-                                    .addComponent(cBoxTCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbl7, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(57, 57, 57)
+                                        .addComponent(cBoxTUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(lbl6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(labelTipoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(labelNivelAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(25, 25, 25)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txt_id)
+                                            .addComponent(txt_nombre)
+                                            .addComponent(txt_apellido)
+                                            .addComponent(txt_edad)
+                                            .addComponent(txt_email)
+                                            .addComponent(txtNivAcceso)
+                                            .addComponent(cBoxTCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                                .addComponent(btn_aceptar)
+                                .addGap(84, 84, 84)
+                                .addComponent(btn2)))
+                        .addGap(174, 174, 174))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(btn_aceptar)
-                        .addGap(84, 84, 84)
-                        .addComponent(btn2))
-                    .addComponent(lbl1))
-                .addGap(98, 98, 98))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,7 +284,7 @@ public class SubMenuUsuario1 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNivelAcceso)
                     .addComponent(txtNivAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_aceptar)
                     .addComponent(btn2))

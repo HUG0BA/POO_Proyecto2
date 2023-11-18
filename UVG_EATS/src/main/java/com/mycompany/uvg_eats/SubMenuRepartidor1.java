@@ -35,10 +35,11 @@ public class SubMenuRepartidor1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbl1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         lbl1.setText("Selecciona un pedido:");
 
         CBoxpedidos.setBackground(new java.awt.Color(204, 255, 204));
+        CBoxpedidos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CBoxpedidos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "pedido1", "pedido2", "pedido3", "pedido4", "...", "...", " " }));
 
         btn1.setBackground(new java.awt.Color(0, 255, 51));
@@ -66,8 +67,8 @@ public class SubMenuRepartidor1 extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,7 +84,7 @@ public class SubMenuRepartidor1 extends javax.swing.JFrame {
                 .addComponent(CBoxpedidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66)
                 .addComponent(btn1)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         pack();

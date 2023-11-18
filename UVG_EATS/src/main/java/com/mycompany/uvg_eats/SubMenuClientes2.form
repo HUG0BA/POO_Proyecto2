@@ -26,11 +26,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lbl1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="lbl2" pref="264" max="32767" attributes="0"/>
+                  <Component id="lbl1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbl2" pref="258" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -43,7 +40,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="88" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-              <Component id="jLbl1S2MC" min="-2" pref="217" max="-2" attributes="0"/>
+              <Component id="jLbl1S2MC" min="-2" pref="253" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
@@ -81,7 +78,7 @@
                       <Component id="txt2" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="70" max="32767" attributes="0"/>
+              <EmptySpace pref="76" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBtn2S2MC" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBtn1S2MC" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -95,7 +92,7 @@
     <Component class="javax.swing.JLabel" name="jLbl1S2MC">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="24" style="1"/>
+          <Font name="Tahoma" size="24" style="3"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Confirmar Entrega"/>
       </Properties>
@@ -122,7 +119,7 @@
     <Component class="javax.swing.JLabel" name="lbl1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
+          <Font name="Tahoma" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ya ha recibido su pedido?"/>
       </Properties>
@@ -130,7 +127,7 @@
     <Component class="javax.swing.JLabel" name="lbl2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
+          <Font name="Tahoma" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Que nota del 1-5 le da al repartidor"/>
       </Properties>

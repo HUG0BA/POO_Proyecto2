@@ -4,8 +4,9 @@
  */
 package com.mycompany.uvg_eats;
 import clases.*;
-import javax.swing.JOptionPane;
-import java.awt.Color;
+import javax.swing.*;
+import java.awt.*;
+
 
 /**
  *
@@ -20,12 +21,12 @@ public class Menu_Usuario extends javax.swing.JFrame {
      */
     public Menu_Usuario() {
         //food = new FoodCourtUVG();
+        
         initComponents();
-        Color backGround= new Color(8,165,0);
-        getContentPane().setBackground(backGround);
-        labelTitulo.setVisible(false);
-        txtPaneInfo.setVisible(false);
+
+        
     }
+
 
     public String[] getRestaurantesArray(){
         String[] vacio = {"Aún no se han ingresado restaurantes"};
@@ -92,15 +93,21 @@ public class Menu_Usuario extends javax.swing.JFrame {
         txtPaneInfo = new javax.swing.JTextPane();
         labelTitulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 0));
+        getContentPane().setLayout(null);
 
-        lbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbl1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         lbl1.setText("¡Bienvenido al menú de FoodCourtUVG!");
+        getContentPane().add(lbl1);
+        lbl1.setBounds(129, 39, 489, 60);
 
-        lbl2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbl2.setText("Elige la acción deseada:");
+        getContentPane().add(lbl2);
+        lbl2.setBounds(233, 115, 172, 17);
 
         btn1.setBackground(new java.awt.Color(0, 255, 51));
         btn1.setText("Aceptar");
@@ -109,6 +116,8 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 btn1ActionPerformed(evt);
             }
         });
+        getContentPane().add(btn1);
+        btn1.setBounds(209, 147, 120, 23);
 
         btn2.setBackground(new java.awt.Color(255, 51, 51));
         btn2.setText("Salir");
@@ -117,8 +126,11 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 btn2ActionPerformed(evt);
             }
         });
+        getContentPane().add(btn2);
+        btn2.setBounds(422, 147, 83, 23);
 
         comboBoxUsuario.setBackground(new java.awt.Color(204, 255, 204));
+        comboBoxUsuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         comboBoxUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agregar Usuario", "Iniciar Sesión", "Mostrar Clientes", "Mostrar Repartidores", "Mostrar proveedores", "Agregar Restaurante", "Mostrar Restaurante", "Guardar Usuarios", "Guardar Restaurantes" }));
         comboBoxUsuario.setToolTipText("");
         comboBoxUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +138,8 @@ public class Menu_Usuario extends javax.swing.JFrame {
                 comboBoxUsuarioActionPerformed(evt);
             }
         });
+        getContentPane().add(comboBoxUsuario);
+        comboBoxUsuario.setBounds(452, 114, 148, 21);
 
         scroll_pane_text.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -133,65 +147,20 @@ public class Menu_Usuario extends javax.swing.JFrame {
         txtPaneInfo.setForeground(new java.awt.Color(8, 165, 0));
         scroll_pane_text.setViewportView(txtPaneInfo);
 
-        labelTitulo.setText("jLabel1");
+        getContentPane().add(scroll_pane_text);
+        scroll_pane_text.setBounds(170, 250, 280, 298);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoUVG.jpg"))); // NOI18N
+        labelTitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(labelTitulo);
+        labelTitulo.setBounds(252, 188, 285, 0);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scroll_pane_text, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)
-                                .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(48, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn1)
-                        .addGap(141, 141, 141)
-                        .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(130, 130, 130))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl2)
-                    .addComponent(comboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn1)
-                    .addComponent(btn2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelTitulo)
-                .addGap(43, 43, 43)
-                .addComponent(scroll_pane_text, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/descarga.jpeg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(30, 210, 168, 90);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoUVG.jpg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(10, 10, 88, 90);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -346,6 +315,7 @@ public class Menu_Usuario extends javax.swing.JFrame {
     private javax.swing.JButton btn2;
     private javax.swing.JComboBox<String> comboBoxUsuario;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl2;
