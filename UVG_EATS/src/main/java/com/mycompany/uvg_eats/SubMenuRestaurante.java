@@ -5,6 +5,7 @@
 package com.mycompany.uvg_eats;
 
 import clases.FoodCourtUVG;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 
@@ -20,6 +21,8 @@ public class SubMenuRestaurante extends javax.swing.JFrame {
      */
     public SubMenuRestaurante() {
         initComponents();
+                Color backGround= new Color(8,165,0);
+        getContentPane().setBackground(backGround);
         String[] modelUsuario = {"1. Cliente", "2. Reparatidor", "3. Proveedor"};
         
     }

@@ -23,7 +23,8 @@ public class Menu_Usuario extends javax.swing.JFrame {
         //food = new FoodCourtUVG();
         
         initComponents();
-
+        Color backGround= new Color(8,165,0);
+        getContentPane().setBackground(backGround);
         
     }
 
@@ -92,7 +93,6 @@ public class Menu_Usuario extends javax.swing.JFrame {
         scroll_pane_text = new javax.swing.JScrollPane();
         txtPaneInfo = new javax.swing.JTextPane();
         labelTitulo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -153,10 +153,6 @@ public class Menu_Usuario extends javax.swing.JFrame {
         labelTitulo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(labelTitulo);
         labelTitulo.setBounds(252, 188, 285, 0);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/descarga.jpeg"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 210, 168, 90);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoUVG.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -314,7 +310,6 @@ public class Menu_Usuario extends javax.swing.JFrame {
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn2;
     private javax.swing.JComboBox<String> comboBoxUsuario;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel lbl1;
